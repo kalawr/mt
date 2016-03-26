@@ -7,3 +7,15 @@ gulp.task('jade', function ()
 		.pipe(jade())
 		.pipe(gulp.dest('../dist'));
 });
+
+gulp.task('css', function ()
+{
+	return gulp.src('css/*.css')
+		.pipe(gulp.dest('../dist/css'));
+});
+
+gulp.task('js', function ()
+{
+	return gulp.src('js/*.js')
+		.pipe(gulp.dest('../dist/js'));
+});
