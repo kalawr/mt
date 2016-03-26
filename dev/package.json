@@ -6,11 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kalawr/mt.git"
-  },
-  "author": "",
+  "repository": "kalawr/mt",
+  "author": "Illia Kalaur <kallaur125@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1"
