@@ -1,0 +1,15 @@
+{
+  "name": "mt",
+  "description": "you'll see some later",
+  "main": "js/main.js",
+  "authors": [
+    "Illia Kalaur <kallaur125@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kalawr/mt",
+  "moduleType": [],
+  "private": true,
+  "dependencies": {
+    "normalize-css": "normalize.css#^4.0.0"
+  }
+}
