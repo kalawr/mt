@@ -14,6 +14,11 @@ gulp.task('css', function ()
 		.pipe(gulp.dest('../public/css'));
 });
 
+gulp.task('css-watch', function ()
+{
+	gulp.watch('css/*.css', ['css']);
+});
+
 gulp.task('js', function ()
 {
 	return gulp.src('js/*.js')
