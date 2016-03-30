@@ -1,4 +1,4 @@
-dev/node_modules/
+src/node_modules/
 app/node_modules/
-dev/bower_components/
+src/bower_components/
 dist/
