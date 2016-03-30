@@ -19,3 +19,5 @@ gulp.task('js', function ()
 	return gulp.src('js/*.js')
 		.pipe(gulp.dest('../public/js'));
 });
+
+gulp.task('default', ['jade', 'css', 'js']);
