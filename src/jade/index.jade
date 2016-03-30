@@ -4,6 +4,7 @@ html
 		title Work in Progress
 		link(rel='stylesheet' type='text/css' href='css/style.css')
 	body
-		input#search.search(type='text' autofocus)
+		form.search(method='post' action='/tr')
+			input#search.bar(type='text' name='query' autofocus='autofocus' autocomplete='off' placeholder='Search')
 
 		script(type='text/javascript' src='js/script.js')

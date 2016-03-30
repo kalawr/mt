@@ -1,0 +1,16 @@
+:root {
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0;
+}
+
+.search> .bar {
+	font-size: 800%;
+	border: 0;
+}
+
+.search> .bar:focus {
+	outline: none;
+}
