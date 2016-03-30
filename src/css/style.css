@@ -1,5 +1,6 @@
 :root {
 	font-family: sans-serif;
+	color: #525252;
 }
 
 body {
@@ -7,10 +8,16 @@ body {
 }
 
 .search> .bar {
+	display: block;
+	width: 8em;
+
+	color: inherit;
 	font-size: 800%;
 	border: 0;
+	border-bottom: 2px solid gray;
 }
 
 .search> .bar:focus {
 	outline: none;
+	border-bottom-color: currentColor;
 }
