@@ -204,43 +204,38 @@ Hint.init();
 Result.init();
 
 
-// form.on('input', function (event)
-// {
-// 	// in case of an input event
-// 	jQuery
-// 		.getJSON( Url.range(query.val(), langs.val()) )
-// 		// .then(log)
-// 		.always(function (list)
-// 		{
-// 			if (list.length > 0)
-// 				Hint.paste(hint, Hint.makeMany(list));
-// 		})
-// 		;
-// });
-
-// form.on('submit', function (event)
-// {
-// 	event.preventDefault();
-// 	// in case of a submit event
-// 	jQuery
-// 		.getJSON( Url.single(query.val(), langs.val()) )
-// 		// .then(log)
-// 		.always(function (list)
-// 		{
-// 			if (list.length > 0)
-// 				Result.paste(result, Result.make(list));
-// 		})
-// 		;
-// });
-
-jQuery(document).ready(function ()
+form.on('input', function (event)
 {
-	jQuery
-		.getJSON('/samples/result.json')
-		.then(function (list)
-		{
-			if (list)
-				Result.render(Result.make(list));
-		})
-		;
+	if (false)
+	{
+		jQuery
+			.getJSON( Url.range(query.val(), langs.val()) )
+			.then(function (list)
+			{
+				if (list)
+					Hint.render(Hint.makeMany(list));
+			})
+			;
+	}
+
+	log('input');
+});
+
+form.on('submit', function (event)
+{
+	event.preventDefault();
+
+	if (false)
+	{
+		jQuery
+			.getJSON( Url.single(query.val(), langs.val()) )
+			.then(function (list)
+			{
+				if (list)
+					Result.render(Result.make(list));
+			})
+			;
+	}
+
+	log('submit');
 });
