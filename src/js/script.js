@@ -7,6 +7,12 @@ function log(x)
 }
 // ---
 
+
+
+
+
+
+
 // url.js
 var Url = {};
 
@@ -33,44 +39,69 @@ Url.single = function (query, languages)
 };
 // ----
 
+
+
+
+
+
+
+
 // hint.js
 var Hint = {};
+var h = virtualDom.h;
 
-// Takes an array of strings.
-Hint.makeMany = function (list)
+Hint.makeMany = function (array)
 {
-	var ul = document.createElement('ul');
+	var _this = this;
 
-	list.forEach(
-		function (element)
-		{	ul.appendChild(this.makeOne(element));
-		}, 
-		this
+	return h(
+		'ul.hint',
+		array.map(
+			function (element) 
+			{
+				return _this.makeOne(element);
+			}
+		)
 	);
-
-	return ul;
 };
 
-// Takes a string.
-Hint.makeOne = function (element)
+Hint.makeOne = function (text)
 {
-	var li = document.createElement('li');
-	li.textContent = element;
-	return li;
+	return h(
+		'li',
+		String(text)
+	);
 };
 
-Hint.paste = function (container, content)
+Hint.render = function (targetTree)
 {
-	// Remove container's only child if necessary.
-	if (container.children.length > 0)
-		container.removeChild(container.children[0]);
-
-	container.appendChild(content);
+	var patches = virtualDom.diff(this.previousTree, targetTree);
+	this.node = virtualDom.patch(this.node, patches);
+	this.previousTree = targetTree;
 };
+
+Hint.init = function ()
+{
+	var tree = Hint.makeMany([]);
+	var node = virtualDom.create(tree);
+	document.body.appendChild(node);
+	this.node = node;
+	this.previousTree = tree;
+	return node;
+};
+
 // ---
 
+
+
+
+
+
+
+
+
+
 // result.js
-var h = virtualDom.h;
 
 var Result = {};
 
@@ -161,15 +192,15 @@ Result.init = function ()
 	this.node = node;
 	this.previousTree = tree;
 	return node;
-}
+};
 
 // ---
 
 var form = jQuery('#search')
  ,	query = jQuery('#query')
- ,	langs = jQuery('#langs')
- ,	hint = jQuery('#hint')[0];
- 
+ ,	langs = jQuery('#langs');
+
+Hint.init();
 Result.init();
 
 
