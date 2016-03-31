@@ -90,49 +90,48 @@ Result.make = function (list)
 
 Result.makeVariantGroup = function (group)
 {
-	var div = document.createElement('div');
-	var heading = document.createElement('h1');
-	var subheading = document.createElement('h2');
+	var dl = document.createElement('dl');
+	var dt = document.createElement('dt');
+	dt.appendChild(document.createTextNode(group.variant));
 
-	heading.textContent = group.variant;
-	subheading.textContent = group.partOfSpeech;
+	var partOfSpeech = document.createElement('span');
+	partOfSpeech.className = 'part-of-speech';
+	partOfSpeech.textContent = ', ' + group.partOfSpeech;
 
-	div.appendChild(heading);
-	div.appendChild(subheading);
+	dt.appendChild(partOfSpeech);
+	dl.appendChild(dt);
 
 	group.domains.forEach(
 		function (entry)
 		{
-			div.appendChild(this.makeDomainGroup(entry));
+			dl.appendChild(this.makeDomainGroup(entry));
 		}, 
 		this
 	);
 
-	return div;
+	return dl;
 };
 
 Result.makeDomainGroup = function (group)
 {
 	var div = document.createElement('div');
+	div.className = 'domain';
+	
 	var domain = document.createElement('div');
-
-	domain.className = 'domain';
+	domain.className = 'domain-name';
 	domain.textContent = group.domain;
 	div.appendChild(domain);
-
-	var ul = document.createElement('ul');
 
 	group.translations.forEach(
 		function (translation)
 		{
-			var li = document.createElement('li');
-			li.textContent = translation;
+			var dd = document.createElement('dd');
+			dd.textContent = translation;
 
-			ul.appendChild(li);
+			div.appendChild(dd);
 		}
 	); 
 
-	div.appendChild(ul);
 	return div;
 };
 
