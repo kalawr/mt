@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "normalize-css": "normalize.css#^4.0.0",
-    "jquery": "^2.2.2"
+    "jquery": "^2.2.2",
+    "virtual-dom": "Matt-Esch/virtual-dom#master"
   }
 }

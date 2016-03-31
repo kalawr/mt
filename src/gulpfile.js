@@ -7,7 +7,8 @@ var cssLibs = [
 ];
 
 var jsLibs = [
-	'bower_components/jquery/dist/jquery.min.js'
+	'bower_components/jquery/dist/jquery.min.js',
+	'bower_components/virtual-dom/dist/virtual-dom.js'
 ];
 
 
