@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
+var vars = require('postcss-simple-vars');
+
 
 var cssLibs = [
 	'bower_components/normalize-css/normalize.css'
@@ -24,7 +26,7 @@ gulp.task('jade', function ()
 gulp.task('css', function ()
 {
 	return gulp.src('css/*.css')
-		.pipe(postcss([autoprefixer()]))
+		.pipe(postcss([autoprefixer, vars]))
 		.pipe(gulp.dest('../public/css'));
 });
 

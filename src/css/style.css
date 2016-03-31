@@ -1,3 +1,7 @@
+$bar-pv: 0.5em; /* for vertical padding */
+$bar-ph: 0.4em; /* for horizontal padding */
+$bar-p:  $bar-pv $bar-ph;
+
 * {
 	box-sizing: border-box;
 }
@@ -36,7 +40,7 @@ body{
 	flex: 1 0 5em;
 	width: 5em;
 
-	padding: 0.5em 0.4em;
+	padding: $bar-p;
 
 	border: 0;
 	color: inherit;
@@ -50,7 +54,7 @@ body{
 	color: inherit;
 	background-color: inherit;
 	border: 0;
-	padding: 0.5em 0.4em;
+	padding: $bar-p;
 	border-left: 0.1em solid;
 	text-transform: uppercase;
 	line-height: normal;

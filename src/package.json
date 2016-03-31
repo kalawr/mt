@@ -15,5 +15,8 @@
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "gulp-postcss": "^6.1.0"
+  },
+  "dependencies": {
+    "postcss-simple-vars": "^1.2.0"
   }
 }
