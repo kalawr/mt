@@ -75,22 +75,23 @@ var Result = {};
 
 Result.make = function (list)
 {
-	var div = document.createElement('div');
+	var fr = document.createDocumentFragment();
 
 	list.result.forEach(
 		function (entry)
 		{
-			div.appendChild(this.makeVariantGroup(entry));
+			fr.appendChild(this.makeVariantGroup(entry));
 		}, 
 		this
 	);
 
-	return div;
+	return fr;
 };
 
 Result.makeVariantGroup = function (group)
 {
-	var dl = document.createElement('dl');
+	var div = document.createElement('div');
+	div.className = 'definition';
 	var dt = document.createElement('dt');
 	dt.appendChild(document.createTextNode(group.variant));
 
@@ -99,17 +100,17 @@ Result.makeVariantGroup = function (group)
 	partOfSpeech.textContent = ', ' + group.partOfSpeech;
 
 	dt.appendChild(partOfSpeech);
-	dl.appendChild(dt);
+	div.appendChild(dt);
 
 	group.domains.forEach(
 		function (entry)
 		{
-			dl.appendChild(this.makeDomainGroup(entry));
+			div.appendChild(this.makeDomainGroup(entry));
 		}, 
 		this
 	);
 
-	return dl;
+	return div;
 };
 
 Result.makeDomainGroup = function (group)
