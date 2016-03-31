@@ -6,7 +6,9 @@ html
 		link(rel='stylesheet', type='text/css', href='css/style.css')
 	body
 		form#search.search
-			input#query.bar(type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
+			.bar
+				input#query.bar(type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
+				button.ok Ok
 			input#langs(type='hidden', value='en-ru')
 
 
