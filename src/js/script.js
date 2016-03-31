@@ -70,115 +70,146 @@ Hint.paste = function (container, content)
 // ---
 
 // result.js
+var h = virtualDom.h;
 
 var Result = {};
 
 Result.make = function (list)
 {
-	var fr = document.createDocumentFragment();
+	var _this = this;
 
-	list.result.forEach(
-		function (entry)
-		{
-			fr.appendChild(this.makeVariantGroup(entry));
-		}, 
-		this
+	return h(
+		'dl#result',
+		list.result.map(
+			function (entry)
+			{
+				return _this.makeDefinitionGroup(entry);
+			}
+		)
 	);
-
-	return fr;
 };
 
-Result.makeVariantGroup = function (group)
+Result.makeDefinitionGroup = function (group)
 {
-	var div = document.createElement('div');
-	div.className = 'definition';
-	var dt = document.createElement('dt');
-	dt.appendChild(document.createTextNode(group.variant));
+	var _this = this;
 
-	var partOfSpeech = document.createElement('span');
-	partOfSpeech.className = 'part-of-speech';
-	partOfSpeech.textContent = ', ' + group.partOfSpeech;
-
-	dt.appendChild(partOfSpeech);
-	div.appendChild(dt);
-
-	group.domains.forEach(
-		function (entry)
-		{
-			div.appendChild(this.makeDomainGroup(entry));
-		}, 
-		this
+	return h(
+		'.definition',
+		[
+			h(
+				'dt',
+				[
+					group.variant,
+					h(
+						'span.part-of-speech',
+						', ' + group.partOfSpeech
+					)
+				]
+			),
+			group.domains.map(
+				function (domain)
+				{
+					return _this.makeDomainGroup(domain);
+				}
+			)
+		]
 	);
-
-	return div;
 };
 
 Result.makeDomainGroup = function (group)
 {
-	var div = document.createElement('div');
-	div.className = 'domain';
-	
-	var domain = document.createElement('div');
-	domain.className = 'domain-name';
-	domain.textContent = group.domain;
-	div.appendChild(domain);
+	var _this = this;
 
-	group.translations.forEach(
-		function (translation)
-		{
-			var dd = document.createElement('dd');
-			dd.textContent = translation;
+	return h(
+		'.domain',
+		[
+			h(
+				'.domain-name',
+				String(group.domain)
+			),
 
-			div.appendChild(dd);
-		}
-	); 
-
-	return div;
+			group.translations.map(
+				function (translation)
+				{
+					return _this.makeTranslation(translation);
+				}
+			)
+		]
+	);
 };
 
-Result.paste = function (container, content)
+Result.makeTranslation = function (value)
 {
-	// Remove container's only child if necessary.
-	if (container.children.length > 0)
-		container.removeChild(container.children[0]);
-
-	container.appendChild(content);
+	return h(
+		'dd',
+		String(value)
+	);
 };
+
+Result.render = function (targetTree)
+{
+	var patches = virtualDom.diff(this.previousTree, targetTree);
+	this.node = virtualDom.patch(this.node, patches);
+	this.previousTree = targetTree;
+};
+
+Result.init = function ()
+{
+	var tree = Result.make({ result: [] });
+	var node = virtualDom.create(tree);
+	document.body.appendChild(node);
+	this.node = node;
+	this.previousTree = tree;
+	return node;
+}
 
 // ---
 
 var form = jQuery('#search')
  ,	query = jQuery('#query')
  ,	langs = jQuery('#langs')
- ,	hint = jQuery('#hint')[0]
- ,	result = jQuery('#result')[0];
+ ,	hint = jQuery('#hint')[0];
+ 
+Result.init();
 
 
-form.on('input', function (event)
+// form.on('input', function (event)
+// {
+// 	// in case of an input event
+// 	jQuery
+// 		.getJSON( Url.range(query.val(), langs.val()) )
+// 		// .then(log)
+// 		.always(function (list)
+// 		{
+// 			if (list.length > 0)
+// 				Hint.paste(hint, Hint.makeMany(list));
+// 		})
+// 		;
+// });
+
+// form.on('submit', function (event)
+// {
+// 	event.preventDefault();
+// 	// in case of a submit event
+// 	jQuery
+// 		.getJSON( Url.single(query.val(), langs.val()) )
+// 		// .then(log)
+// 		.always(function (list)
+// 		{
+// 			if (list.length > 0)
+// 				Result.paste(result, Result.make(list));
+// 		})
+// 		;
+// });
+
+jQuery(document).ready(function ()
 {
-	// in case of an input event
 	jQuery
-		.getJSON( Url.range(query.val(), langs.val()) )
-		// .then(log)
-		.always(function (list)
+		.getJSON('/samples/result.json')
+		.then(function (list)
 		{
-			if (list.length > 0)
-				Hint.paste(hint, Hint.makeMany(list));
-		})
-		;
-});
-
-form.on('submit', function (event)
-{
-	event.preventDefault();
-	// in case of a submit event
-	jQuery
-		.getJSON( Url.single(query.val(), langs.val()) )
-		// .then(log)
-		.always(function (list)
-		{
-			if (list.length > 0)
-				Result.paste(result, Result.make(list));
+			if (list)
+				Result.render(Result.make(list));
 		})
 		;
 });
