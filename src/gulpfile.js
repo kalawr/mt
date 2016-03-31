@@ -28,7 +28,7 @@ gulp.task('css', function ()
 		.pipe(gulp.dest('../public/css'));
 });
 
-gulp.task('css-watch', function ()
+gulp.task('css-watch', ['css'], function ()
 {
 	return gulp.watch('css/*.css', ['css']);
 });
@@ -46,7 +46,7 @@ gulp.task('js', function ()
 		.pipe(gulp.dest('../public/js'));
 });
 
-gulp.task('js-watch', function ()
+gulp.task('js-watch', ['js'], function ()
 {
 	return gulp.watch('js/*.js', ['js']);
 });
