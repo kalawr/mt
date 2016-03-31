@@ -5,7 +5,12 @@
 :root {
 	font-family: sans-serif;
 	font-size: 400%;
+
+	/* More appealing */
 	color: #3381FF;
+
+	/* More Multitranish */
+	color: #1D85CF;
 }
 
 ::-webkit-input-placeholder {
