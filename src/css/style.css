@@ -29,14 +29,15 @@ body{
 
 	width: 14em;
 	margin: auto;
-	padding: 0.5em 0.4em;
 	border: 0.1em solid;
 }
 
 .search> .bar input {
 	flex: 1 0 5em;
 	width: 5em;
-	
+
+	padding: 0.5em 0.4em;
+
 	border: 0;
 	color: inherit;
 	appearance: none;
@@ -49,9 +50,8 @@ body{
 	color: inherit;
 	background-color: inherit;
 	border: 0;
-	padding: 0;
+	padding: 0.5em 0.4em;
 	border-left: 0.1em solid;
-	padding-left: 0.4em;
 	text-transform: uppercase;
 	line-height: normal;
 }
