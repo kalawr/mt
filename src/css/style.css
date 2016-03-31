@@ -13,20 +13,7 @@
 	color: #1D85CF;
 }
 
-::-webkit-input-placeholder {
-	color: inherit;
-}
-::-moz-placeholder {
-	color: inherit;
-}
-:-ms-input-placeholder {
-	color: inherit;
-}
-:-moz-placeholder {
-	color: inherit;
-}
-
-:placeholder {
+::placeholder {
 	color: inherit;
 }
 
@@ -47,7 +34,6 @@ body{
 	padding: 0.4em;
 	border: 0.1em solid;
 	color: inherit;
-	-webkit-appearance: none;
 	appearance: none;
 }
 

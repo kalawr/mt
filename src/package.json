@@ -10,8 +10,10 @@
   "author": "Illia Kalaur <kallaur125@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^6.3.5",
     "bower": "^1.7.7",
     "gulp": "^3.9.1",
-    "gulp-jade": "^1.1.0"
+    "gulp-jade": "^1.1.0",
+    "gulp-postcss": "^6.1.0"
   }
 }
