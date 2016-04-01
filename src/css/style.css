@@ -28,13 +28,13 @@ body {
 /* bar.css */
 
 .search {
+	margin-top: 2em;
 }
 
 .search> .bar {
 	display: flex;
 	flex-wrap: nowrap;
 	
-	margin-top: 2em;
 	border: $bar-border;
 
 	overflow: hidden;
@@ -100,4 +100,9 @@ ul.hint:empty {
 
 .hint li {
 	margin: $bar-padding;
+}
+
+/* result.css */
+dl.result {
+	margin: 0;
 }

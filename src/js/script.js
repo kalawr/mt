@@ -110,7 +110,7 @@ Result.make = function (list)
 	var _this = this;
 
 	return h(
-		'dl#result',
+		'dl#result.result',
 		list.result.map(
 			function (entry)
 			{
