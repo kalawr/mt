@@ -1,6 +1,6 @@
-$bar-pv: 0.5em; /* for vertical padding */
-$bar-ph: 0.4em; /* for horizontal padding */
-$bar-p:  $bar-pv $bar-ph;
+$bar-vertical-padding: 0.5em;
+$bar-horizontal-padding: 0.4em;
+$bar-padding: $bar-vertical-padding $bar-horizontal-padding;
 
 $bar-border-width: 0.1em;
 $bar-border: $bar-border-width solid currentColor;
@@ -42,7 +42,7 @@ body {
 	flex: 1 0 5em;
 	width: 5em;
 
-	padding: $bar-p;
+	padding: $bar-padding;
 
 	border: 0;
 	color: inherit;
@@ -56,7 +56,7 @@ body {
 	color: inherit;
 	background-color: inherit;
 	border: 0;
-	padding: $bar-p;
+	padding: $bar-padding;
 	border-left: $bar-border;
 	text-transform: uppercase;
 	line-height: normal;
@@ -87,5 +87,5 @@ ul.hint:empty {
 }
 
 .hint li {
-	margin: $bar-p;
+	margin: $bar-padding;
 }
