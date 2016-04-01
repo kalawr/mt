@@ -5,6 +5,8 @@ $bar-padding: $bar-vertical-padding $bar-horizontal-padding;
 $bar-border-width: 0.1em;
 $bar-border: $bar-border-width solid currentColor;
 
+$bg: white;
+
 * {
 	box-sizing: border-box;
 }
@@ -29,14 +31,15 @@ body {
 
 .search {
 	margin-top: 2em;
+	padding: $bar-border-width;
+	background: linear-gradient(to right, currentColor, #846AD4);
 }
 
 .search> .bar {
 	display: flex;
 	flex-wrap: nowrap;
-	
-	border: $bar-border;
 
+	background-color: $bg;
 	overflow: hidden;
 }
 
