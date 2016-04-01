@@ -84,7 +84,7 @@ Hint.init = function ()
 {
 	var tree = Hint.makeMany([]);
 	var node = virtualDom.create(tree);
-	document.body.appendChild(node);
+	document.querySelector('.container').appendChild(node);
 	this.node = node;
 	this.previousTree = tree;
 	return node;
@@ -188,7 +188,7 @@ Result.init = function ()
 {
 	var tree = Result.make({ result: [] });
 	var node = virtualDom.create(tree);
-	document.body.appendChild(node);
+	document.querySelector('.container').appendChild(node);
 	this.node = node;
 	this.previousTree = tree;
 	return node;
