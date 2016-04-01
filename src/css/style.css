@@ -51,9 +51,14 @@ body {
 	appearance: none;
 }
 
+.search> .bar> .ok,
+.search> .bar> input {
+	transition: all 1s ease-in-out;
+}
+
 .search> .bar> .ok {
 	flex: 0 0 auto;
-
+	width: 3em;
 	appearance: none;
 	color: inherit;
 	background-color: inherit;
@@ -70,11 +75,7 @@ body {
 }
 
 .search> .bar> .ok.out {
-	transform: translate(100%);
-}
-
-.search> .bar> .ok.gone {
-	display: none;
+	margin-right: -3em;
 }
 
 
