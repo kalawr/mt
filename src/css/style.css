@@ -64,7 +64,6 @@ body {
 	background-color: inherit;
 	border: 0;
 	padding: $bar-padding;
-	border-left: $bar-border;
 	text-transform: uppercase;
 	line-height: normal;
 }
@@ -76,6 +75,11 @@ body {
 
 .search> .bar> .ok.out {
 	margin-right: -3em;
+}
+
+.search> .bar> .ok img {
+	width: 1em;
+	height: 1em;
 }
 
 
