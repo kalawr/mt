@@ -1,0 +1,15 @@
+ul.hint {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	border: $bar-border;
+	transform: translateY(-$bar-border-width);
+}
+
+ul.hint:empty {
+	border: 0;
+}
+
+.hint li {
+	margin: $bar-padding;
+}

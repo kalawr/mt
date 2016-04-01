@@ -1,0 +1,6 @@
+$bar-vertical-padding: 0.5em;
+$bar-horizontal-padding: 0.4em;
+$bar-padding: $bar-vertical-padding $bar-horizontal-padding;
+
+$bar-border-width: 0.1em;
+$bar-border: $bar-border-width solid currentColor;
