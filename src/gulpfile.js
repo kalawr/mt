@@ -60,4 +60,4 @@ gulp.task('js-pick-libs', function ()
 });
 
 
-gulp.task('default', ['jade', 'css', 'js']);
+gulp.task('default', ['jade', 'css', 'js', 'css-pick-libs', 'js-pick-libs']);
