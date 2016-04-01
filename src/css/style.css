@@ -29,7 +29,6 @@ body{
 .search> .bar {
 	display: flex;
 	flex-wrap: nowrap;
-	justify-content: space-between;
 
 	width: 14em;
 	margin: auto;
