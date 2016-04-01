@@ -36,6 +36,8 @@ body {
 	
 	margin-top: 2em;
 	border: $bar-border;
+
+	overflow: hidden;
 }
 
 .search> .bar input {
@@ -66,6 +68,15 @@ body {
 .search> .bar> .ok:focus {
 	outline: none;
 }
+
+.search> .bar> .ok.out {
+	transform: translate(100%);
+}
+
+.search> .bar> .ok.gone {
+	display: none;
+}
+
 
 ::placeholder {
 	color: inherit;
