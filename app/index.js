@@ -1,4 +1,6 @@
 var request = require('request');
+var express = require('express');
+var app = express();
 
 var langs = new Map()
 	.set('en', 1)
@@ -22,3 +24,22 @@ var buildUrl = function (type)
 
 var buildResultUrl = buildUrl('m');
 var buildHintUrl   = buildUrl('ms');
+
+app.get('/translate/:query/:langs', function (request, response)
+{
+	response.send(
+		buildResultUrl(request.params.query, request.params.langs, langs)
+	);
+});
+
+app.get('/hint/:query/:langs', function (request, response)
+{
+	response.send(
+		buildHintUrl(request.params.query, request.params.langs, langs)
+	);
+});
+
+app.listen(3000, function ()
+{
+	console.log('Example app listening on port 3000');
+});
