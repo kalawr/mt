@@ -18,24 +18,20 @@ var Url = {};
 
 Url.autocomplete = function (query, languages)
 {
-	return '/tr?' +
-		'type=' +
-		'range' +
-		'&langs=' +
-		languages +
-		'&query=' +
-		query;
+	return '/autocomplete' +
+		'/' +
+		String(query) +
+		'/' +
+		String(languages);
 };
 
 Url.translate = function (query, languages)
 {
-	return '/tr?' +
-		'type=' +
-		'singe' +
-		'&langs=' +
-		languages +
-		'&query=' +
-		query;
+	return '/translate' +
+		'/' +
+		String(query) +
+		'/' +
+		String(languages);
 };
 // ----
 
