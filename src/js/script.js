@@ -197,8 +197,8 @@ Result.init = function ()
 // ---
 
 var form = jQuery('#search')
- ,	query = jQuery('#query')
- ,	langs = jQuery('#langs');
+ ,	query = document.getElementById('query')
+ ,	langs = document.getElementById('langs');
 
 Autocomplete.init();
 Result.init();
@@ -209,7 +209,7 @@ form.on('input', function (event)
 	if (false)
 	{
 		jQuery
-			.getJSON( Url.autocomplete(query.val(), langs.val()) )
+			.getJSON( Url.autocomplete(query.value, langs.value))
 			.then(function (list)
 			{
 				if (list)
@@ -228,7 +228,7 @@ form.on('submit', function (event)
 	if (false)
 	{
 		jQuery
-			.getJSON( Url.translate(query.val(), langs.val()) )
+			.getJSON( Url.translate(query.value, langs.value))
 			.then(function (list)
 			{
 				if (list)
@@ -238,18 +238,6 @@ form.on('submit', function (event)
 	}
 
 	log('submit');
-});
-
-jQuery(document).ready(function ()
-{
-	jQuery
-		.getJSON('/samples/autocomplete.json')
-		.then(function (list)
-		{
-			console.log(list)
-			Autocomplete.render(Autocomplete.makeMany(list.options));
-		})
-		;
 });
 
 
