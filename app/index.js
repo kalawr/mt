@@ -18,24 +18,37 @@ var buildUrl = function (type)
 		var lang1 = langsMap.get(langs.split('-')[0]);
 		var lang2 = langsMap.get(langs.split('-')[1]);
 
-		return `http://www.multitran.ru/c/${type}.exe?s=${query}&l1=${lang1}&l2=${lang2}`;
+		return `http://www.multitran.ru/c/${type}.exe?l1=${lang1}&l2=${lang2}&s=${query}`;
 	};
 };
 
 var buildResultUrl = buildUrl('m');
 var buildAutocompleteUrl = buildUrl('ms');
 
-app.get('/translate/:query/:langs', function (request, response)
+app.get('/translate/:query/:langs', function (req, res)
 {
 	response.send(
-		buildResultUrl(request.params.query, request.params.langs, langs)
+		buildResultUrl(req.params.query, req.params.langs, langs)
 	);
 });
 
-app.get('/autocomplete/:query/:langs', function (request, response)
+app.get('/autocomplete/:query/:langs', function (req, res)
 {
-	response.send(
-		buildAutocompleteUrl(request.params.query, request.params.langs, langs)
+	request(
+		{
+			url: buildAutocompleteUrl(req.params.query, req.params.langs, langs),
+			headers: {
+				'User-Agent': 'Have to Have It'
+			}
+		},
+		function (err, response, body)
+		{
+			var payload = {
+				options: body.split('\r\n').filter(Boolean)
+			};
+
+			res.json(payload);
+		}
 	);
 });
 
