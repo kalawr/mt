@@ -16,7 +16,7 @@ function log(x)
 // url.js
 var Url = {};
 
-Url.range = function (query, languages)
+Url.autocomplete = function (query, languages)
 {
 	return '/tr?' +
 		'type=' +
@@ -27,7 +27,7 @@ Url.range = function (query, languages)
 		query;
 };
 
-Url.single = function (query, languages)
+Url.translate = function (query, languages)
 {
 	return '/tr?' +
 		'type=' +
@@ -46,16 +46,16 @@ Url.single = function (query, languages)
 
 
 
-// hint.js
-var Hint = {};
+// autocomplete.js
+var Autocomplete = {};
 var h = virtualDom.h;
 
-Hint.makeMany = function (array)
+Autocomplete.makeMany = function (array)
 {
 	var _this = this;
 
 	return h(
-		'ul.hint',
+		'ul.autocomplete',
 		array.map(
 			function (element) 
 			{
@@ -65,7 +65,7 @@ Hint.makeMany = function (array)
 	);
 };
 
-Hint.makeOne = function (text)
+Autocomplete.makeOne = function (text)
 {
 	return h(
 		'li',
@@ -73,16 +73,16 @@ Hint.makeOne = function (text)
 	);
 };
 
-Hint.render = function (targetTree)
+Autocomplete.render = function (targetTree)
 {
 	var patches = virtualDom.diff(this.previousTree, targetTree);
 	this.node = virtualDom.patch(this.node, patches);
 	this.previousTree = targetTree;
 };
 
-Hint.init = function ()
+Autocomplete.init = function ()
 {
-	var tree = Hint.makeMany([]);
+	var tree = Autocomplete.makeMany([]);
 	var node = virtualDom.create(tree);
 	document.querySelector('.container').appendChild(node);
 	this.node = node;
@@ -200,7 +200,7 @@ var form = jQuery('#search')
  ,	query = jQuery('#query')
  ,	langs = jQuery('#langs');
 
-Hint.init();
+Autocomplete.init();
 Result.init();
 
 
@@ -209,11 +209,11 @@ form.on('input', function (event)
 	if (false)
 	{
 		jQuery
-			.getJSON( Url.range(query.val(), langs.val()) )
+			.getJSON( Url.autocomplete(query.val(), langs.val()) )
 			.then(function (list)
 			{
 				if (list)
-					Hint.render(Hint.makeMany(list));
+					Autocomplete.render(Autocomplete.makeMany(list));
 			})
 			;
 	}
@@ -228,7 +228,7 @@ form.on('submit', function (event)
 	if (false)
 	{
 		jQuery
-			.getJSON( Url.single(query.val(), langs.val()) )
+			.getJSON( Url.translate(query.val(), langs.val()) )
 			.then(function (list)
 			{
 				if (list)
@@ -240,7 +240,17 @@ form.on('submit', function (event)
 	log('submit');
 });
 
-
+jQuery(document).ready(function ()
+{
+	jQuery
+		.getJSON('/samples/autocomplete.json')
+		.then(function (list)
+		{
+			console.log(list)
+			Autocomplete.render(Autocomplete.makeMany(list.options));
+		})
+		;
+});
 
 
 // showing/hiding button

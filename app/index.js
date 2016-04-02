@@ -23,7 +23,7 @@ var buildUrl = function (type)
 };
 
 var buildResultUrl = buildUrl('m');
-var buildHintUrl   = buildUrl('ms');
+var buildAutocompleteUrl = buildUrl('ms');
 
 app.get('/translate/:query/:langs', function (request, response)
 {
@@ -32,10 +32,10 @@ app.get('/translate/:query/:langs', function (request, response)
 	);
 });
 
-app.get('/hint/:query/:langs', function (request, response)
+app.get('/autocomplete/:query/:langs', function (request, response)
 {
 	response.send(
-		buildHintUrl(request.params.query, request.params.langs, langs)
+		buildAutocompleteUrl(request.params.query, request.params.langs, langs)
 	);
 });
 
