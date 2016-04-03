@@ -25,10 +25,24 @@ var buildUrl = function (type)
 var buildResultUrl = buildUrl('m');
 var buildAutocompleteUrl = buildUrl('ms');
 
+var parseResult = function (html)
+{
+	return { test: 'value' };
+};
+
 app.get('/translate/:query/:langs', function (req, res)
 {
-	response.send(
-		buildResultUrl(req.params.query, req.params.langs, langs)
+	request(
+		{
+			url: buildResultUrl(req.params.query, req.params.langs, langs),
+			headers: {
+				'User-Agent': 'Have to Have It'
+			}
+		},
+		function (err, response, body)
+		{
+			res.json(parseResult(body));
+		}
 	);
 });
 
