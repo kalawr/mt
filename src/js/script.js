@@ -202,7 +202,7 @@ Result.init();
 
 form.on('input', function (event)
 {
-	if (true)
+	if (event.target.value)
 	{
 		jQuery
 			.getJSON( Url.autocomplete(query.value, langs.value))
