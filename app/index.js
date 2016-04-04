@@ -1,4 +1,5 @@
-var request = require('request');
+var http = require('http');
+var iconv = require('iconv-lite');
 var express = require('express');
 var app = express();
 
@@ -18,7 +19,7 @@ var buildUrl = function (type)
 		var lang1 = langsMap.get(langs.split('-')[0]);
 		var lang2 = langsMap.get(langs.split('-')[1]);
 
-		return `http://www.multitran.ru/c/${type}.exe?l1=${lang1}&l2=${lang2}&s=${query}`;
+		return `/c/${type}.exe?l1=${lang1}&l2=${lang2}&s=${query}`;
 	};
 };
 
@@ -33,38 +34,62 @@ var parseResult = function (html)
 var parseAutocomplete = function (string)
 {
 	return {
-		options: string.split('\r\n').filter(Boolean);
+		options: string.split('\r\n').filter(Boolean)
 	};
 };
 
 app.get('/translate/:query/:langs', function (req, res)
 {
-	request(
+	http.get(
 		{
-			url: buildResultUrl(req.params.query, req.params.langs, langs),
+			hostname: 'www.multitran.ru',
+			path: buildResultUrl(req.params.query, req.params.langs, langs),
 			headers: {
 				'User-Agent': 'Have to Have It'
 			}
 		},
-		function (err, response, body)
+		function (response)
 		{
-			res.json(parseResult(body));
+			var chunks = [];
+
+			response.on('data', function (chunk)
+			{
+				chunks.push(chunk);
+			});
+
+			response.on('end', function ()
+			{
+				var decoded = iconv.decode(Buffer.concat(chunks), 'win1251');
+				res.json(parseResult(decoded));
+			});
 		}
 	);
 });
 
 app.get('/autocomplete/:query/:langs', function (req, res)
 {
-	request(
+	http.get(
 		{
-			url: buildAutocompleteUrl(req.params.query, req.params.langs, langs),
+			hostname: 'www.multitran.ru',
+			path: buildAutocompleteUrl(req.params.query, req.params.langs, langs),
 			headers: {
 				'User-Agent': 'Have to Have It'
 			}
 		},
-		function (err, response, body)
+		function (response)
 		{
-			res.json(parseAutocomplete(body));
+			var chunks = [];
+
+			response.on('data', function (chunk)
+			{
+				chunks.push(chunk);
+			});
+
+			response.on('end', function ()
+			{
+				var decoded = iconv.decode(Buffer.concat(chunks), 'win1251');
+				res.json(parseAutocomplete(decoded));
+			});
 		}
 	);
 });
