@@ -30,6 +30,13 @@ var parseResult = function (html)
 	return { test: 'value' };
 };
 
+var parseAutocomplete = function (string)
+{
+	return {
+		options: string.split('\r\n').filter(Boolean);
+	};
+};
+
 app.get('/translate/:query/:langs', function (req, res)
 {
 	request(
@@ -57,11 +64,7 @@ app.get('/autocomplete/:query/:langs', function (req, res)
 		},
 		function (err, response, body)
 		{
-			var payload = {
-				options: body.split('\r\n').filter(Boolean)
-			};
-
-			res.json(payload);
+			res.json(parseAutocomplete(body));
 		}
 	);
 });
