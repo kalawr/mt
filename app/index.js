@@ -1,6 +1,7 @@
 var http = require('http');
 var iconv = require('iconv-lite');
 var express = require('express');
+var cheerio = require('cheerio');
 var app = express();
 
 var langs = new Map()
@@ -26,9 +27,57 @@ var buildUrl = function (type)
 var buildResultUrl = buildUrl('m');
 var buildAutocompleteUrl = buildUrl('ms');
 
+
+
 var parseResult = function (html)
 {
-	return { test: 'value' };
+	var $ = cheerio.load(html);
+
+	var result = [];
+
+	$('*').each(function (i, el) 
+	{
+		var $el = $(el);
+
+		// Variant?
+		if ($el.is('script + table > tr > td:only-child a[href*="m.exe"]'))
+		{
+			result.push({variant: $el.text()});
+		}
+		else
+		// Part of Speech?
+		if ($el.is('script + table > tr > td:only-child em'))
+		{
+			result[result.length-1].partOfSpeech = $el.text();
+		}
+		else
+		// Domain Name?
+		if ($el.is('script + table > tr > td:not(:only-child):first-child > a'))
+		{
+			if (!result[result.length-1].domains)
+			{
+				result[result.length-1].domains = [];
+			}
+
+			result[result.length-1].domains.push({ domain: $el.attr('title') });
+		}
+		else
+		// Translation?
+		if ($el.is('script + table > tr > td:not(:only-child):nth-child(2) a:not([href*=UserName])'))
+		{
+			var lastResult = result[result.length-1];
+			var lastDomain = lastResult.domains[lastResult.domains.length-1];
+
+			if (!lastDomain.translations)
+			{
+				lastDomain.translations = [];
+			}
+
+			lastDomain.translations.push($el.text());
+		}
+	})
+
+	return {result:result};
 };
 
 var parseAutocomplete = function (string)
