@@ -14,12 +14,13 @@ var jsLibs = [
 	'bower_components/virtual-dom/dist/virtual-dom.js'
 ];
 
+var dest = '../app/public';
 
 gulp.task('jade', function ()
 {
 	return gulp.src('jade/*.jade')
 		.pipe(jade())
-		.pipe(gulp.dest('../public'));
+		.pipe(gulp.dest(dest));
 });
 
 
@@ -27,7 +28,7 @@ gulp.task('css', function ()
 {
 	return gulp.src('css/main.css')
 		.pipe(postcss([postcssImport, autoprefixer, vars]))
-		.pipe(gulp.dest('../public/css'));
+		.pipe(gulp.dest(dest+'/css'));
 });
 
 gulp.task('css-watch', ['css'], function ()
@@ -38,14 +39,14 @@ gulp.task('css-watch', ['css'], function ()
 gulp.task('css-pick-libs', function ()
 {
 	return gulp.src(cssLibs)
-		.pipe(gulp.dest('../public/css/lib'));
+		.pipe(gulp.dest(dest+'/css/lib'));
 });
 
 
 gulp.task('js', function ()
 {
 	return gulp.src('js/*.js')
-		.pipe(gulp.dest('../public/js'));
+		.pipe(gulp.dest(dest+'/js'));
 });
 
 gulp.task('js-watch', ['js'], function ()
@@ -56,7 +57,7 @@ gulp.task('js-watch', ['js'], function ()
 gulp.task('js-pick-libs', function ()
 {
 	return gulp.src(jsLibs)
-		.pipe(gulp.dest('../public/js/lib'));
+		.pipe(gulp.dest(dest+'/js/lib'));
 });
 
 

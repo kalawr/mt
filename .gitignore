@@ -3,9 +3,9 @@ app/node_modules/
 
 src/bower_components/
 
-public/css/
-public/js/
-public/**/*.html
+app/public/css/
+app/public/js/
+app/public/**/*.html
 
 mt.sublime-project
 mt.sublime-workspace

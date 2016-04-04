@@ -87,6 +87,9 @@ var parseAutocomplete = function (string)
 	};
 };
 
+
+app.use(express.static('public'));
+
 app.get('/translate/:query/:langs', function (req, res)
 {
 	http.get(
