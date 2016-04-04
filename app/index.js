@@ -2,6 +2,7 @@ var http = require('http');
 var iconv = require('iconv-lite');
 var express = require('express');
 var cheerio = require('cheerio');
+var entities = require('entities');
 var app = express();
 
 var langs = new Map()
@@ -139,8 +140,7 @@ app.get('/autocomplete/:query/:langs', function (req, res)
 
 			response.on('end', function ()
 			{
-				var decoded = iconv.decode(Buffer.concat(chunks), 'win1251');
-				res.json(parseAutocomplete(decoded));
+				res.json(parseAutocomplete(entities.decodeHTML(chunks.join(''))));
 			});
 		}
 	);
