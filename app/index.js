@@ -92,7 +92,7 @@ app.get('/translate/:query/:langs', function (req, res)
 	http.get(
 		{
 			hostname: 'www.multitran.ru',
-			path: buildResultUrl(req.params.query, req.params.langs, langs),
+			path: buildResultUrl(encodeURIComponent(req.params.query), req.params.langs, langs),
 			headers: {
 				'User-Agent': 'Have to Have It'
 			}
@@ -120,7 +120,7 @@ app.get('/autocomplete/:query/:langs', function (req, res)
 	http.get(
 		{
 			hostname: 'www.multitran.ru',
-			path: buildAutocompleteUrl(req.params.query, req.params.langs, langs),
+			path: buildAutocompleteUrl(encodeURIComponent(req.params.query), req.params.langs, langs),
 			headers: {
 				'User-Agent': 'Have to Have It'
 			}
