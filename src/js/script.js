@@ -202,14 +202,14 @@ Result.init();
 
 form.on('input', function (event)
 {
-	if (false)
+	if (true)
 	{
 		jQuery
 			.getJSON( Url.autocomplete(query.value, langs.value))
 			.then(function (list)
 			{
 				if (list)
-					Autocomplete.render(Autocomplete.makeMany(list));
+					Autocomplete.render(Autocomplete.makeMany(list.options));
 			})
 			;
 	}
@@ -221,7 +221,7 @@ form.on('submit', function (event)
 {
 	event.preventDefault();
 
-	if (false)
+	if (true)
 	{
 		jQuery
 			.getJSON( Url.translate(query.value, langs.value))
