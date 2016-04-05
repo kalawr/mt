@@ -46,6 +46,8 @@ Url.translate = function (query, languages)
 var Autocomplete = {};
 var h = virtualDom.h;
 
+Autocomplete.initial = [];
+
 Autocomplete.makeMany = function (array)
 {
 	var _this = this;
@@ -78,7 +80,7 @@ Autocomplete.render = function (targetTree)
 
 Autocomplete.init = function ()
 {
-	var tree = Autocomplete.makeMany([]);
+	var tree = Autocomplete.makeMany(Autocomplete.initial);
 	var node = virtualDom.create(tree);
 	document.querySelector('.container').appendChild(node);
 	this.node = node;
@@ -212,6 +214,10 @@ form.on('input', function (event)
 					Autocomplete.render(Autocomplete.makeMany(list.options));
 			})
 			;
+	}
+	else
+	{
+		Autocomplete.render(Autocomplete.makeMany(Autocomplete.initial));
 	}
 
 	log('input');
