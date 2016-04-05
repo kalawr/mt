@@ -103,7 +103,7 @@ Autocomplete.init = function ()
 
 var Result = {};
 
-Result.initial = { result: [] };
+Result.initial = [];
 
 Result.make = function (list)
 {
@@ -111,7 +111,7 @@ Result.make = function (list)
 
 	return h(
 		'dl#result.result',
-		list.result.map(
+		list.map(
 			function (entry)
 			{
 				return _this.makeDefinitionGroup(entry);
@@ -213,7 +213,7 @@ form.on('input', function (event)
 			.then(function (list)
 			{
 				if (list)
-					Autocomplete.render(Autocomplete.makeMany(list.options));
+					Autocomplete.render(Autocomplete.makeMany(list));
 			})
 			;
 	}

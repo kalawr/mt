@@ -78,14 +78,12 @@ var parseResult = function (html)
 		}
 	})
 
-	return {result:result};
+	return result;
 };
 
 var parseAutocomplete = function (string)
 {
-	return {
-		options: string.split('\r\n').filter(Boolean)
-	};
+	return string.split('\r\n').filter(Boolean);
 };
 
 
