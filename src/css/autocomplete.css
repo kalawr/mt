@@ -21,3 +21,7 @@ ul.autocomplete:empty {
 .autocomplete li {
 	padding: calc($bar-vertical-padding/2) $bar-horizontal-padding;
 }
+
+.autocomplete li.active {
+	text-decoration: underline;
+}
