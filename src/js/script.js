@@ -131,10 +131,7 @@ Result.makeDefinitionGroup = function (group)
 				'dt',
 				[
 					group.variant,
-					h(
-						'span.part-of-speech',
-						', ' + group.partOfSpeech
-					)
+					_this.partOfSpeech(group)
 				]
 			),
 			group.domains.map(
@@ -145,6 +142,21 @@ Result.makeDefinitionGroup = function (group)
 			)
 		]
 	);
+};
+
+Result.partOfSpeech = function (group)
+{
+	if (group.partOfSpeech)
+	{
+		return h(
+			'span.part-of-speech',
+			', ' + group.partOfSpeech
+		);
+	}
+	else
+	{
+		return null;
+	}
 };
 
 Result.makeDomainGroup = function (group)
