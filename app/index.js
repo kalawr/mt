@@ -36,7 +36,7 @@ var parseResult = function (html)
 
 	var result = [];
 
-	$('*').each(function (i, el) 
+	$('script + table > tr *').each(function (i, el) 
 	{
 		var $el = $(el);
 
@@ -91,6 +91,7 @@ app.use(express.static('public'));
 
 app.get('/translate/:query/:langs', function (req, res)
 {
+
 	http.get(
 		{
 			hostname: 'www.multitran.ru',
