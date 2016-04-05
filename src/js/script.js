@@ -103,6 +103,8 @@ Autocomplete.init = function ()
 
 var Result = {};
 
+Result.initial = { result: [] };
+
 Result.make = function (list)
 {
 	var _this = this;
@@ -184,7 +186,7 @@ Result.render = function (targetTree)
 
 Result.init = function ()
 {
-	var tree = Result.make({ result: [] });
+	var tree = Result.make(Result.initial);
 	var node = virtualDom.create(tree);
 	document.querySelector('.container').appendChild(node);
 	this.node = node;
