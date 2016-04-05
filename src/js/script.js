@@ -274,3 +274,74 @@ form.on('input', function (event)
 });
 
 // ---
+
+// arrows.js
+var upCode   = 38;
+var downCode = 40;
+var escCode  = 27;
+
+
+form.keydown(interceptUp);
+form.keydown(interceptDown);
+form.keydown(interceptEsc);
+
+function interceptEsc(event)
+{
+	if (event.keyCode == escCode)
+	{
+		event.preventDefault();
+		jQuery('.autocomplete li.active').removeClass();
+	}
+}
+
+function interceptUp(event)
+{
+	if (event.keyCode == upCode)
+	{
+		event.preventDefault();
+
+		if (jQuery('.autocomplete li.active').length > 0)
+		{
+			if (jQuery('.autocomplete li.active').is(':first-child'))
+			{
+				jQuery('.autocomplete li.active').removeClass();
+				jQuery('.autocomplete li').last().addClass('active');
+			}
+			else
+			{
+				jQuery('.autocomplete li.active').removeClass().prev().addClass('active');
+			}
+		}
+		else
+		{
+			jQuery('.autocomplete li').last().addClass('active');
+		}
+	}
+}
+
+function interceptDown(event)
+{
+	if (event.keyCode == downCode)
+	{
+		event.preventDefault();
+
+		if (jQuery('.autocomplete li.active').length > 0)
+		{
+			if (jQuery('.autocomplete li.active').is(':last-child'))
+			{
+				jQuery('.autocomplete li.active').removeClass('active');
+				jQuery('.autocomplete li').first().addClass('active');
+			}
+			else
+			{
+				jQuery('.autocomplete li.active').removeClass('active').next().addClass('active');
+			}
+		}
+		else
+		{
+			jQuery('.autocomplete li').first().addClass('active');
+		}
+	}
+}
+
+// ---
