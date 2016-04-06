@@ -19,7 +19,6 @@ function log(x)
 
 
 
-var h = virtualDom.h;
 
 
 
@@ -31,122 +30,13 @@ var h = virtualDom.h;
 
 
 
-// result.js
 
-var Result = {};
-
-Result.initial = [];
-
-Result.make = function (list)
-{
-	var _this = this;
-
-	return h(
-		'dl#result.result',
-		list.map(
-			function (entry)
-			{
-				return _this.makeDefinitionGroup(entry);
-			}
-		)
-	);
-};
-
-Result.makeDefinitionGroup = function (group)
-{
-	var _this = this;
-
-	return h(
-		'.definition',
-		[
-			h(
-				'dt',
-				[
-					group.variant,
-					_this.partOfSpeech(group)
-				]
-			),
-			group.domains.map(
-				function (domain)
-				{
-					return _this.makeDomainGroup(domain);
-				}
-			)
-		]
-	);
-};
-
-Result.partOfSpeech = function (group)
-{
-	if (group.partOfSpeech)
-	{
-		return h(
-			'span.part-of-speech',
-			', ' + group.partOfSpeech
-		);
-	}
-	else
-	{
-		return null;
-	}
-};
-
-Result.makeDomainGroup = function (group)
-{
-	var _this = this;
-
-	return h(
-		'.domain',
-		[
-			h(
-				'.domain-name',
-				String(group.domain)
-			),
-
-			group.translations.map(
-				function (translation)
-				{
-					return _this.makeTranslation(translation);
-				}
-			)
-		]
-	);
-};
-
-Result.makeTranslation = function (value)
-{
-	return h(
-		'dd',
-		String(value)
-	);
-};
-
-Result.render = function (targetTree)
-{
-	var patches = virtualDom.diff(this.previousTree, targetTree);
-	this.node = virtualDom.patch(this.node, patches);
-	this.previousTree = targetTree;
-};
-
-Result.init = function ()
-{
-	var tree = Result.make(Result.initial);
-	var node = virtualDom.create(tree);
-	document.querySelector('.container').appendChild(node);
-	this.node = node;
-	this.previousTree = tree;
-	return node;
-};
-
-// ---
 
 var form = jQuery('#search')
  ,	query = document.getElementById('query')
  ,	$query = jQuery('#query')
  ,	langs = document.getElementById('langs');
 
-
-Result.init();
 
 
 

@@ -17,10 +17,10 @@ html(ng-app='mt')
 			dl#result.result
 				.definition(ng-repeat='definition in dict')
 					dt {{definition.variant}}
-						span.part-of-speech(ng-show='definition.partOfSpeech') , {{definition.partOfSpeech}}
-						.domain(ng-repeat='domain in definition.domains')
-							.domain-name {{domain.domain}}
-							dd(ng-repeat='translation in domain.translations') {{translation}}
+					span.part-of-speech(ng-show='definition.partOfSpeech') , {{definition.partOfSpeech}}
+					.domain(ng-repeat='domain in definition.domains')
+						.domain-name {{domain.domain}}
+						dd(ng-repeat='translation in domain.translations') {{translation}}
 
 
 
