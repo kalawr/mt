@@ -324,7 +324,8 @@ var myApp = angular.module('mt', [])
 				$scope.search.query = '';
 
 
-				$scope.items = [];
+				$scope.autocompleteItems = [];
+				$scope.dict = [];
 
 				$scope.url = function (type)
 				{
@@ -336,17 +337,18 @@ var myApp = angular.module('mt', [])
 						String($scope.search.languages);
 				};
 
-				$scope.fetch = function (url)
+				$scope.load = function (url, receiver)
 				{
 					$http.get(url)
 						.then(
 							function (response) 
 							{
-								$scope.items = response.data;
+								$scope[receiver] = response.data;
+								console.log(response.data);
 							},
 							function (error)
 							{
-								$scope.items = [];
+								$scope[receiver] = [];
 							}
 						);
 				};

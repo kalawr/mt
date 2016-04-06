@@ -5,13 +5,24 @@ html(ng-app='mt')
 		link(rel='stylesheet', type='text/css', href='css/lib/normalize.css')
 		link(rel='stylesheet', type='text/css', href='css/main.css')
 	body(ng-controller='ApplicationController')
-		form#search.search.container(ng-submit='fetch(url("translate"))')
+		form#search.search.container(ng-submit='load(url("translate"), "dict")')
 			.bar
-				input#query.bar(ng-model='search.query', ng-keyup='fetch(url("autocomplete"))', type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
+				input#query.bar(ng-model='search.query', ng-keyup='load(url("autocomplete"), "autocompleteItems")', type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
 				button#ok.ok(ng-class='{out: !search.query.length}', type='submit' title='Go')
 					img(src='/icons/kick.svg')
+			
 			ul.autocomplete
-				li(ng-repeat='item in items track by $index') {{item}}
+				li(ng-repeat='item in autocompleteItems track by $index') {{item}}
+
+			dl#result.result
+				.definition(ng-repeat='definition in dict')
+					dt {{definition.variant}}
+						span.part-of-speech(ng-show='definition.partOfSpeech') , {{definition.partOfSpeech}}
+						.domain(ng-repeat='domain in definition.domains')
+							.domain-name {{domain.domain}}
+							dd(ng-repeat='translation in domain.translations') {{translation}}
+
+
 
 		script(type='text/javascript', src='js/lib/jquery.min.js')
 		script(type='text/javascript', src='js/lib/virtual-dom.js')
