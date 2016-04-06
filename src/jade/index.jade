@@ -4,10 +4,10 @@ html(ng-app='mt')
 		title Work in Progress
 		link(rel='stylesheet', type='text/css', href='css/lib/normalize.css')
 		link(rel='stylesheet', type='text/css', href='css/main.css')
-	body
-		form#search.search.container(ng-controller='AutocompleteController')
+	body(ng-controller='ApplicationController')
+		form#search.search.container(ng-submit='fetch(url("translate"))')
 			.bar
-				input#query.bar(ng-model='search.query', ng-keyup='fetch(url())', type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
+				input#query.bar(ng-model='search.query', ng-keyup='fetch(url("autocomplete"))', type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
 				button#ok.ok(ng-class='{out: !search.query.length}', type='submit' title='Go')
 					img(src='/icons/kick.svg')
 			ul.autocomplete

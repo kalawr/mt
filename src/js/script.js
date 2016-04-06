@@ -150,25 +150,6 @@ Result.init();
 
 
 
-form.on('submit', function (event)
-{
-	event.preventDefault();
-
-	if (true)
-	{
-		jQuery
-			.getJSON( Url.translate(query.value, 'en-ru'))
-			.then(function (list)
-			{
-				if (list)
-					Result.render(Result.make(list));
-			})
-			;
-	}
-
-	log('submit');
-});
-
 
 
 
@@ -335,7 +316,7 @@ jQuery('.autocomplete').on('click', 'li', function (event)
 // ---
 
 var myApp = angular.module('mt', [])
-	.controller('AutocompleteController', ['$scope', '$http',
+	.controller('ApplicationController', ['$scope', '$http',
 			function ($scope, $http)
 			{
 				$scope.search = {};
