@@ -210,29 +210,36 @@ Result.init = function ()
 
 var form = jQuery('#search')
  ,	query = document.getElementById('query')
+ ,	$query = jQuery('#query')
  ,	langs = document.getElementById('langs');
 
 Autocomplete.init();
 Result.init();
 
 
-form.on('input', function (event)
+$query.on('input', function (event)
 {
-	if (event.target.value)
-	{
-		jQuery
-			.getJSON( Url.autocomplete(query.value, langs.value))
-			.then(function (list)
+
+	jQuery
+		.getJSON( Url.autocomplete(query.value, langs.value))
+		.then(
+			function (list)
 			{
 				if (list)
+				{
 					Autocomplete.render(Autocomplete.makeMany(list));
-			})
-			;
-	}
-	else
-	{
-		Autocomplete.render(Autocomplete.makeMany(Autocomplete.initial));
-	}
+					window.autocompleteselection = new AutocompleteSelectionModel(list.length, query.value)
+				}
+
+			},
+			function (error)
+			{
+				console.log(error);
+				Autocomplete.render(Autocomplete.makeMany(Autocomplete.initial));
+				window.autocompleteselection = new AutocompleteSelectionModel(0, '');
+			}
+		)
+		;
 
 	log('input');
 });
@@ -288,21 +295,23 @@ form.on('input', function (event)
 // ---
 
 // arrows.js
+var autocompleteselection;
+
 var upCode   = 38;
 var downCode = 40;
 var escCode  = 27;
 
-
-form.keydown(interceptUp);
-form.keydown(interceptDown);
-form.keydown(interceptEsc);
+jQuery(document).keydown(interceptUp);
+jQuery(document).keydown(interceptDown);
+jQuery(document).keydown(interceptEsc);
 
 function interceptEsc(event)
 {
 	if (event.keyCode == escCode)
 	{
 		event.preventDefault();
-		jQuery('.autocomplete li.active').removeClass();
+
+		if (autocompleteselection) autocompleteselection.initial();
 	}
 }
 
@@ -312,22 +321,7 @@ function interceptUp(event)
 	{
 		event.preventDefault();
 
-		if (jQuery('.autocomplete li.active').length > 0)
-		{
-			if (jQuery('.autocomplete li.active').is(':first-child'))
-			{
-				jQuery('.autocomplete li.active').removeClass();
-				jQuery('.autocomplete li').last().addClass('active');
-			}
-			else
-			{
-				jQuery('.autocomplete li.active').removeClass().prev().addClass('active');
-			}
-		}
-		else
-		{
-			jQuery('.autocomplete li').last().addClass('active');
-		}
+		if (autocompleteselection) autocompleteselection.prev();
 	}
 }
 
@@ -337,23 +331,127 @@ function interceptDown(event)
 	{
 		event.preventDefault();
 
-		if (jQuery('.autocomplete li.active').length > 0)
-		{
-			if (jQuery('.autocomplete li.active').is(':last-child'))
-			{
-				jQuery('.autocomplete li.active').removeClass('active');
-				jQuery('.autocomplete li').first().addClass('active');
-			}
-			else
-			{
-				jQuery('.autocomplete li.active').removeClass('active').next().addClass('active');
-			}
-		}
-		else
-		{
-			jQuery('.autocomplete li').first().addClass('active');
-		}
+		if (autocompleteselection) autocompleteselection.next();
 	}
 }
+
+function AutocompleteSelectionModel(size, initialValue)
+{
+	this.size = size;
+	this.initialValue = initialValue;
+	this.current = 'initial';
+	this.previousValue = null;
+
+	if (document.querySelector('.autocomplete li.active'))
+		renderInactive(document.querySelector('.autocomplete li.active'));
+}
+
+AutocompleteSelectionModel.prototype.next = function ()
+{
+	if (this.current === this.size-1 || this.current === 'initial')
+	{
+		this.first();
+	}
+	else
+	{
+		this.previousValue = this.current;
+		this.current++;
+
+
+		renderAutocompleteSelectionModelInTheList(this);
+		renderAutocompleteSelectionModelInTheInput(this);
+	}
+};
+
+AutocompleteSelectionModel.prototype.prev = function ()
+{
+	if (this.current === 0 || this.current === 'initial')
+	{
+		this.last();
+	}
+	else
+	{
+		this.previousValue = this.current;
+		this.current--;
+
+		renderAutocompleteSelectionModelInTheList(this);
+		renderAutocompleteSelectionModelInTheInput(this);
+	}
+};
+
+AutocompleteSelectionModel.prototype.initial = function ()
+{
+	this.previousValue = this.current;
+	this.current = 'initial';
+
+	renderAutocompleteSelectionModelInTheList(this);
+	renderAutocompleteSelectionModelInTheInput(this);
+};
+
+AutocompleteSelectionModel.prototype.last = function ()
+{
+	this.previousValue = this.current;
+	this.current = this.size-1;
+
+	renderAutocompleteSelectionModelInTheList(this);
+	renderAutocompleteSelectionModelInTheInput(this);
+};
+
+AutocompleteSelectionModel.prototype.first = function ()
+{
+	this.previousValue = this.current;
+	this.current = 0;
+
+	renderAutocompleteSelectionModelInTheList(this);
+	renderAutocompleteSelectionModelInTheInput(this);
+};
+
+AutocompleteSelectionModel.prototype.at = function (index)
+{
+	this.previousValue = this.current;
+	this.current = index;
+
+	renderAutocompleteSelectionModelInTheList(this);
+	renderAutocompleteSelectionModelInTheInput(this);
+};
+
+
+function renderAutocompleteSelectionModelInTheList(model)
+{
+	if (model.previousValue !== null && model.previousValue !== 'initial')
+		renderInactive(document.querySelectorAll('.autocomplete li')[model.previousValue]);
+
+	if (typeof model.current === 'number')
+	{
+		renderActive(document.querySelectorAll('.autocomplete li')[model.current]);
+	}
+}
+
+function renderAutocompleteSelectionModelInTheInput(model)
+{
+	if (model.current === 'initial')
+	{
+		query.value = model.initialValue;
+	}
+	else
+	{
+		query.value = document.querySelectorAll('.autocomplete li')[model.current].textContent;
+	}
+}
+
+function renderActive(li)
+{
+	li.classList.add('active');
+}
+
+function renderInactive(li)
+{
+	li.classList.remove('active')
+}
+
+jQuery('.autocomplete').on('click', 'li', function (event)
+{
+	autocompleteselection.at( $('.autocomplete li').index(event.currentTarget) );
+});
 
 // ---
