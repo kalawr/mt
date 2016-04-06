@@ -264,35 +264,7 @@ form.on('submit', function (event)
 });
 
 
-// showing/hiding button
 
-var ok = jQuery('#ok');
-
-var OkButton = {};
-
-OkButton.show = function ($el)
-{
-	$el.removeClass('out');
-};
-
-OkButton.hide = function ($el)
-{
-	$el.addClass('out');
-};
-
-form.on('input', function (event)
-{
-	if (event.target.value)
-	{
-		OkButton.show(ok);
-	}
-	else
-	{
-		OkButton.hide(ok);
-	}
-});
-
-// ---
 
 // arrows.js
 var autocompleteselection;
