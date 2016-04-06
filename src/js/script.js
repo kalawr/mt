@@ -42,53 +42,8 @@ Url.translate = function (query, languages)
 
 
 
-// autocomplete.js
-var Autocomplete = {};
 var h = virtualDom.h;
 
-Autocomplete.initial = [];
-
-Autocomplete.makeMany = function (array)
-{
-	var _this = this;
-
-	return h(
-		'ul.autocomplete',
-		array.map(
-			function (element) 
-			{
-				return _this.makeOne(element);
-			}
-		)
-	);
-};
-
-Autocomplete.makeOne = function (text)
-{
-	return h(
-		'li',
-		String(text)
-	);
-};
-
-Autocomplete.render = function (targetTree)
-{
-	var patches = virtualDom.diff(this.previousTree, targetTree);
-	this.node = virtualDom.patch(this.node, patches);
-	this.previousTree = targetTree;
-};
-
-Autocomplete.init = function ()
-{
-	var tree = Autocomplete.makeMany(Autocomplete.initial);
-	var node = virtualDom.create(tree);
-	document.querySelector('.container').appendChild(node);
-	this.node = node;
-	this.previousTree = tree;
-	return node;
-};
-
-// ---
 
 
 
@@ -213,7 +168,7 @@ var form = jQuery('#search')
  ,	$query = jQuery('#query')
  ,	langs = document.getElementById('langs');
 
-Autocomplete.init();
+
 Result.init();
 
 
@@ -427,3 +382,12 @@ jQuery('.autocomplete').on('click', 'li', function (event)
 });
 
 // ---
+
+var myApp = angular.module('mt', [])
+	.controller('AutocompleteController', ['$scope', 
+			function ($scope)
+			{
+				$scope.items = ['test', 'some', 'options', 'please'];
+			}
+		]
+	);
