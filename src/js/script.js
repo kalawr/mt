@@ -13,20 +13,6 @@ function log(x)
 
 
 
-// url.js
-var Url = {};
-
-Url.translate = function (query, languages)
-{
-	return '/translate' +
-		'/' +
-		String(query) +
-		'/' +
-		String(languages);
-};
-// ----
-
-
 
 
 
@@ -359,9 +345,10 @@ var myApp = angular.module('mt', [])
 
 				$scope.items = [];
 
-				$scope.url = function ()
+				$scope.url = function (type)
 				{
-					return '/autocomplete' +
+					return '/' +
+						type +
 						'/' +
 						String($scope.search.query) +
 						'/' +
