@@ -16,15 +16,6 @@ function log(x)
 // url.js
 var Url = {};
 
-Url.autocomplete = function (query, languages)
-{
-	return '/autocomplete' +
-		'/' +
-		String(query) +
-		'/' +
-		String(languages);
-};
-
 Url.translate = function (query, languages)
 {
 	return '/translate' +
@@ -172,32 +163,32 @@ var form = jQuery('#search')
 Result.init();
 
 
-$query.on('input', function (event)
-{
+// $query.on('input', function (event)
+// {
 
-	jQuery
-		.getJSON( Url.autocomplete(query.value, langs.value))
-		.then(
-			function (list)
-			{
-				if (list)
-				{
-					Autocomplete.render(Autocomplete.makeMany(list));
-					window.autocompleteselection = new AutocompleteSelectionModel(list.length, query.value)
-				}
+// 	jQuery
+// 		.getJSON( Url.autocomplete(query.value, 'en-ru'))
+// 		.then(
+// 			function (list)
+// 			{
+// 				if (list)
+// 				{
+// 					Autocomplete.render(Autocomplete.makeMany(list));
+// 					window.autocompleteselection = new AutocompleteSelectionModel(list.length, query.value)
+// 				}
 
-			},
-			function (error)
-			{
-				console.log(error);
-				Autocomplete.render(Autocomplete.makeMany(Autocomplete.initial));
-				window.autocompleteselection = new AutocompleteSelectionModel(0, '');
-			}
-		)
-		;
+// 			},
+// 			function (error)
+// 			{
+// 				console.log(error);
+// 				Autocomplete.render(Autocomplete.makeMany(Autocomplete.initial));
+// 				window.autocompleteselection = new AutocompleteSelectionModel(0, '');
+// 			}
+// 		)
+// 		;
 
-	log('input');
-});
+// 	log('input');
+// });
 
 form.on('submit', function (event)
 {
@@ -206,7 +197,7 @@ form.on('submit', function (event)
 	if (true)
 	{
 		jQuery
-			.getJSON( Url.translate(query.value, langs.value))
+			.getJSON( Url.translate(query.value, 'en-ru'))
 			.then(function (list)
 			{
 				if (list)
@@ -387,7 +378,26 @@ var myApp = angular.module('mt', [])
 	.controller('AutocompleteController', ['$scope', 
 			function ($scope)
 			{
+				$scope.search = {};
+				$scope.search.languages = 'en-ru';
+				$scope.search.query = '';
+
+
 				$scope.items = ['test', 'some', 'options', 'please'];
+
+				$scope.url = function ()
+				{
+					return '/autocomplete' +
+						'/' +
+						String($scope.search.query) +
+						'/' +
+						String($scope.search.languages);
+				};
+
+				$scope.fetch = function (url)
+				{
+					console.log(url);
+				};
 			}
 		]
 	);

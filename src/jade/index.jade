@@ -5,15 +5,13 @@ html(ng-app='mt')
 		link(rel='stylesheet', type='text/css', href='css/lib/normalize.css')
 		link(rel='stylesheet', type='text/css', href='css/main.css')
 	body
-		form#search.search.container(ng-controller='AutocompleteController as ac')
+		form#search.search.container(ng-controller='AutocompleteController')
 			.bar
-				input#query.bar(ng-model='query' type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
-				button#ok.ok(ng-class='{out: !query.length}' type='submit' title='Go')
+				input#query.bar(ng-model='search.query', ng-keyup='fetch(url())', type='text', autofocus='autofocus', autocomplete='off', placeholder='Search')
+				button#ok.ok(ng-class='{out: !search.query.length}', type='submit' title='Go')
 					img(src='/icons/kick.svg')
-			input#langs(type='hidden', value='en-ru')
 			ul.autocomplete
 				li(ng-repeat='item in items') {{item}}
-
 
 		script(type='text/javascript', src='js/lib/jquery.min.js')
 		script(type='text/javascript', src='js/lib/virtual-dom.js')
