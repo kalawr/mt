@@ -163,32 +163,6 @@ var form = jQuery('#search')
 Result.init();
 
 
-// $query.on('input', function (event)
-// {
-
-// 	jQuery
-// 		.getJSON( Url.autocomplete(query.value, 'en-ru'))
-// 		.then(
-// 			function (list)
-// 			{
-// 				if (list)
-// 				{
-// 					Autocomplete.render(Autocomplete.makeMany(list));
-// 					window.autocompleteselection = new AutocompleteSelectionModel(list.length, query.value)
-// 				}
-
-// 			},
-// 			function (error)
-// 			{
-// 				console.log(error);
-// 				Autocomplete.render(Autocomplete.makeMany(Autocomplete.initial));
-// 				window.autocompleteselection = new AutocompleteSelectionModel(0, '');
-// 			}
-// 		)
-// 		;
-
-// 	log('input');
-// });
 
 form.on('submit', function (event)
 {
@@ -375,15 +349,15 @@ jQuery('.autocomplete').on('click', 'li', function (event)
 // ---
 
 var myApp = angular.module('mt', [])
-	.controller('AutocompleteController', ['$scope', 
-			function ($scope)
+	.controller('AutocompleteController', ['$scope', '$http',
+			function ($scope, $http)
 			{
 				$scope.search = {};
 				$scope.search.languages = 'en-ru';
 				$scope.search.query = '';
 
 
-				$scope.items = ['test', 'some', 'options', 'please'];
+				$scope.items = [];
 
 				$scope.url = function ()
 				{
@@ -396,7 +370,17 @@ var myApp = angular.module('mt', [])
 
 				$scope.fetch = function (url)
 				{
-					console.log(url);
+					$http.get(url)
+						.then(
+							function (response) 
+							{
+								$scope.items = response.data;
+							},
+							function (error)
+							{
+								$scope.items = [];
+							}
+						);
 				};
 			}
 		]
