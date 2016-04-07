@@ -205,9 +205,35 @@ jQuery('.autocomplete').on('click', 'li', function (event)
 
 // ---
 
-var myApp = angular.module('mt', [])
-	.controller('ApplicationController', ['$scope', '$http',
-			function ($scope, $http)
+var myApp = angular.module('mt', ['ngRoute'])
+	
+	myApp.config(['$routeProvider', '$locationProvider',
+		function ($routeProvider, $locationProvider)
+		{
+			$locationProvider.html5Mode(
+				{
+					enabled: true,
+					requireBase: false
+				}
+			);
+
+			$routeProvider
+				.when('/:query', {
+					templateUrl: '/partials/entry.html',
+					controller: 'EntryController'
+				})
+				.when('/', {
+					templateUrl: '/partials/search.html',
+					controller: 'SearchController'
+				})
+				.otherwise({
+					redirectTo: '/'
+				});
+		}
+	]);
+
+	myApp.controller('SearchController', ['$scope', '$http', '$location',
+			function ($scope, $http, $location)
 			{
 				$scope.search = {};
 				$scope.search.languages = 'en-ru';
@@ -215,32 +241,62 @@ var myApp = angular.module('mt', [])
 
 
 				$scope.autocompleteItems = [];
-				$scope.dict = [];
 
 				$scope.url = function (type)
 				{
-					return '/' +
-						type +
+					return '/autocomplete' +
 						'/' +
 						String($scope.search.query) +
 						'/' +
 						String($scope.search.languages);
 				};
 
-				$scope.load = function (url, receiver)
+				$scope.load = function (url)
 				{
 					$http.get(url)
 						.then(
 							function (response) 
 							{
-								$scope[receiver] = response.data;
+								$scope.autocompleteItems = response.data;
 							},
 							function (error)
 							{
-								$scope[receiver] = [];
+								$scope.autocompleteItems = [];
 							}
 						);
 				};
+
+				$scope.submit = function ()
+				{
+					$location.url('/'+this.search.query);
+				};
+			}
+		]
+	);
+
+	myApp.controller('EntryController', ['$scope', '$http', '$routeParams',
+			function ($scope, $http, $routeParams)
+			{
+				function url(query, languages)
+				{
+					return '/translate' +
+						'/' +
+						String(query) +
+						'/' +
+						String(languages);
+				};
+
+				$http.get(url($routeParams.query, 'en-ru'))
+					.then(
+						function (response) 
+						{
+							$scope.dict = response.data;
+						},
+						function (error)
+						{
+							$scope.dict = [];
+						}
+					);
 			}
 		]
 	);
