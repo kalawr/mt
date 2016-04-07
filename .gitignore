@@ -5,7 +5,7 @@ src/bower_components/
 
 app/public/css/
 app/public/js/
-app/public/**/*.html
+app/public/index.html
 
 mt.sublime-project
 mt.sublime-workspace

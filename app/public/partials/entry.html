@@ -1,0 +1,9 @@
+<dl class="result">
+  <div ng-repeat="definition in dict" class="definition">
+    <dt>{{definition.variant}}<span ng-show="definition.partOfSpeech" class="part-of-speech">, {{definition.partOfSpeech}}</span></dt>
+    <div ng-repeat="domain in definition.domains track by $index" class="domain">
+      <div class="domain-name">{{domain.domain}}</div>
+      <dd ng-repeat="translation in domain.translations">{{translation}}</dd>
+    </div>
+  </div>
+</dl>
