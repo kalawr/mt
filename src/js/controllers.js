@@ -5,7 +5,9 @@ angular.module('mtControllers', [])
 	.controller('ApplicationController', ['$scope', 
 			function ($scope) 
 			{
-
+				$scope.topscope = {};
+				$scope.topscope.languages = 'en-ru';
+				$scope.topscope.query = '';
 			}
 		]
 	)
@@ -13,20 +15,15 @@ angular.module('mtControllers', [])
 	.controller('SearchController', ['$scope', '$http', '$location',
 			function ($scope, $http, $location)
 			{
-				$scope.search = {};
-				$scope.search.languages = 'en-ru';
-				$scope.search.query = '';
-
-
 				$scope.autocompleteItems = [];
 
-				$scope.url = function (type)
+				$scope.url = function ()
 				{
 					return '/autocomplete' +
 						'/' +
-						String($scope.search.query) +
+						String($scope.topscope.query) +
 						'/' +
-						String($scope.search.languages);
+						String($scope.topscope.languages);
 				};
 
 				$scope.load = function (url)
@@ -46,7 +43,7 @@ angular.module('mtControllers', [])
 
 				$scope.submit = function ()
 				{
-					$location.url('/'+this.search.query);
+					$location.url('/'+$scope.topscope.query);
 				};
 			}
 		]
@@ -55,16 +52,16 @@ angular.module('mtControllers', [])
 	.controller('EntryController', ['$scope', '$http', '$routeParams',
 			function ($scope, $http, $routeParams)
 			{
-				function url(query, languages)
+				function url()
 				{
 					return '/translate' +
 						'/' +
-						String(query) +
+						String($scope.topscope.query) +
 						'/' +
-						String(languages);
+						String($scope.topscope.languages);
 				};
 
-				$http.get(url($routeParams.query, 'en-ru'))
+				$http.get(url())
 					.then(
 						function (response) 
 						{
