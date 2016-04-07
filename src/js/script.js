@@ -234,7 +234,6 @@ var myApp = angular.module('mt', [])
 							function (response) 
 							{
 								$scope[receiver] = response.data;
-								console.log(response.data);
 							},
 							function (error)
 							{
