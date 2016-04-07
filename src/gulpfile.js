@@ -12,7 +12,8 @@ var cssLibs = [
 var jsLibs = [
 	'bower_components/jquery/dist/jquery.min.js',
 	'bower_components/virtual-dom/dist/virtual-dom.js',
-	'bower_components/angular/angular.min.js'
+	'bower_components/angular/angular.min.js',
+	'bower_components/angular-route/angular-route.min.js'
 ];
 
 var dest = '../app/public';
