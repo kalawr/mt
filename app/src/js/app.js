@@ -46,9 +46,6 @@ var form = jQuery('#search')
 // arrows.js
 var autocompleteselection;
 
-var upCode   = 38;
-var downCode = 40;
-var escCode  = 27;
 
 jQuery(document).keydown(interceptUp);
 jQuery(document).keydown(interceptDown);

@@ -1,4 +1,4 @@
-<form class='search contain' ng-submit='submit()'>
+<form class='search contain' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
 	<div class='bar'>
 		<label for='query'>Search to your heart's extent</label>
 			<input ng-model='topscope.query' ng-keyup='load(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' class='bar' id='query' />
@@ -8,7 +8,7 @@
 </form>
 
 <ul class='autocomplete' ng-show='autocompleteItems.length && topscope.query.length'>
-	<li ng-class='{active: $index === 0}' class='li-wrap' ng-repeat='item in autocompleteItems track by $index'>
+	<li ng-class='{active: $index === autocompleteSelection}' class='li-wrap' ng-repeat='item in autocompleteItems track by $index'>
 		<span class='contain'>{{item}}</span>
 	</li>
 </ul>

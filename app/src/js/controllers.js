@@ -1,5 +1,9 @@
 'use strict';
 
+var upCode   = 38;
+var downCode = 40;
+var escCode  = 27;
+
 angular.module('mtControllers', [])
 
 	.controller('ApplicationController', ['$scope', '$location',
@@ -22,6 +26,7 @@ angular.module('mtControllers', [])
 			{
 				$scope.topscope.query = '';
 				$scope.autocompleteItems = [];
+				$scope.autocompleteSelection = 0;
 
 				$scope.url = function ()
 				{
@@ -50,7 +55,27 @@ angular.module('mtControllers', [])
 							$scope.autocompleteItems = [];
 				};
 
-				
+				$scope.interceptKeys = function (event)
+				{
+					if (event.keyCode == upCode)
+					{
+						event.preventDefault();
+						$scope.autocompleteSelection = ($scope.autocompleteItems.length+$scope.autocompleteSelection-1) % $scope.autocompleteItems.length;
+						// $scope.autocompleteSelection--;
+					}
+					else
+					if (event.keyCode == downCode)
+					{
+						event.preventDefault();
+						$scope.autocompleteSelection = ($scope.autocompleteSelection+1) % $scope.autocompleteItems.length;
+					}
+					else
+					if (event.keyCode == escCode)
+					{
+						event.preventDefault();
+						$scope.autocompleteSelection = 0;
+					}
+				}				
 			}
 		]
 	)

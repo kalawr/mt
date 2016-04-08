@@ -7,10 +7,11 @@ ul.autocomplete {
 ul.autocomplete> li {
 	display: block;
 	margin: var(--vertical-padding) 0;
+	border-bottom: 2px solid transparent;
 }
 
 ul.autocomplete> li.active {
-	border-bottom: 2px solid #C8EAEA;
+	border-bottom-color: #C8EAEA;
 }
 
 ul.autocomplete> li> span {
