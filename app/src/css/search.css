@@ -1,6 +1,9 @@
+.search {
+	margin-top: 2rem;
+}
+
 .search> .bar {
 	overflow: hidden;
-	margin: 2rem 0 0;
 }
 
 .search> .bar> label {

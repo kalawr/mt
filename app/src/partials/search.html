@@ -1,9 +1,12 @@
+
+
 <form class='search contain' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
+	<div class='logo' style='display: none'>
+		<span></span>
+	</div>
 	<div class='bar'>
 		<label for='query'>Search to your heart's extent</label>
 			<input ng-model='topscope.query' ng-change='load(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' class='bar' id='query' />
-		
-		<!-- <button ng-class='{out: !topscope.query.length}' type='submit' title='Go' class='ok'><img src='/icons/kick.svg'/></button> -->
 	</div>
 </form>
 
