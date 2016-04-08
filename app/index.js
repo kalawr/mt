@@ -161,5 +161,12 @@ app.get('*', function (req, res)
 
 app.listen(3000, function ()
 {
-	console.log('Example app listening on port 3000');
+	if (process.argv[2] === '--dev')
+	{
+		console.log('Development app listening on port 3000');
+	}
+	else
+	{
+		console.log('Production app listening on port 3000');
+	}
 });
