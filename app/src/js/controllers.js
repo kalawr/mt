@@ -34,17 +34,20 @@ angular.module('mtControllers', [])
 
 				$scope.load = function (url)
 				{
-					$http.get(url)
-						.then(
-							function (response) 
-							{
-								$scope.autocompleteItems = response.data;
-							},
-							function (error)
-							{
-								$scope.autocompleteItems = [];
-							}
-						);
+					if ($scope.topscope.query)
+						$http.get(url)
+							.then(
+								function (response) 
+								{
+									$scope.autocompleteItems = response.data;
+								},
+								function (error)
+								{
+									$scope.autocompleteItems = [];
+								}
+							);
+						else
+							$scope.autocompleteItems = [];
 				};
 
 				
