@@ -40,19 +40,27 @@ angular.module('mtControllers', [])
 				$scope.load = function (url)
 				{
 					if ($scope.topscope.query)
+					{
 						$http.get(url)
 							.then(
 								function (response) 
 								{
 									$scope.autocompleteItems = response.data;
+									$scope.autocompleteSelection = 0;
 								},
 								function (error)
 								{
 									$scope.autocompleteItems = [];
+									$scope.autocompleteSelection = 0;
 								}
 							);
-						else
-							$scope.autocompleteItems = [];
+					}
+					else
+					{
+						$scope.autocompleteItems = [];
+						$scope.autocompleteSelection = 0;
+					}
+							
 				};
 
 				$scope.interceptKeys = function (event)
@@ -61,7 +69,6 @@ angular.module('mtControllers', [])
 					{
 						event.preventDefault();
 						$scope.autocompleteSelection = ($scope.autocompleteItems.length+$scope.autocompleteSelection-1) % $scope.autocompleteItems.length;
-						// $scope.autocompleteSelection--;
 					}
 					else
 					if (event.keyCode == downCode)
