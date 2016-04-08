@@ -2,7 +2,7 @@ ul.autocomplete {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
-	border: $bar-border;
+	border: var(--border);
 	border-top: 0;
 }
 
@@ -11,15 +11,15 @@ ul.autocomplete:empty {
 }
 
 .autocomplete li:first-child {
-	padding-top: $bar-vertical-padding;
+	padding-top: var(--vertical-padding);
 }
 
 .autocomplete li:last-child {
-	padding-bottom: $bar-vertical-padding;
+	padding-bottom: var(--vertical-padding);
 }
 
 .autocomplete li {
-	padding: calc($bar-vertical-padding/2) $bar-horizontal-padding;
+	padding: calc(var(--vertical-padding) / 2) var(--horizontal-padding);
 }
 
 .autocomplete li.active {

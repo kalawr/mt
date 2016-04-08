@@ -1,0 +1,8 @@
+:root {
+	--vertical-padding: 0.5rem;
+	--horizontal-padding: 0.4rem;
+	--padding: var(--vertical-padding) var(--horizontal-padding);
+
+	--border-width: 0.1rem;
+	--border: var(--border-width) solid currentColor;
+}

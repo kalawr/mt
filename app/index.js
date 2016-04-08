@@ -5,6 +5,15 @@ var cheerio = require('cheerio');
 var entities = require('entities');
 var app = express();
 
+var root = 'dist/';
+
+if (process.argv[2] === '--dev')
+{
+	root = 'src/';
+}
+
+
+
 var langs = new Map()
 	.set('en', 1)
 	.set('ru', 2)
@@ -87,7 +96,7 @@ var parseAutocomplete = function (string)
 };
 
 
-app.use(express.static('public'));
+app.use(express.static(root));
 
 app.get('/translate/:query/:langs', function (req, res)
 {
@@ -147,7 +156,7 @@ app.get('/autocomplete/:query/:langs', function (req, res)
 
 app.get('*', function (req, res)
 {
-	res.sendFile(__dirname + '/public/index.html');
+	res.sendFile(__dirname + '/'+root+'index.html');
 });
 
 app.listen(3000, function ()
