@@ -1,6 +1,6 @@
 :root {
-	--vertical-padding: 0.5rem;
-	--horizontal-padding: 0.4rem;
+	--vertical-padding: 0.25rem;
+	--horizontal-padding: 0;
 	--padding: var(--vertical-padding) var(--horizontal-padding);
 
 	--border-width: 0.1rem;

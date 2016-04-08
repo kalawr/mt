@@ -4,6 +4,7 @@
 
 .search> .bar {
 	overflow: hidden;
+	padding-bottom: var(--vertical-padding);
 }
 
 .search> .bar> label {

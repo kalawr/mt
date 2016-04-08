@@ -6,12 +6,11 @@ ul.autocomplete {
 
 ul.autocomplete> li {
 	display: block;
-	margin: var(--vertical-padding) 0;
-	border-bottom: 2px solid transparent;
+	padding: var(--padding);
 }
 
 ul.autocomplete> li.active {
-	border-bottom-color: #C8EAEA;
+	background-color: #DEF5F5;
 }
 
 ul.autocomplete> li> span {
