@@ -1,9 +1,14 @@
-<form class='search container' ng-submit='submit()'>
+<form class='search contain' ng-submit='submit()'>
 	<div class='bar'>
-		<input ng-model='topscope.query' ng-keyup='load(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' class='bar'/>
-		<button ng-class='{out: !topscope.query.length}' type='submit' title='Go' class='ok'><img src='/icons/kick.svg'/></button>
+		<label for='query'>Search to your heart's extent</label>
+			<input ng-model='topscope.query' ng-keyup='load(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' class='bar' id='query' />
+		
+		<!-- <button ng-class='{out: !topscope.query.length}' type='submit' title='Go' class='ok'><img src='/icons/kick.svg'/></button> -->
 	</div>
-	<ul class='autocomplete' ng-show='autocompleteItems.length && topscope.query.length'>
-		<li ng-repeat='item in autocompleteItems track by $index'>{{item}}</li>
-	</ul>
 </form>
+
+<ul class='autocomplete' ng-show='autocompleteItems.length && topscope.query.length'>
+	<li ng-class='{active: $index === 0}' class='li-wrap' ng-repeat='item in autocompleteItems track by $index'>
+		<span class='contain'>{{item}}</span>
+	</li>
+</ul>
