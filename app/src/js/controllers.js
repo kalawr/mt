@@ -6,23 +6,18 @@ var escCode  = 27;
 
 angular.module('mtControllers', [])
 
-	.controller('ApplicationController', ['$scope', '$location',
-			function ($scope, $location) 
+	.controller('ApplicationController', ['$scope',
+			function ($scope) 
 			{
 				$scope.topscope = {};
 				$scope.topscope.languages = 'en-ru';
 				$scope.topscope.query = '';
-
-				$scope.submit = function ()
-				{
-					$location.url('/'+$scope.topscope.query);
-				};
 			}
 		]
 	)
 
-	.controller('SearchController', ['$scope', '$http',
-			function ($scope, $http)
+	.controller('SearchController', ['$scope', '$http', '$location',
+			function ($scope, $http, $location)
 			{
 				$scope.topscope.query = '';
 				$scope.autocompleteItems = [];
@@ -82,7 +77,12 @@ angular.module('mtControllers', [])
 						event.preventDefault();
 						$scope.autocompleteSelection = 0;
 					}
-				}				
+				};
+
+				$scope.submit = function ()
+				{
+					$location.url('/'+$scope.autocompleteItems[$scope.autocompleteSelection]);
+				};			
 			}
 		]
 	)
