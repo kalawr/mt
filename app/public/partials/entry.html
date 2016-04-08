@@ -1,3 +1,9 @@
+<aside>
+	<form class='search' ng-submit='submit()'>
+		<input ng-model='topscope.query' type='text' autocomplete='off' autofocus='autofocus' placeholder='search' />
+	</form>
+</aside>
+
 <dl class="result">
   <div ng-repeat="definition in dict track by $index" class="definition">
     <dt>{{definition.variant}}<span ng-show="definition.partOfSpeech" class="part-of-speech">, {{definition.partOfSpeech}}</span></dt>
