@@ -1,6 +1,6 @@
 'use strict';
 
-var myApp = angular.module('mt', ['ngRoute', 'mtControllers'])
+var myApp = angular.module('mt', ['ngRoute', 'mtControllers', 'mtServices'])
 	
 	myApp.config(['$routeProvider', '$locationProvider',
 		function ($routeProvider, $locationProvider)

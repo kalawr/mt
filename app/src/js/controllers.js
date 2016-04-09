@@ -16,8 +16,8 @@ angular.module('mtControllers', [])
 		]
 	)
 
-	.controller('SearchController', ['$scope', '$http', '$location',
-			function ($scope, $http, $location)
+	.controller('SearchController', ['$scope', '$http', '$location', 'focus',
+			function ($scope, $http, $location, focus)
 			{
 				$scope.topscope.query = '';
 				$scope.autocompleteItems = [];
@@ -88,7 +88,14 @@ angular.module('mtControllers', [])
 					}
 					else
 					{
-						$location.url('/'+$scope.topscope.query);
+						if ($scope.topscope.query) 
+						{
+							$location.url('/'+$scope.topscope.query);
+						}
+						else
+						{
+							focus('#query');
+						}
 					}
 				};
 
