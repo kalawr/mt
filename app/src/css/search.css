@@ -25,35 +25,12 @@
 	appearance: none;
 }
 
-.search> .bar> .ok,
 .search> .bar> input {
 	transition: all 0.6s cubic-bezier(0.75,-0.6, 0.39, 1.35);
 }
 
-.search> .bar> .ok {
-	flex: 0 0 auto;
-	width: 3em;
-	appearance: none;
-	color: inherit;
-	background-color: inherit;
-	border: 0;
-	padding: var(--padding);
-	text-transform: uppercase;
-	line-height: normal;
-}
-
-.search> .bar> input:focus,
-.search> .bar> .ok:focus {
+.search> .bar> input:focus {
 	outline: none;
-}
-
-.search> .bar> .ok.out {
-	margin-right: -3em;
-}
-
-.search> .bar> .ok img {
-	width: 1em;
-	height: 1em;
 }
 
 ::-webkit-input-placeholder {
