@@ -1,7 +1,7 @@
 <form class='search contain' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
 	<div class='bar'>
 		<label for='query'>Search to your heart's content</label>
-		<div class='ok'>
+		<div class='ok' ng-click='submit()'>
 			<svg>
 				<use xlink:href='#magnifier'></use>
 			</svg>

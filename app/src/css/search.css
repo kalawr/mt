@@ -47,6 +47,7 @@
 	height: 1rem;
 	padding-right: 1rem;
 	margin-left: -2rem;
+	cursor: pointer;
 }
 
 .search> .bar> .ok> svg {
