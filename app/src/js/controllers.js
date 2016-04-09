@@ -87,7 +87,12 @@ angular.module('mtControllers', [])
 					{
 						$location.url('/'+$scope.topscope.query);
 					}
-				};			
+				};
+
+				$scope.setSelection = function (index)
+				{
+					$scope.autocompleteSelection = index;
+				};
 			}
 		]
 	)
