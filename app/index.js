@@ -98,6 +98,11 @@ var parseAutocomplete = function (string)
 
 app.use(express.static(root));
 
+app.get('/empty', function (req, res)
+{
+	res.json([]);
+});
+
 app.get('/translate/:query/:langs', function (req, res)
 {
 
