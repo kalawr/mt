@@ -16,3 +16,7 @@ ul.autocomplete> li.active {
 ul.autocomplete> li> span {
 	display: block;
 }
+
+.inactive {
+	opacity: 0.5;
+}

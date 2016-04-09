@@ -34,14 +34,19 @@ angular.module('mtControllers', [])
 
 				$scope.load = function (url)
 				{
-					if ($scope.topscope.query)
-					{
+					$scope.autocompleteActive = false;
+
+					if (!$scope.topscope.query)
+						url = '/empty';
+
+
 						$http.get(url)
 							.then(
 								function (response) 
 								{
 									$scope.autocompleteItems = response.data;
 									$scope.autocompleteSelection = 0;
+									$scope.autocompleteActive = true;
 								},
 								function (error)
 								{
@@ -49,13 +54,6 @@ angular.module('mtControllers', [])
 									$scope.autocompleteSelection = 0;
 								}
 							);
-					}
-					else
-					{
-						$scope.autocompleteItems = [];
-						$scope.autocompleteSelection = 0;
-					}
-							
 				};
 
 				$scope.interceptKeys = function (event)
@@ -81,7 +79,14 @@ angular.module('mtControllers', [])
 
 				$scope.submit = function ()
 				{
-					$location.url('/'+$scope.autocompleteItems[$scope.autocompleteSelection]);
+					if ($scope.autocompleteActive)
+					{
+						$location.url('/'+$scope.autocompleteItems[$scope.autocompleteSelection]);
+					}
+					else
+					{
+						$location.url('/'+$scope.topscope.query);
+					}
 				};			
 			}
 		]
