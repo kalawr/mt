@@ -1,17 +1,19 @@
-<aside>
-	<form class='search' ng-submit='submit()'>
-		<div class='bar'>
-			<input ng-model='topscope.query' type='text' autocomplete='off' autofocus='autofocus' placeholder='search' />
-		</div>
-	</form>
-</aside>
+<div class='contain'>
+	<aside>
+		<form class='search' ng-submit='submit()'>
+			<div class='bar'>
+				<input ng-model='topscope.query' type='text' autocomplete='off' autofocus='autofocus' placeholder='search' />
+			</div>
+		</form>
+	</aside>
 
-<dl class='result'>
-	<div ng-repeat='definition in dict track by $index' class='definition'>
-		<dt>{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span></dt>
-		<div ng-repeat='domain in definition.domains track by $index' class='domain'>
-			<div class='domain-name'>{{domain.domain}}</div>
-			<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+	<dl class='result'>
+		<div ng-repeat='definition in dict track by $index' class='definition'>
+			<dt>{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span></dt>
+			<div ng-repeat='domain in definition.domains track by $index' class='domain'>
+				<div class='domain-name'>{{domain.domain}}</div>
+				<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+			</div>
 		</div>
-	</div>
-</dl>
+	</dl>
+</div>
