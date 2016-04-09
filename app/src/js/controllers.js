@@ -46,7 +46,10 @@ angular.module('mtControllers', [])
 								{
 									$scope.autocompleteItems = response.data;
 									$scope.autocompleteSelection = 0;
-									$scope.autocompleteActive = true;
+									if (response.data.length)
+									{
+										$scope.autocompleteActive = true;
+									}
 								},
 								function (error)
 								{
