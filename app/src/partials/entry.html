@@ -1,10 +1,14 @@
 <div class='contain'>
-	<aside>
+	<aside style='display:none'>
 		<form class='search' ng-submit='submit()'>
 			<div class='bar'>
 				<input ng-model='topscope.query' type='text' autocomplete='off' autofocus='autofocus' placeholder='search' />
 			</div>
 		</form>
+	</aside>
+
+	<aside>
+		
 	</aside>
 
 	<dl class='result'>
@@ -18,7 +22,9 @@
 			</dt>
 			<div ng-repeat='domain in definition.domains track by $index' class='domain'>
 				<div class='domain-name'>{{domain.domain}}</div>
-				<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+				<div class='definitions'>
+					<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+				</div>
 			</div>
 		</div>
 	</dl>
