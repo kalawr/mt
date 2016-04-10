@@ -18,3 +18,8 @@
 .spritesheet {
 	display: none;
 }
+
+::selection {
+	background-color: var(--selection-color);
+	color: inherit;
+}
