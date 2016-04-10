@@ -1,3 +1,18 @@
 dl.result {
 	margin: 0;
 }
+
+.caret {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.caret > svg {
+	width: 1em;
+	height: 1em;
+	stroke-width: 3;
+	stroke: currentColor;
+	fill: none;
+	position: relative;
+	top: 0.1em;
+}
