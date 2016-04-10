@@ -43,3 +43,9 @@ dd:last-child:after {
 	position: relative;
 	top: 0.1em;
 }
+
+.entry-nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}

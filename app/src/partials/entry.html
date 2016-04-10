@@ -7,9 +7,14 @@
 		</form>
 	</aside>
 
-	<aside>
-		
-	</aside>
+	<nav class='entry-nav'>
+		<ul>
+			<li ng-repeat='definition in dict track by $index'>
+				{{definition.variant}}
+				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+			</li>
+		</ul>
+	</nav>
 
 	<dl class='result'>
 		<div ng-repeat='definition in dict track by $index' class='definition'>
