@@ -21,11 +21,17 @@ ul.autocomplete.inactive {
 	opacity: 0.5;
 }
 
+
 ul.autocomplete--entry {
+	margin-top: 1em;
 	position: absolute;
 	width: 100%;
-	border: 6px solid var(--bg);
 	background-color: var(--bg);
-	box-shadow: 10px 6px rgb(168, 210, 241);
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 	z-index: 1;
+}
+
+ul.autocomplete--entry> li {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 }
