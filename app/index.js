@@ -41,19 +41,19 @@ var parseResult = function (html)
 		var $el = $(el);
 
 		// Variant?
-		if ($el.is('script + table > tr > td:only-child a[href*="m.exe"]'))
+		if ($el.is('script + table tr > td[bgcolor="#DBDBDB"] > a[href*="m.exe"]'))
 		{
 			result.push({variant: $el.text()});
 		}
 		else
 		// Part of Speech?
-		if ($el.is('script + table > tr > td:only-child em'))
+		if ($el.is('script + table tr > td[bgcolor="#DBDBDB"] > em'))
 		{
 			result[result.length-1].partOfSpeech = $el.text();
 		}
 		else
 		// Domain Name?
-		if ($el.is('script + table > tr > td:not(:only-child):first-child > a'))
+		if ($el.is('script + table tr > td:not([bgcolor="#DBDBDB"]) > a[title]'))
 		{
 			if (!result[result.length-1].domains)
 			{
@@ -64,7 +64,7 @@ var parseResult = function (html)
 		}
 		else
 		// Translation?
-		if ($el.is('script + table > tr > td:not(:only-child):nth-child(2) a:not([href*=UserName])'))
+		if ($el.is('script + table tr > td:not([bgcolor="#DBDBDB"]) a[href*="m.exe"]:not([href*="UserName"])'))
 		{
 			var lastResult = result[result.length-1];
 			var lastDomain = lastResult.domains[lastResult.domains.length-1];
