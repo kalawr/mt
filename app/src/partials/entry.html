@@ -12,7 +12,7 @@
 
 			<div class='contain relative'>
 				<ul class='autocomplete autocomplete--entry' ng-show='autocompleteItems.length && topscope.query.length'  ng-class='{inactive: !autocompleteActive}'>
-					<li ng-class='{active: $index === autocompleteSelection}' class='li-wrap' ng-repeat='item in autocompleteItems track by $index'>
+					<li ng-class='{active: $index === autocompleteSelection}' class='li-wrap' ng-repeat='item in autocompleteItems track by $index' ng-click='setSelection($index)'>
 						{{item}}
 					</li>
 				</ul>
@@ -44,9 +44,9 @@
 				<dt>
 					{{definition.variant}}
 					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
-					<span class='caret'>
+					<!-- <span class='caret'>
 						<svg><use xlink:href='#caret'></use></svg>
-					</span>
+					</span> -->
 				</dt>
 				<div ng-repeat='domain in definition.domains track by $index' class='domain'>
 					<div class='domain-name'>{{domain.domain}}</div>
