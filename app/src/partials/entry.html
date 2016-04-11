@@ -18,27 +18,18 @@
 				</ul>
 			</div>
 		</form>
-
 	</div>
 
+	<nav class='entry-nav'>
+		<ul>
+			<li ng-repeat='definition in dict track by $index' ng-class='{current: $index === positionIndex}'>
+				{{definition.variant}}
+				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+			</li>
+		</ul>
+	</nav>
+
 	<div class='contain'>
-		<aside style='display:none'>
-			<form class='search' ng-submit='submit()'>
-				<div class='bar'>
-					<input ng-model='topscope.query' type='text' autocomplete='off' autofocus='autofocus' placeholder='search' />
-				</div>
-			</form>
-		</aside>
-
-		<nav style='display:none' class='entry-nav'>
-			<ul>
-				<li ng-repeat='definition in dict track by $index' ng-class='{current: $index === positionIndex}'>
-					{{definition.variant}}
-					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
-				</li>
-			</ul>
-		</nav>
-
 		<dl>
 			<div ng-repeat='definition in dict track by $index' class='definition'>
 				<dt>
