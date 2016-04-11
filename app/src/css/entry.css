@@ -1,41 +1,42 @@
 @import 'nav.css';
 
 
-dl.result {
-	margin: 0;
-}
-
-.definition {
-	margin-top: 2em;
-	margin-bottom: 2em;
-}
-
-dt {
-	font-size: 2em;
-}
-
 .entry {
 	font-size: 0.55rem;
 }
 
-.definitions {
+.entry dl {
+	margin: 0;
+}
+
+.entry .definition {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+.entry dl dt {
+	font-size: 2em;
+}
+
+
+.entry dl .dds {
 	margin-left: 1em;
 }
 
-dd {
+.entry dl dd {
 	display: inline;
 	margin: 0;
 }
 
-dd:hover {
+.entry dl dd:hover {
 	color: #000;
 }
 
-dd::after {
+.entry dl dd::after {
 	content: ', ';
 }
 
-dd:last-child::after {
+.entry dl dd:last-child::after {
 	content: '';
 }
 
@@ -52,10 +53,4 @@ dd:last-child::after {
 	fill: none;
 	position: relative;
 	top: 0.1em;
-}
-
-.entry-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
 }

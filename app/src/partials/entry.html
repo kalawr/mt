@@ -39,7 +39,7 @@
 			</ul>
 		</nav>
 
-		<dl class='result'>
+		<dl>
 			<div ng-repeat='definition in dict track by $index' class='definition'>
 				<dt>
 					{{definition.variant}}
@@ -50,7 +50,7 @@
 				</dt>
 				<div ng-repeat='domain in definition.domains track by $index' class='domain'>
 					<div class='domain-name'>{{domain.domain}}</div>
-					<div class='definitions'>
+					<div class='dds'>
 						<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
 					</div>
 				</div>
