@@ -31,13 +31,14 @@ angular.module('mtControllers', [])
 						String($scope.topscope.languages);
 				};
 
-				$scope.load = function (url)
+				function fetch(url)
 				{
 					$scope.autocompleteActive = false;
 
-					if (!$scope.topscope.query)
+					if (!$scope.topscope.query) 
+					{
 						url = '/empty';
-
+					}
 
 						$http.get(url)
 							.then(
@@ -56,7 +57,9 @@ angular.module('mtControllers', [])
 									$scope.autocompleteSelection = 0;
 								}
 							);
-				};
+				}
+
+				$scope.load = _.debounce(fetch, 350);
 
 				$scope.interceptKeys = function (event)
 				{
