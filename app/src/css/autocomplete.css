@@ -17,6 +17,15 @@ ul.autocomplete> li> span {
 	display: block;
 }
 
-.inactive {
+ul.autocomplete.inactive {
 	opacity: 0.5;
+}
+
+ul.autocomplete--entry {
+	position: absolute;
+	width: 100%;
+	border: 6px solid var(--bg);
+	background-color: var(--bg);
+	box-shadow: 10px 6px rgb(168, 210, 241);
+	z-index: 1;
 }
