@@ -1,0 +1,11 @@
+:root {
+	--vertical-padding: 0.25rem;
+	--horizontal-padding: 0;
+	--padding: var(--vertical-padding) var(--horizontal-padding);
+
+	--border-width: 0.1rem;
+	--border: var(--border-width) solid currentColor;
+
+	--selection-color: #DEF5F5;
+	--acute-color: #A9E5E5;
+}

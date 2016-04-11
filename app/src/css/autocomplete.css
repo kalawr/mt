@@ -1,0 +1,22 @@
+ul.autocomplete {
+	list-style-type: none;
+	margin-top: 0;
+	padding: 0;
+}
+
+ul.autocomplete> li {
+	display: block;
+	padding: var(--padding);
+}
+
+ul.autocomplete> li.active {
+	background-color: var(--selection-color);
+}
+
+ul.autocomplete> li> span {
+	display: block;
+}
+
+.inactive {
+	opacity: 0.5;
+}

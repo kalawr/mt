@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 300%;
+	color: #333;
+}
+
+.contain {
+	max-width: 20rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.spritesheet {
+	display: none;
+}
+
+::selection {
+	background-color: var(--selection-color);
+	color: inherit;
+}
+
+::-webkit-input-placeholder {
+	color: inherit;
+}
+
+::placeholder {
+	color: inherit;
+}

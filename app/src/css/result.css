@@ -1,0 +1,61 @@
+@import 'nav.css';
+
+
+dl.result {
+	margin: 0;
+}
+
+.definition {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+dt {
+	font-size: 2em;
+}
+
+.entry {
+	font-size: 0.55rem;
+}
+
+.definitions {
+	margin-left: 1em;
+}
+
+dd {
+	display: inline;
+	margin: 0;
+}
+
+dd:hover {
+	color: #000;
+}
+
+dd::after {
+	content: ', ';
+}
+
+dd:last-child::after {
+	content: '';
+}
+
+.caret {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.caret > svg {
+	width: 1em;
+	height: 1em;
+	stroke-width: 3;
+	stroke: currentColor;
+	fill: none;
+	position: relative;
+	top: 0.1em;
+}
+
+.entry-nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}

@@ -12,6 +12,7 @@
   "dependencies": {
     "normalize-css": "normalize.css#^4.0.0",
     "jquery": "^2.2.2",
-    "virtual-dom": "Matt-Esch/virtual-dom#master"
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3"
   }
 }
