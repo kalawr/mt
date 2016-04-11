@@ -111,6 +111,8 @@ angular.module('mtControllers', [])
 			function ($scope, $http, $routeParams)
 			{
 				$scope.topscope.query = $routeParams.query;
+				
+				$scope.positionIndex = 0;
 
 				function url()
 				{

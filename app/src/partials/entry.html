@@ -1,17 +1,49 @@
-<aside>
-	<form class='search' ng-submit='submit()'>
-		<div class='bar'>
-			<input ng-model='topscope.query' type='text' autocomplete='off' autofocus='autofocus' placeholder='search' />
+<div class='entry'>
+	<form class='search search--entry' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
+		<div class='contain'>
+			<button type='submit' class='ok' title='Search'>
+				<svg>
+					<use xlink:href='#magnifier'></use>
+				</svg>
+			</button><!--
+			--><input ng-model='topscope.query' ng-change='load(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' />
 		</div>
 	</form>
-</aside>
 
-<dl class='result'>
-	<div ng-repeat='definition in dict track by $index' class='definition'>
-		<dt>{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span></dt>
-		<div ng-repeat='domain in definition.domains track by $index' class='domain'>
-			<div class='domain-name'>{{domain.domain}}</div>
-			<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
-		</div>
+	<div class='contain'>
+		<aside style='display:none'>
+			<form class='search' ng-submit='submit()'>
+				<div class='bar'>
+					<input ng-model='topscope.query' type='text' autocomplete='off' autofocus='autofocus' placeholder='search' />
+				</div>
+			</form>
+		</aside>
+
+		<nav style='display:none' class='entry-nav'>
+			<ul>
+				<li ng-repeat='definition in dict track by $index' ng-class='{current: $index === positionIndex}'>
+					{{definition.variant}}
+					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+				</li>
+			</ul>
+		</nav>
+
+		<dl class='result'>
+			<div ng-repeat='definition in dict track by $index' class='definition'>
+				<dt>
+					{{definition.variant}}
+					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+					<span class='caret'>
+						<svg><use xlink:href='#caret'></use></svg>
+					</span>
+				</dt>
+				<div ng-repeat='domain in definition.domains track by $index' class='domain'>
+					<div class='domain-name'>{{domain.domain}}</div>
+					<div class='definitions'>
+						<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+					</div>
+				</div>
+			</div>
+		</dl>
 	</div>
-</dl>
+</div>

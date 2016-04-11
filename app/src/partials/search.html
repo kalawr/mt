@@ -1,13 +1,11 @@
-
-
-<form class='search contain' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
-	<div class='logo' style='display: none'>
-		<span></span>
-	</div>
-	<div class='bar'>
-		<label for='query'>Search to your heart's extent</label>
-			<input ng-model='topscope.query' ng-change='load(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' class='bar' id='query' />
-	</div>
+<form class='contain search search--root' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
+	<label for='query'>Search to your heart's content</label>
+	<button type='submit' class='ok' title='Search'>
+		<svg>
+			<use xlink:href='#magnifier'></use>
+		</svg>
+	</button><!--
+	--><input ng-model='topscope.query' ng-change='load(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' />
 </form>
 
 <ul class='autocomplete' ng-show='autocompleteItems.length && topscope.query.length'  ng-class='{inactive: !autocompleteActive}'>

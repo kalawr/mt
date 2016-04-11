@@ -10,7 +10,7 @@ ul.autocomplete> li {
 }
 
 ul.autocomplete> li.active {
-	background-color: #DEF5F5;
+	background-color: var(--selection-color);
 }
 
 ul.autocomplete> li> span {

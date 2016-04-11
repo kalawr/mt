@@ -5,4 +5,7 @@
 
 	--border-width: 0.1rem;
 	--border: var(--border-width) solid currentColor;
+
+	--selection-color: #DEF5F5;
+	--acute-color: #A9E5E5;
 }
