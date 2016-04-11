@@ -1,11 +1,14 @@
 dl.result {
 	margin: 0;
-	font-size: 55%;
 }
 
 dt {
 	font-size: 2em;
 	margin-top: 1em;
+}
+
+.entry {
+	font-size: 0.55rem;
 }
 
 .definitions {
