@@ -18,8 +18,7 @@ var myApp = angular.module('mt', ['ngRoute', 'mtControllers', 'mtServices'])
 					controller: 'EntryController'
 				})
 				.when('/', {
-					templateUrl: '/partials/search.html',
-					controller: 'SearchController'
+					templateUrl: '/partials/root.html'
 				})
 				.otherwise({
 					redirectTo: '/'

@@ -19,7 +19,6 @@ angular.module('mtControllers', [])
 	.controller('SearchController', ['$scope', '$http', '$location', 'focus',
 			function ($scope, $http, $location, focus)
 			{
-				$scope.topscope.query = '';
 				$scope.autocompleteItems = [];
 				$scope.autocompleteSelection = 0;
 
