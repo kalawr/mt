@@ -141,6 +141,11 @@ angular.module('mtControllers', [])
 				{
 					$anchorScroll(id);
 				};
+
+				$scope.isBelow = function (index)
+				{
+					return $scope.dict[index].offset <= $scope.scroll;
+				};
 			}
 		]
 	)

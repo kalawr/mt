@@ -1,4 +1,4 @@
-<div class='entry'>
+<div class='entry' track-scroll>
 	<div ng-controller='SearchController'>
 		<form class='search search--entry' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
 			<div class='contain'>
@@ -22,8 +22,8 @@
 
 	<nav class='entry-nav'>
 		<ul>
-			<li ng-repeat='definition in dict track by $index' ng-class='{current: $index === positionIndex}' ng-click='goTo("anchor"+ $index)'>
-				{{definition.variant}}
+			<li ng-repeat='definition in dict track by $index' ng-class='{current: isBelow($index)}' ng-click='goTo("anchor"+ $index)' >
+				{{definition.variant}} {{dict[$index].offset}}
 				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 			</li>
 		</ul>
@@ -32,7 +32,7 @@
 	<div class='contain'>
 		<dl>
 			<div ng-repeat='definition in dict track by $index' class='definition'>
-				<dt id='{{"anchor" + $index}}'>
+				<dt id='{{"anchor" + $index}}' mark-position>
 					{{definition.variant}}
 					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 					<!-- <span class='caret'>
@@ -47,5 +47,5 @@
 				</div>
 			</div>
 		</dl>
-	</div>
+	</div>	
 </div>
