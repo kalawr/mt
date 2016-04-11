@@ -5,14 +5,23 @@
 :root {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
-	font-size: 300%;
+	font-size: 250%;
 	color: #333;
 }
 
 .contain {
+	width: 90%;
 	max-width: 20rem;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+@media (max-width: 560px) {
+	:root {
+		font-size: 7.1vw;
+	}
 }
 
 .spritesheet {
