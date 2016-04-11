@@ -75,13 +75,13 @@ angular.module('mtControllers', [])
 					if (event.keyCode == escCode)
 					{
 						event.preventDefault();
-						$scope.autocompleteSelection = 0;
+						$scope.autocompleteItems = [];
 					}
 				};
 
 				$scope.submit = function ()
 				{
-					if ($scope.autocompleteActive)
+					if ($scope.autocompleteActive && $scope.autocompleteItems.length)
 					{
 						$location.url('/'+$scope.autocompleteItems[$scope.autocompleteSelection]);
 					}
