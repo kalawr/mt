@@ -21,11 +21,11 @@ dd:hover {
 	color: #000;
 }
 
-dd:after {
+dd::after {
 	content: ', ';
 }
 
-dd:last-child:after {
+dd:last-child::after {
 	content: '';
 }
 

@@ -23,3 +23,11 @@
 	background-color: var(--selection-color);
 	color: inherit;
 }
+
+::-webkit-input-placeholder {
+	color: inherit;
+}
+
+::placeholder {
+	color: inherit;
+}
