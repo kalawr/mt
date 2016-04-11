@@ -22,7 +22,7 @@
 
 	<nav class='entry-nav'>
 		<ul>
-			<li ng-repeat='definition in dict track by $index' ng-class='{current: $index === positionIndex}'>
+			<li ng-repeat='definition in dict track by $index' ng-class='{current: $index === positionIndex}' ng-click='goTo("anchor"+ $index)'>
 				{{definition.variant}}
 				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 			</li>
@@ -32,7 +32,7 @@
 	<div class='contain'>
 		<dl>
 			<div ng-repeat='definition in dict track by $index' class='definition'>
-				<dt>
+				<dt id='{{"anchor" + $index}}'>
 					{{definition.variant}}
 					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 					<!-- <span class='caret'>

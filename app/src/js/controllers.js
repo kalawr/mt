@@ -109,8 +109,8 @@ angular.module('mtControllers', [])
 		]
 	)
 
-	.controller('EntryController', ['$scope', '$http', '$routeParams',
-			function ($scope, $http, $routeParams)
+	.controller('EntryController', ['$scope', '$http', '$routeParams', '$anchorScroll',
+			function ($scope, $http, $routeParams, $anchorScroll)
 			{
 				$scope.topscope.query = $routeParams.query;
 				
@@ -136,6 +136,11 @@ angular.module('mtControllers', [])
 							$scope.dict = [];
 						}
 					);
+
+				$scope.goTo = function (id)
+				{
+					$anchorScroll(id);
+				};
 			}
 		]
 	)
