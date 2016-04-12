@@ -7,7 +7,7 @@ angular.module('mtDirectives', [])
 					{
 						scope.scroll = $window.document.body.scrollTop;
 						scope.$apply();
-						console.log(scope.scroll)
+						// console.log(scope.scroll)
 					}
 
 					angular.element($window).bind('scroll', _.throttle(listener, 100));
@@ -19,7 +19,14 @@ angular.module('mtDirectives', [])
 			{
 				return function (scope, element, attrs)
 				{
-					scope.dict[scope.$index].offset = angular.element(element).offset().top;
+					setTimeout(
+						function () 
+						{
+							scope.dict[scope.$index].offset = angular.element(element).offset().top;
+							scope.$apply();
+						}, 
+						500
+					);
 				};
 			}
 		]

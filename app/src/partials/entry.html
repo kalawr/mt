@@ -23,8 +23,7 @@
 	<nav class='entry-nav'>
 		<ul>
 			<li ng-repeat='definition in dict track by $index' ng-class='{current: isBelow($index)}' ng-click='goTo("anchor"+ $index)' >
-				{{definition.variant}} {{dict[$index].offset}}
-				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+				{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 			</li>
 		</ul>
 	</nav>
