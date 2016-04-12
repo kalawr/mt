@@ -19,7 +19,7 @@ angular.module('mt')
 	.controller('SearchController', ['$scope', '$http', '$location', 'focus',
 			function ($scope, $http, $location, focus)
 			{
-				$scope.autocompleteItems = [];
+				$scope.autocompleteList = [];
 				$scope.autocompleteSelection = 0;
 
 				$scope.url = function ()
@@ -31,7 +31,7 @@ angular.module('mt')
 						String($scope.topscope.languages);
 				};
 
-				function fetch(url)
+				function fetchList(url)
 				{
 					$scope.autocompleteActive = false;
 
@@ -44,7 +44,7 @@ angular.module('mt')
 							.then(
 								function (response) 
 								{
-									$scope.autocompleteItems = response.data;
+									$scope.autocompleteList = response.data;
 									$scope.autocompleteSelection = 0;
 									if (response.data.length)
 									{
@@ -53,40 +53,40 @@ angular.module('mt')
 								},
 								function (error)
 								{
-									$scope.autocompleteItems = [];
+									$scope.autocompleteList = [];
 									$scope.autocompleteSelection = 0;
 								}
 							);
 				}
 
-				$scope.load = _.debounce(fetch, 350);
+				$scope.fetchList = _.debounce(fetchList, 350);
 
 				$scope.interceptKeys = function (event)
 				{
 					if (event.keyCode == upCode)
 					{
 						event.preventDefault();
-						$scope.autocompleteSelection = ($scope.autocompleteItems.length+$scope.autocompleteSelection-1) % $scope.autocompleteItems.length;
+						$scope.autocompleteSelection = ($scope.autocompleteList.length+$scope.autocompleteSelection-1) % $scope.autocompleteList.length;
 					}
 					else
 					if (event.keyCode == downCode)
 					{
 						event.preventDefault();
-						$scope.autocompleteSelection = ($scope.autocompleteSelection+1) % $scope.autocompleteItems.length;
+						$scope.autocompleteSelection = ($scope.autocompleteSelection+1) % $scope.autocompleteList.length;
 					}
 					else
 					if (event.keyCode == escCode)
 					{
 						event.preventDefault();
-						$scope.autocompleteItems = [];
+						$scope.autocompleteList = [];
 					}
 				};
 
 				$scope.submit = function ()
 				{
-					if ($scope.autocompleteActive && $scope.autocompleteItems.length)
+					if ($scope.autocompleteActive && $scope.autocompleteList.length)
 					{
-						$location.url('/'+$scope.autocompleteItems[$scope.autocompleteSelection]);
+						$location.url('/'+$scope.autocompleteList[$scope.autocompleteSelection]);
 					}
 					else
 					{
