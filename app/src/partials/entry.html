@@ -22,8 +22,18 @@
 
 	<nav class='entry-nav' ng-show='dict.length > 1'>
 		<ul>
-			<li ng-repeat='definition in dict track by $index' ng-class='{current: isOnScreen($index)}' ng-click='goTo("anchor"+ $index)' >
-				{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+
+			<li ng-repeat='definition in dict track by $index' ng-class='{current: isOnScreen($index)}' ng-click='goTo("anchor"+ $index)' title='Jump to {{definition.variant}}'>
+				{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span><span class='anchor'><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 486.213 486.213" style="enable-background:new 0 0 486.213 486.213;" xml:space="preserve">
+<path d="M366,255.766l11.438,27.734l54.764-22.586c-10.409,86.801-79.1,156.472-167.876,166.306l-5.232,0.58l-0.987,0.987V181.201
+	h100.953v-30H258.107v-42.644c23.236-6.557,40.32-27.932,40.32-53.237c0-30.504-24.816-55.32-55.32-55.32s-55.32,24.817-55.32,55.32
+	c0,25.305,17.085,46.68,40.32,53.237v42.644H127.154v30h100.953v247.586l-0.987-0.987l-5.232-0.58
+	C133.11,417.386,64.42,347.715,54.01,260.914l54.764,22.586l11.438-27.734l-97.572-40.24v22.412
+	c0,54.604,20.115,106.996,56.638,147.525c35.047,38.89,82.458,63.942,133.999,70.923l29.829,29.828l29.829-29.828
+	c51.541-6.981,98.952-32.033,133.999-70.923c36.523-40.529,56.638-92.921,56.638-147.525v-22.412L366,255.766z M217.786,55.32
+	c0-13.962,11.359-25.32,25.32-25.32s25.32,11.359,25.32,25.32s-11.359,25.32-25.32,25.32S217.786,69.282,217.786,55.32z"/>
+</svg></span>
 			</li>
 		</ul>
 	</nav>
