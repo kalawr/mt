@@ -1,4 +1,5 @@
-angular.module('mtServices', [])
+angular.module('mt')
+
 	.factory('focus', ['$window', function ($window)
 			{
 				return function (query)

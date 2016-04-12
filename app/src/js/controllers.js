@@ -4,7 +4,7 @@ var upCode   = 38;
 var downCode = 40;
 var escCode  = 27;
 
-angular.module('mtControllers', [])
+angular.module('mt')
 
 	.controller('ApplicationController', ['$scope',
 			function ($scope) 

@@ -1,4 +1,5 @@
-angular.module('mtDirectives', [])
+angular.module('mt')
+
 	.directive('trackScroll', ['$window', function ($window)
 			{
 				return function (scope, element, attrs)
@@ -14,6 +15,7 @@ angular.module('mtDirectives', [])
 			}
 		]
 	)
+
 	.directive('markPosition', ['$window', function ($window)
 			{
 				return function (scope, element, attrs)
@@ -24,9 +26,9 @@ angular.module('mtDirectives', [])
 							scope.dict[scope.$index].topCoordinate = angular.element(element).offset().top;
 							scope.dict[scope.$index].bottomCoordinate = scope.dict[scope.$index].topCoordinate + angular.element(element).height();
 						}, 
-						500 + scope.$index
+						500
 					);
 				};
 			}
 		]
-	)
+	);
