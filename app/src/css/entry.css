@@ -10,8 +10,8 @@
 }
 
 .entry .definition {
-	margin-top: 2em;
-	margin-bottom: 2em;
+	margin-top: var(--section-margin);
+	margin-bottom: var(--section-margin);
 }
 
 .entry dl dt {

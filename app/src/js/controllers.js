@@ -113,6 +113,7 @@ angular.module('mt')
 			function ($scope, $http, $routeParams, $anchorScroll, $window)
 			{
 				$scope.topscope.query = $routeParams.query;
+				$scope.header = {};
 
 				function url()
 				{

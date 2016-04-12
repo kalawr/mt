@@ -1,8 +1,8 @@
-nav.entry-nav ul {
-	position: fixed;
-	top: 10%;
-	left: 10%;
 
+nav.entry-nav ul {
+	position: absolute;
+	top: var(--section-margin);
+	left: 100px;
 	list-style-type: none;
 
 	margin: 0;
@@ -35,4 +35,8 @@ nav.entry-nav li.current {
 	width: 0.5em;
 	height: 0.5em;
 	fill: #B1B1B1;
+}
+
+.fixed {
+	position: fixed !important;
 }

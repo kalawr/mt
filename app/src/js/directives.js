@@ -31,4 +31,18 @@ angular.module('mt')
 				};
 			}
 		]
-	);
+	)
+
+	.directive('watchIfVisible', ['$window', function ($window)
+			{
+				return function (scope, element, attrs)
+				{
+					scope.$watch('scroll', function (value)
+					{
+						// console.log(angular.element(element).height());
+						scope.header.visible = value > angular.element(element).height();
+					});
+				};
+			}
+		]
+	)
