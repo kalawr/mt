@@ -2,7 +2,6 @@ nav.entry-nav ul {
 	position: fixed;
 	top: 10%;
 	left: 10%;
-	width: 15em;
 
 	list-style-type: none;
 
@@ -11,6 +10,8 @@ nav.entry-nav ul {
 }
 
 nav.entry-nav li {
+	float: left;
+	clear: both;
 	border-color: var(--acute-color);
 	border-style: solid;
 	border-width: 0;
