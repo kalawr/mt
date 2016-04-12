@@ -113,8 +113,6 @@ angular.module('mtControllers', [])
 			function ($scope, $http, $routeParams, $anchorScroll, $window)
 			{
 				$scope.topscope.query = $routeParams.query;
-				
-				$scope.positionIndex = 0;
 
 				function url()
 				{
@@ -146,8 +144,10 @@ angular.module('mtControllers', [])
 				{
 					var pt = $scope.dict[index].topCoordinate;
 					var pb = $scope.dict[index].bottomCoordinate;
+
 					if (!(pt && pb))
 						return false;
+					
 					return pb > $scope.scroll && pt < ($scope.scroll + $window.innerHeight);
 				};
 			}

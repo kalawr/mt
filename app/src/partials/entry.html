@@ -20,7 +20,7 @@
 		</form>
 	</div>
 
-	<nav class='entry-nav'>
+	<nav class='entry-nav' ng-show='dict.length > 1'>
 		<ul>
 			<li ng-repeat='definition in dict track by $index' ng-class='{current: isOnScreen($index)}' ng-click='goTo("anchor"+ $index)' >
 				{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
