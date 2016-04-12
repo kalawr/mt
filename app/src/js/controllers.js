@@ -109,8 +109,8 @@ angular.module('mtControllers', [])
 		]
 	)
 
-	.controller('EntryController', ['$scope', '$http', '$routeParams', '$anchorScroll',
-			function ($scope, $http, $routeParams, $anchorScroll)
+	.controller('EntryController', ['$scope', '$http', '$routeParams', '$anchorScroll', '$window',
+			function ($scope, $http, $routeParams, $anchorScroll, $window)
 			{
 				$scope.topscope.query = $routeParams.query;
 				
@@ -142,9 +142,13 @@ angular.module('mtControllers', [])
 					$anchorScroll(id);
 				};
 
-				$scope.isBelow = function (index)
+				$scope.isOnScreen = function (index)
 				{
-					return $scope.dict[index].offset <= $scope.scroll;
+					var pt = $scope.dict[index].topCoordinate;
+					var pb = $scope.dict[index].bottomCoordinate;
+					if (!(pt && pb))
+						return false;
+					return pb > $scope.scroll && pt < ($scope.scroll + $window.innerHeight);
 				};
 			}
 		]

@@ -7,7 +7,6 @@ angular.module('mtDirectives', [])
 					{
 						scope.scroll = $window.document.body.scrollTop;
 						scope.$apply();
-						// console.log(scope.scroll)
 					}
 
 					angular.element($window).bind('scroll', _.throttle(listener, 100));
@@ -22,10 +21,10 @@ angular.module('mtDirectives', [])
 					setTimeout(
 						function () 
 						{
-							scope.dict[scope.$index].offset = angular.element(element).offset().top;
-							scope.$apply();
+							scope.dict[scope.$index].topCoordinate = angular.element(element).offset().top;
+							scope.dict[scope.$index].bottomCoordinate = scope.dict[scope.$index].topCoordinate + angular.element(element).height();
 						}, 
-						500
+						500 + scope.$index
 					);
 				};
 			}
