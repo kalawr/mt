@@ -4,9 +4,20 @@ ul.autocomplete {
 	padding: 0;
 }
 
+ul.autocomplete.inactive {
+	opacity: 0.5;
+}
+
 ul.autocomplete> li {
 	display: block;
 	padding: var(--padding);
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+ul.autocomplete> li:hover {
+	color: black;
 }
 
 ul.autocomplete> li.active {
@@ -17,9 +28,6 @@ ul.autocomplete> li> span {
 	display: block;
 }
 
-ul.autocomplete.inactive {
-	opacity: 0.5;
-}
 
 
 ul.autocomplete--entry {
