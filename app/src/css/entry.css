@@ -20,7 +20,8 @@
 
 
 .entry dl .dds {
-	margin-left: 1em;
+	padding-left: 1em;
+	border-left: 1px solid #C4C4C4;
 }
 
 .entry dl dd {
@@ -53,4 +54,10 @@
 	fill: none;
 	position: relative;
 	top: 0.1em;
+}
+
+.domain-name {
+	font-style: italic;
+	font-weight: 300;
+	margin-top: 1em;
 }
