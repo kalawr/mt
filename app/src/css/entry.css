@@ -21,7 +21,7 @@
 
 .entry dl .dds {
 	padding-left: 1em;
-	border-left: 1px solid #C4C4C4;
+	border-left: 1px solid rgba(0,0,0,0.2);
 }
 
 .entry dl dd {
