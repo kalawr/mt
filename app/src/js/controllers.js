@@ -6,18 +6,23 @@ var escCode  = 27;
 
 angular.module('mt')
 
-	.controller('ApplicationController', ['$scope',
-			function ($scope) 
+	.controller('ApplicationController', ['$scope', '$location',
+			function ($scope, $location) 
 			{
-				$scope.topscope = {};
-				$scope.topscope.languages = 'en-ru';
-				$scope.topscope.query = '';
+				$scope.global = {};
+				$scope.global.query = '';
+				$scope.global.languages = 'en-ru';
+
+				$scope.global.submit = function (value)
+				{
+					$location.url('/'+ (value || $scope.global.query));
+				};
 			}
 		]
 	)
 
-	.controller('SearchController', ['$scope', '$http', '$location', 'focus',
-			function ($scope, $http, $location, focus)
+	.controller('SearchController', ['$scope', '$http', 'focus',
+			function ($scope, $http, focus)
 			{
 				$scope.autocompleteList = [];
 				$scope.autocompleteSelection = 0;
@@ -26,16 +31,16 @@ angular.module('mt')
 				{
 					return '/autocomplete' +
 						'/' +
-						String($scope.topscope.query) +
+						String($scope.global.query) +
 						'/' +
-						String($scope.topscope.languages);
+						String($scope.global.languages);
 				};
 
 				function fetchList(url)
 				{
 					$scope.autocompleteActive = false;
 
-					if (!$scope.topscope.query) 
+					if (!$scope.global.query) 
 					{
 						url = '/empty';
 					}
@@ -86,13 +91,13 @@ angular.module('mt')
 				{
 					if ($scope.autocompleteActive && $scope.autocompleteList.length)
 					{
-						$location.url('/'+$scope.autocompleteList[$scope.autocompleteSelection]);
+						$scope.global.submit($scope.autocompleteList[$scope.autocompleteSelection])
 					}
 					else
 					{
-						if ($scope.topscope.query) 
+						if ($scope.global.query) 
 						{
-							$location.url('/'+$scope.topscope.query);
+							$scope.global.submit();
 						}
 						else
 						{
@@ -112,16 +117,16 @@ angular.module('mt')
 	.controller('EntryController', ['$scope', '$http', '$routeParams', '$anchorScroll', '$window',
 			function ($scope, $http, $routeParams, $anchorScroll, $window)
 			{
-				$scope.topscope.query = $routeParams.query;
+				$scope.global.query = $routeParams.query;
 				$scope.header = {};
 
 				function url()
 				{
 					return '/translate' +
 						'/' +
-						String($scope.topscope.query) +
+						String($scope.global.query) +
 						'/' +
-						String($scope.topscope.languages);
+						String($scope.global.languages);
 				};
 
 				$http.get(url())

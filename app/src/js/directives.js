@@ -97,3 +97,31 @@ angular.module('mt')
 			};
 		}
 	)
+
+	.directive('submittable', ['$window', function ($window)
+			{
+				return {
+
+					restrict: 'E',
+					transclude: true,
+					template: '<dd ng-transclude></dd><button>K</button>',
+					link: function ($scope, $element, $attrs)
+					{
+						function clickAction()
+						{
+							$scope.$apply(function ()
+								{
+									$scope.global.query = $element.find('dd').text();
+									$scope.global.submit();
+								}
+							);
+							
+						}
+
+						angular.element('button', $element).click(clickAction);
+
+					}
+				};
+			}
+		]
+	)

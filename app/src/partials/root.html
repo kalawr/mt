@@ -6,10 +6,10 @@
 				<use xlink:href='#magnifier'></use>
 			</svg>
 		</button><!--
-		--><input full-focus startup-focus ng-model='topscope.query' ng-change='fetchList(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
+		--><input full-focus startup-focus ng-model='global.query' ng-change='fetchList(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
 	</form>
 
-	<ul class='autocomplete autocomplete--root lg' ng-show='autocompleteList.length && topscope.query.length'  ng-class='{inactive: !autocompleteActive}'>
+	<ul class='autocomplete autocomplete--root lg' ng-show='autocompleteList.length && global.query.length'  ng-class='{inactive: !autocompleteActive}'>
 		<li ng-class='{active: $index === autocompleteSelection}' class='li-wrap' ng-repeat='item in autocompleteList track by $index'>
 			<span class='contain' ng-click='setSelection($index); submit()'>{{item}}</span>
 		</li>
