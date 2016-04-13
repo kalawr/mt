@@ -41,16 +41,25 @@ angular.module('mt')
 		]
 	)
 
-	.directive('watchIfVisible', ['$window', function ($window)
+	.directive('keepAfloat', ['$window', function ($window)
 			{
 				return {
 
 					restrict: 'A',
 					link: function ($scope, $element, $attrs)
 					{
+						var offset = $element.offset().top;
+
 						$scope.$watch('scroll', function (value)
 						{
-							$scope.header.visible = value > $element.height();
+							if (value > offset)
+							{
+								$element.addClass('fixed');
+							}
+							else
+							{
+								$element.removeClass('fixed');
+							}
 						});
 					}
 				};

@@ -2,11 +2,12 @@
 	list-style-type: none;
 
 	position: absolute;
-	top: var(--section-margin);
+	top: 0;
 	left: 5%;
 
 	margin: 0;
 	padding: 0;
+	padding-top: var(--section-margin);
 }
 
 .navigation li {
