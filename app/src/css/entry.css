@@ -41,21 +41,6 @@
 	content: '';
 }
 
-.caret {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.caret > svg {
-	width: 1em;
-	height: 1em;
-	stroke-width: 3;
-	stroke: currentColor;
-	fill: none;
-	position: relative;
-	top: 0.1em;
-}
-
 .domain-name {
 	font-style: italic;
 	font-weight: 300;
