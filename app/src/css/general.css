@@ -32,6 +32,10 @@
 	position: relative;
 }
 
+.fixed {
+	position: fixed !important;
+}
+
 ::selection {
 	background-color: var(--selection-color);
 	color: inherit;

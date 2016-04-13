@@ -20,10 +20,14 @@
 		</form>
 	</div>
 
-	<nav class='entry-nav relative' ng-show='dict.length > 1'>
+	<nav class='navigation relative' ng-show='dict.length > 1'>
 		<ul ng-class='{fixed: header.visible}'>
 			<li ng-repeat='definition in dict track by $index' ng-class='{current: isOnScreen($index)}' ng-click='goTo("anchor"+ $index)' title='Jump to {{definition.variant}}'>
-				{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span><span class='anchor'><svg><use xlink:href='#anchor'></use></svg></span>
+				{{definition.variant}}
+				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+				<span class='anchor'>
+					<svg><use xlink:href='#anchor'></use></svg>
+				</span>
 			</li>
 		</ul>
 	</nav>
