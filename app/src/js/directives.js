@@ -49,10 +49,10 @@ angular.module('mt')
 					link: function ($scope, $element, $attrs)
 					{
 						var offset = $element.offset().top;
-
+						var height = $element.height();
 						$scope.$watch('scroll', function (value)
 						{
-							if (value > offset)
+							if (value > offset && height > $window.innerHeight)
 							{
 								$element.addClass('fixed');
 							}
