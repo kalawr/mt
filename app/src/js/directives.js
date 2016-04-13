@@ -10,7 +10,7 @@ angular.module('mt')
 						scope.$apply();
 					}
 
-					angular.element($window).bind('scroll', _.throttle(listener, 100));
+					angular.element($window).bind('scroll', _.throttle(listener, 50));
 				};
 			}
 		]
