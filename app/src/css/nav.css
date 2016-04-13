@@ -11,9 +11,6 @@
 }
 
 .navigation li {
-	float: left;
-	clear: both;
-
 	padding: 0.25em 0.5em;
 	border: 0 solid var(--acute-color);
 
@@ -26,6 +23,7 @@
 }
 
 .navigation .anchor {
+	float:right;
 	position: relative;
 	top: -0.25em;
 }
@@ -33,6 +31,7 @@
 .navigation .anchor svg {
 	width: 0.5em;
 	height: 0.5em;
+	margin-left: 0.5em;
 	fill: #B1B1B1;
 }
 
