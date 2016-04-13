@@ -40,3 +40,9 @@ nav.entry-nav li.current {
 .fixed {
 	position: fixed !important;
 }
+
+@media (max-width: 1300px) {
+	.entry-nav {
+		display: none;
+	}
+}
