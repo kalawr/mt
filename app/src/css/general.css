@@ -48,3 +48,7 @@
 ::placeholder {
 	color: inherit;
 }
+
+[ng-view] {
+	min-height: 100vh;
+}
