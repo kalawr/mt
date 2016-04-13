@@ -7,7 +7,7 @@
 						<use xlink:href='#magnifier'></use>
 					</svg>
 				</button><!--
-				--><input full-focus ng-model='topscope.query' ng-change='fetchList(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' />
+				--><input full-focus ng-model='topscope.query' ng-change='fetchList(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='xl' />
 			</div>
 
 			<div class='contain relative'>
@@ -35,7 +35,7 @@
 	<div class='contain'>
 		<dl>
 			<div ng-repeat='definition in dict track by $index' class='definition' mark-position>
-				<dt id='{{"anchor" + $index}}'>
+				<dt id='{{"anchor" + $index}}' class='xl'>
 					{{definition.variant}}
 					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 				</dt>

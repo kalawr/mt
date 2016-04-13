@@ -10,7 +10,7 @@ ul.autocomplete.inactive {
 
 ul.autocomplete> li {
 	display: block;
-	padding: var(--padding);
+	padding: 0.5em;
 	cursor: pointer;
 	-webkit-user-select: none;
 	user-select: none;
@@ -29,21 +29,16 @@ ul.autocomplete> li> span {
 }
 
 
-
 ul.autocomplete--entry {
 	margin-top: 1em;
 	position: absolute;
 	width: 100%;
 	background-color: var(--bg);
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+	border: 1px solid var(--border-color);
 	z-index: 1;
 }
 
 ul.autocomplete--entry> li {
 	padding-left: 0.5em;
 	padding-right: 0.5em;
-}
-
-ul.autocomplete--root {
-	font-size: 75%;
 }

@@ -1,10 +1,5 @@
 @import 'nav.css';
 
-
-.entry {
-	font-size: 0.55rem;
-}
-
 .entry dl {
 	margin: 0;
 }
@@ -14,14 +9,9 @@
 	margin-bottom: var(--section-margin);
 }
 
-.entry dl dt {
-	font-size: 2em;
-}
-
-
 .entry dl .dds {
 	padding-left: 1em;
-	border-left: 1px solid rgba(0,0,0,0.2);
+	border-left: 1px solid var(--border-color);
 }
 
 .entry dl dd {

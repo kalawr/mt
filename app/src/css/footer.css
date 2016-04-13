@@ -2,7 +2,6 @@ footer {
 	padding-top: var(--section-margin);
 	padding-bottom: var(--section-margin);
 
-	font-size: 0.45rem;
 	color: white;
 	background-color: #333;
 }
