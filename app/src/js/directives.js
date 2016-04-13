@@ -39,10 +39,32 @@ angular.module('mt')
 				{
 					scope.$watch('scroll', function (value)
 					{
-						// console.log(angular.element(element).height());
 						scope.header.visible = value > angular.element(element).height();
 					});
 				};
 			}
 		]
+	)
+
+	.directive('fullFocus', function ()
+		{
+			return function (scope, element, attrs)
+			{
+				angular.element(element).bind('focus', function ()
+				{
+					console.log('full focus applied')
+					angular.element(element).select();
+				});
+			};
+		}
+	)
+
+	.directive('startupFocus', function ()
+		{
+			return function (scope, element, attrs)
+			{
+				console.log('startup focus applied')
+				angular.element(element).focus();
+			};
+		}
 	)
