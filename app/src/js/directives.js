@@ -2,15 +2,19 @@ angular.module('mt')
 
 	.directive('trackScroll', ['$window', function ($window)
 			{
-				return function (scope, element, attrs)
-				{
-					function listener()
-					{
-						scope.scroll = $window.document.body.scrollTop;
-						scope.$apply();
-					}
+				return {
 
-					angular.element($window).bind('scroll', _.throttle(listener, 50));
+					restrict: 'A',
+					link: function ($scope, $element, $attrs)
+					{
+						function listener()
+						{
+							$scope.scroll = $window.document.body.scrollTop;
+							$scope.$apply();
+						}
+
+						angular.element($window).scroll(_.throttle(listener, 50));
+					}
 				};
 			}
 		]
@@ -18,16 +22,20 @@ angular.module('mt')
 
 	.directive('markPosition', ['$window', function ($window)
 			{
-				return function (scope, element, attrs)
-				{
-					setTimeout(
-						function () 
-						{
-							scope.dict[scope.$index].topCoordinate = angular.element(element).offset().top;
-							scope.dict[scope.$index].bottomCoordinate = scope.dict[scope.$index].topCoordinate + angular.element(element).height();
-						}, 
-						500
-					);
+				return {
+
+					restrict: 'A',
+					link: function ($scope, $element, $attrs)
+					{
+						setTimeout(
+							function () 
+							{
+								$scope.dict[$scope.$index].topCoordinate = $element.offset().top;
+								$scope.dict[$scope.$index].bottomCoordinate = $scope.dict[$scope.$index].topCoordinate + $element.height();
+							}, 
+							500
+						);
+					}
 				};
 			}
 		]
@@ -35,12 +43,16 @@ angular.module('mt')
 
 	.directive('watchIfVisible', ['$window', function ($window)
 			{
-				return function (scope, element, attrs)
-				{
-					scope.$watch('scroll', function (value)
+				return {
+
+					restrict: 'A',
+					link: function ($scope, $element, $attrs)
 					{
-						scope.header.visible = value > angular.element(element).height();
-					});
+						$scope.$watch('scroll', function (value)
+						{
+							$scope.header.visible = value > $element.height();
+						});
+					}
 				};
 			}
 		]
@@ -48,23 +60,31 @@ angular.module('mt')
 
 	.directive('fullFocus', function ()
 		{
-			return function (scope, element, attrs)
-			{
-				angular.element(element).bind('focus', function ()
+			return {
+
+				restrict: 'A',
+				link: function ($scope, $element, $attrs)
 				{
-					console.log('full focus applied')
-					angular.element(element).select();
-				});
+					$element.focus(
+						function ()
+						{
+							$element.select();
+						}
+					);
+				}
 			};
 		}
 	)
 
 	.directive('startupFocus', function ()
 		{
-			return function (scope, element, attrs)
-			{
-				console.log('startup focus applied')
-				angular.element(element).focus();
+			return {
+
+				restrict: 'A',
+				link: function ($scope, $element, $attrs)
+				{
+					$element.focus();
+				}
 			};
 		}
 	)
