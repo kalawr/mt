@@ -3,7 +3,7 @@
 
 	position: absolute;
 	top: var(--section-margin);
-	left: 100px;
+	left: 5%;
 
 	margin: 0;
 	padding: 0;
@@ -35,7 +35,7 @@
 	fill: #B1B1B1;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1150px) {
 	.navigation {
 		display: none;
 	}
