@@ -42,7 +42,7 @@
 				<div ng-repeat='domain in definition.domains track by $index' class='domain'>
 					<div class='domain-name'>{{domain.domain}}</div>
 					<div class='dds'>
-						<submittable ng-repeat='translation in domain.translations track by $index'>{{translation}}</submittable>
+						<dd submittable ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
 					</div>
 				</div>
 			</div>

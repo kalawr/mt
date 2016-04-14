@@ -30,15 +30,15 @@
 	color: #000;
 }
 
-.entry dl dd::after {
+.entry dl dd > span::after {
 	content: ', ';
 }
 
-.entry dl dd:last-child::after {
+.entry dl dd:last-child > span::after {
 	content: '';
 }
 
-.entry dl dd.active {
+.entry dl dd > span.active {
 	border-bottom: 1px solid gray;
 }
 

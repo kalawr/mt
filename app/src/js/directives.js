@@ -102,7 +102,7 @@ angular.module('mt')
 			{
 				return {
 
-					restrict: 'E',
+					restrict: 'AE',
 					templateUrl: '/partials/submittable.html',
 					transclude: true,
 					link: function ($scope, $element, $attrs)
@@ -111,7 +111,7 @@ angular.module('mt')
 						{
 							$scope.$apply(function ()
 								{
-									$scope.global.query = $element.find('dd> span').text();
+									$scope.global.query = $scope.translation;
 									$scope.global.submit();
 								}
 							);
