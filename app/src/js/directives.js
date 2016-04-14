@@ -118,8 +118,13 @@ angular.module('mt')
 							
 						}
 
-						angular.element('button', $element).click(clickAction);
+						$scope.prod = function ()
+						{
+							$scope.showButton = ($scope.showButton ? false : true);
+						};
 
+						$scope.showButton = false;
+						angular.element('button', $element).click(clickAction);
 					}
 				};
 			}

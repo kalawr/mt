@@ -38,9 +38,11 @@
 	content: '';
 }
 
-.entry dd button {
-	display: none;
+.entry dl dd.active {
+	border-bottom: 1px solid gray;
+}
 
+.entry dd button {
 	position: absolute;
 	top: calc(100% + 0.25em);
 	left: 0;
@@ -55,10 +57,6 @@
 	box-shadow: 0.1em  0.1em 0 #E6E12A, 
 	            0.2em  0.2em 0 #9CE6F5;
 
-}
-
-.entry dd:hover button {
-	display: block;
 }
 
 .entry dd button:focus {

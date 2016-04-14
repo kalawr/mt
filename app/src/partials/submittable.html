@@ -1,6 +1,6 @@
-<dd>
+<dd ng-click='prod()' ng-class='{active: showButton}'>
 	<span ng-transclude></span>
-	<button class='sm'>
+	<button class='sm' ng-show='showButton'>
 		<svg><use xlink:href='#magnifier'></use></svg>
 	</button>
 </dd>
