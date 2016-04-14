@@ -21,21 +21,28 @@ angular.module('mt')
 		]
 	)
 
-	.controller('AutocompleteController', ['$scope', '$http', 'focus',
-			function ($scope, $http, focus)
+	.controller('AutocompleteController', ['$scope', '$http', 'focus', 'url',
+			function ($scope, $http, focus, url)
 			{
 				$scope.autocomplete = {};
 				$scope.autocomplete.list = [];
 				$scope.autocomplete.selection = 0;
 				$scope.autocomplete.enabled = false;
 
+				$scope.buildUrl = url('autocomplete');
 				$scope.autocomplete.fetch = _.debounce(
 
-					function (url)
+					function ()
 					{
+						var url;
+
 						if (!$scope.global.query) 
 						{
 							url = '/empty';
+						}
+						else
+						{
+							url = $scope.buildUrl($scope.global.query, $scope.global.languages);
 						}
 
 						$http.get(url)
@@ -57,14 +64,6 @@ angular.module('mt')
 					350
 				);
 
-				$scope.url = function ()
-				{
-					return '/autocomplete' +
-						'/' +
-						String($scope.global.query) +
-						'/' +
-						String($scope.global.languages);
-				};
 
 				$scope.autocomplete.interceptKeys = function (event)
 				{
@@ -124,22 +123,13 @@ angular.module('mt')
 		]
 	)
 
-	.controller('EntryController', ['$scope', '$http', '$routeParams', '$anchorScroll', '$window',
-			function ($scope, $http, $routeParams, $anchorScroll, $window)
+	.controller('EntryController', ['$scope', '$http', '$routeParams', '$anchorScroll', '$window', 'url',
+			function ($scope, $http, $routeParams, $anchorScroll, $window, url)
 			{
 				$scope.global.query = $routeParams.query;
-				$scope.header = {};
+				$scope.buildUrl = url('translate');
 
-				function url()
-				{
-					return '/translate' +
-						'/' +
-						String($scope.global.query) +
-						'/' +
-						String($scope.global.languages);
-				};
-
-				$http.get(url())
+				$http.get($scope.buildUrl($scope.global.query, $scope.global.languages))
 					.then(
 						function (response) 
 						{

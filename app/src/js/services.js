@@ -8,4 +8,21 @@ angular.module('mt')
 				};
 			}
 		]
-	);
+	)
+
+	.factory('url', function ()
+		{
+			return function (type)
+			{
+				return function (query, languages)
+				{
+					return '/' +
+						String(type) +
+						'/' +
+						String(query) +
+						'/' +
+						String(languages);
+				};
+			}
+		}
+	)
