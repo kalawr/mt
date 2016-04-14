@@ -21,11 +21,41 @@ angular.module('mt')
 		]
 	)
 
-	.controller('SearchController', ['$scope', '$http', 'focus',
+	.controller('AutocompleteController', ['$scope', '$http', 'focus',
 			function ($scope, $http, focus)
 			{
-				$scope.autocompleteList = [];
-				$scope.autocompleteSelection = 0;
+				$scope.autocomplete = {};
+				$scope.autocomplete.list = [];
+				$scope.autocomplete.selection = 0;
+				$scope.autocomplete.enabled = false;
+
+				$scope.autocomplete.fetch = _.debounce(
+
+					function (url)
+					{
+						if (!$scope.global.query) 
+						{
+							url = '/empty';
+						}
+
+						$http.get(url)
+							.then(
+								function (response) 
+								{
+									$scope.autocomplete.list = response.data;
+									$scope.autocomplete.selection = 0;
+								},
+								function (error)
+								{
+									$scope.autocomplete.list = [];
+									$scope.autocomplete.selection = 0;
+								}
+							)
+							.then($scope.autocomplete.enable)
+							;
+					},
+					350
+				);
 
 				$scope.url = function ()
 				{
@@ -36,58 +66,32 @@ angular.module('mt')
 						String($scope.global.languages);
 				};
 
-				function fetchList(url)
-				{
-					if (!$scope.global.query) 
-					{
-						url = '/empty';
-					}
-
-						$http.get(url)
-							.then(
-								function (response) 
-								{
-									$scope.autocompleteList = response.data;
-									$scope.autocompleteSelection = 0;
-								},
-								function (error)
-								{
-									$scope.autocompleteList = [];
-									$scope.autocompleteSelection = 0;
-								}
-							)
-							.then($scope.enableAutocomplete)
-							;
-				}
-
-				$scope.fetchList = _.debounce(fetchList, 350);
-
-				$scope.interceptKeys = function (event)
+				$scope.autocomplete.interceptKeys = function (event)
 				{
 					if (event.keyCode == upCode)
 					{
 						event.preventDefault();
-						$scope.autocompleteSelection = ($scope.autocompleteList.length+$scope.autocompleteSelection-1) % $scope.autocompleteList.length;
+						$scope.autocomplete.selection = ($scope.autocomplete.list.length+$scope.autocomplete.selection-1) % $scope.autocomplete.list.length;
 					}
 					else
 					if (event.keyCode == downCode)
 					{
 						event.preventDefault();
-						$scope.autocompleteSelection = ($scope.autocompleteSelection+1) % $scope.autocompleteList.length;
+						$scope.autocomplete.selection = ($scope.autocomplete.selection+1) % $scope.autocomplete.list.length;
 					}
 					else
 					if (event.keyCode == escCode)
 					{
 						event.preventDefault();
-						$scope.autocompleteList = [];
+						$scope.autocomplete.list = [];
 					}
 				};
 
-				$scope.submit = function ()
+				$scope.autocomplete.submit = function ()
 				{
-					if ($scope.autocompleteActive && $scope.autocompleteList.length)
+					if ($scope.autocomplete.enabled && $scope.autocomplete.list.length)
 					{
-						$scope.global.submit($scope.autocompleteList[$scope.autocompleteSelection])
+						$scope.global.submit($scope.autocomplete.list[$scope.autocomplete.selection])
 					}
 					else
 					{
@@ -102,19 +106,19 @@ angular.module('mt')
 					}
 				};
 
-				$scope.setSelection = function (index)
+				$scope.autocomplete.setSelection = function (index)
 				{
-					$scope.autocompleteSelection = index;
+					$scope.autocomplete.selection = index;
 				};
 
-				$scope.disableAutocomplete = function ()
+				$scope.autocomplete.enable = function ()
 				{
-					$scope.autocompleteActive = false;
+					$scope.autocomplete.enabled = true;
 				};
 
-				$scope.enableAutocomplete = function ()
+				$scope.autocomplete.disable = function ()
 				{
-					$scope.autocompleteActive = true;
+					$scope.autocomplete.enabled = false;
 				};
 			}
 		]

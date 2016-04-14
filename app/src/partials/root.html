@@ -1,17 +1,17 @@
-<div ng-controller='SearchController'>
-	<form class='contain search search--root' ng-submit='submit()' ng-keydown='interceptKeys($event)'>
+<div ng-controller='AutocompleteController'>
+	<form class='contain search search--root' ng-submit='autocomplete.submit()' ng-keydown='autocomplete.interceptKeys($event)'>
 		<label for='query'>Search to your heart's content</label>
 		<button type='submit' class='ok lg' title='Search'>
 			<svg>
 				<use xlink:href='#magnifier'></use>
 			</svg>
 		</button><!--
-		--><input full-focus startup-focus ng-model='global.query' ng-change='disableAutocomplete(); fetchList(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
+		--><input full-focus startup-focus ng-model='global.query' ng-change='autocomplete.disable(); autocomplete.fetch(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
 	</form>
 
-	<ul class='autocomplete autocomplete--root lg' ng-show='autocompleteList.length && global.query.length'  ng-class='{inactive: !autocompleteActive}'>
-		<li ng-class='{active: $index === autocompleteSelection}' class='li-wrap' ng-repeat='item in autocompleteList track by $index'>
-			<span class='contain' ng-click='setSelection($index); submit()'>{{item}}</span>
+	<ul class='autocomplete autocomplete--root lg' ng-show='autocomplete.list.length && global.query.length'  ng-class='{inactive: !autocomplete.enabled}'>
+		<li ng-class='{active: $index === autocomplete.selection}' class='li-wrap' ng-repeat='item in autocomplete.list track by $index'>
+			<span class='contain' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</span>
 		</li>
 	</ul>
 </div>
