@@ -9,6 +9,12 @@
 	margin-bottom: var(--section-margin);
 }
 
+.entry .domain-name {
+	font-style: italic;
+	font-weight: 300;
+	margin-top: 1em;
+}
+
 .entry dl .dds {
 	padding-left: 1em;
 	border-left: 1px solid var(--border-color);
@@ -17,6 +23,7 @@
 .entry dl dd {
 	display: inline;
 	margin: 0;
+	position: relative;
 }
 
 .entry dl dd:hover {
@@ -31,8 +38,35 @@
 	content: '';
 }
 
-.domain-name {
-	font-style: italic;
-	font-weight: 300;
-	margin-top: 1em;
+.entry dd button {
+	display: none;
+
+	position: absolute;
+	top: calc(100% + 0.25em);
+	left: 0;
+	z-index: 1;
+
+	color: var(--bg);
+	background-color: var(--acute-color);
+	padding: 0.20em 0.35em 0.05em;
+	border: 0;
+	border-radius: 0.25em;
+
+	box-shadow: 0.1em  0.1em 0 #E6E12A, 
+	            0.2em  0.2em 0 #9CE6F5;
+
+}
+
+.entry dd:hover button {
+	display: block;
+}
+
+.entry dd button:focus {
+	outline: 0;
+}
+
+.entry dd button svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
 }

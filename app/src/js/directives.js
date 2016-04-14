@@ -103,15 +103,15 @@ angular.module('mt')
 				return {
 
 					restrict: 'E',
+					templateUrl: '/partials/submittable.html',
 					transclude: true,
-					template: '<dd ng-transclude></dd><button>K</button>',
 					link: function ($scope, $element, $attrs)
 					{
 						function clickAction()
 						{
 							$scope.$apply(function ()
 								{
-									$scope.global.query = $element.find('dd').text();
+									$scope.global.query = $element.find('dd> span').text();
 									$scope.global.submit();
 								}
 							);
