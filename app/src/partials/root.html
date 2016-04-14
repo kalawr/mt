@@ -6,7 +6,7 @@
 				<use xlink:href='#magnifier'></use>
 			</svg>
 		</button><!--
-		--><input full-focus startup-focus ng-model='global.query' ng-change='fetchList(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
+		--><input full-focus startup-focus ng-model='global.query' ng-change='disableAutocomplete(); fetchList(url())' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
 	</form>
 
 	<ul class='autocomplete autocomplete--root lg' ng-show='autocompleteList.length && global.query.length'  ng-class='{inactive: !autocompleteActive}'>

@@ -38,8 +38,6 @@ angular.module('mt')
 
 				function fetchList(url)
 				{
-					$scope.autocompleteActive = false;
-
 					if (!$scope.global.query) 
 					{
 						url = '/empty';
@@ -51,17 +49,15 @@ angular.module('mt')
 								{
 									$scope.autocompleteList = response.data;
 									$scope.autocompleteSelection = 0;
-									if (response.data.length)
-									{
-										$scope.autocompleteActive = true;
-									}
 								},
 								function (error)
 								{
 									$scope.autocompleteList = [];
 									$scope.autocompleteSelection = 0;
 								}
-							);
+							)
+							.then($scope.enableAutocomplete)
+							;
 				}
 
 				$scope.fetchList = _.debounce(fetchList, 350);
@@ -109,6 +105,16 @@ angular.module('mt')
 				$scope.setSelection = function (index)
 				{
 					$scope.autocompleteSelection = index;
+				};
+
+				$scope.disableAutocomplete = function ()
+				{
+					$scope.autocompleteActive = false;
+				};
+
+				$scope.enableAutocomplete = function ()
+				{
+					$scope.autocompleteActive = true;
 				};
 			}
 		]
