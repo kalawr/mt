@@ -1,5 +1,5 @@
-<span ng-click='prod()' ng-transclude ng-class='{active: showButton}'></span>
-<button class='sm' ng-show='showButton'>
+<span ng-click='prod()' ng-transclude ng-class='{active: entry.clickedUpon === id}'></span>
+<button class='sm' ng-show='entry.clickedUpon === id'>
 		<svg>
 				<use xlink:href='#magnifier'></use>
 		</svg>

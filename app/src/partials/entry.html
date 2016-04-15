@@ -34,15 +34,15 @@
 
 	<div class='contain'>
 		<dl>
-			<div ng-repeat='definition in dict track by $index' class='definition' mark-position>
+			<div ng-repeat='definition in dict track by $index' class='definition' mark-position ng-init='defID = $index'>
 				<dt id='{{"anchor" + $index}}' class='xl'>
 					{{definition.variant}}
 					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 				</dt>
-				<div ng-repeat='domain in definition.domains track by $index' class='domain'>
+				<div ng-repeat='domain in definition.domains track by $index' class='domain' ng-init='domainID = $index'>
 					<div class='domain-name'>{{domain.domain}}</div>
 					<div class='dds'>
-						<dd submittable ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+						<dd submittable ng-repeat='translation in domain.translations track by $index' ng-init='id = "tr" + defID + domainID + $index'>{{translation}}</dd>
 					</div>
 				</div>
 			</div>

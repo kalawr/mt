@@ -103,10 +103,9 @@ angular.module('mt')
 
 						$scope.prod = function ()
 						{
-							$scope.showButton = ($scope.showButton ? false : true);
+							$scope.entry.clickedUpon = $scope.id;
 						};
 
-						$scope.showButton = false;
 						angular.element('button', $element).click(clickAction);
 					}
 				};

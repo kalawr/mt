@@ -161,6 +161,9 @@ angular.module('mt')
 					
 					return pb > $scope.scroll && pt < ($scope.scroll + $window.innerHeight);
 				};
+
+				$scope.entry = {};
+				$scope.entry.clickedUpon = null;
 			}
 		]
 	)
