@@ -6,8 +6,8 @@ var escCode  = 27;
 
 angular.module('mt')
 
-	.controller('ApplicationController', ['$scope', '$location',
-			function ($scope, $location) 
+	.controller('ApplicationController', ['$scope', '$location', '$window',
+			function ($scope, $location, $window) 
 			{
 				$scope.global = {};
 				$scope.global.query = '';
@@ -17,6 +17,16 @@ angular.module('mt')
 				{
 					$location.url('/'+ (value || $scope.global.query));
 				};
+
+				$scope.scroll = 0;
+
+				$window.onscroll = _.throttle(
+					function ()
+					{
+						$scope.$apply(function () { $scope.scroll = $window.document.body.scrollTop; })
+					},
+					50
+				);
 			}
 		]
 	)
