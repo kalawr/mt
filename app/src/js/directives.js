@@ -41,7 +41,7 @@ angular.module('mt')
 		]
 	)
 
-	.directive('keepAfloat', ['$window', function ($window)
+	.directive('keepAfloat', ['$window', '$timeout', function ($window, $timeout)
 			{
 				return {
 
@@ -49,10 +49,20 @@ angular.module('mt')
 					link: function ($scope, $element, $attrs)
 					{
 						var offset = $element.offset().top;
-						var height = $element.height();
+						var height;
+
+						$timeout(
+							function ()
+							{
+								height = $element.height();
+							},
+							1500
+						);
+						
+
 						$scope.$watch('scroll', function (value)
 						{
-							if (value > offset && height > $window.innerHeight)
+							if (value > offset && height < $window.innerHeight)
 							{
 								$element.addClass('fixed');
 							}
