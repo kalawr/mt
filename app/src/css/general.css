@@ -6,7 +6,11 @@
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	font-size: 130%;
-	color: #333;
+}
+
+body {
+	color: var(--color);
+	background-color: var(--bg);
 }
 
 .contain {
@@ -57,7 +61,7 @@
 }
 
 ::selection {
-	background-color: var(--selection-color);
+	background-color: var(--emphasis-bg);
 	color: inherit;
 }
 

@@ -48,12 +48,12 @@
 
 
 .search--root label {
-	color: #D4D4D4;
+	color: var(--dim-color);
 }
 
 
 .search--entry {
 	padding-bottom: var(--section-margin);
-	background-color: var(--selection-color);
-	color: #3B3B3B;
+	background-color: var(--emphasis-bg);
+	/* color: #3B3B3B; */
 }

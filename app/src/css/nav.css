@@ -13,7 +13,7 @@
 
 .navigation li {
 	padding: 0.25em 0.5em;
-	border: 0 solid var(--acute-color);
+	border: 0 solid var(--stronger-emphasis-bg);
 
 	transition: all 0.3s linear;
 	cursor: pointer;
@@ -33,7 +33,7 @@
 	width: 0.5em;
 	height: 0.5em;
 	margin-left: 0.5em;
-	fill: #B1B1B1;
+	fill: var(--anchor);
 }
 
 @media (max-width: 1150px) {

@@ -17,11 +17,11 @@ ul.autocomplete> li {
 }
 
 ul.autocomplete> li:hover {
-	color: black;
+	color: var(--bright-color);
 }
 
 ul.autocomplete> li.active {
-	background-color: var(--selection-color);
+	background-color: var(--emphasis-bg);
 }
 
 ul.autocomplete> li> span {
