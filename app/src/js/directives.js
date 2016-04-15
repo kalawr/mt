@@ -130,3 +130,16 @@ angular.module('mt')
 			}
 		]
 	)
+
+	.directive('hashLink', ['$anchorScroll', function ($anchorScroll)
+			{
+				return function ($scope, $element, $attrs)
+				{
+					$element.bind('click', function ()
+						{
+							$anchorScroll($attrs.hashLink);
+						});
+				};
+			}
+		]
+	)

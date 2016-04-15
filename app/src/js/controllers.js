@@ -123,8 +123,8 @@ angular.module('mt')
 		]
 	)
 
-	.controller('EntryController', ['$scope', '$http', '$routeParams', '$anchorScroll', '$window', 'url',
-			function ($scope, $http, $routeParams, $anchorScroll, $window, url)
+	.controller('EntryController', ['$scope', '$http', '$routeParams', '$window', 'url',
+			function ($scope, $http, $routeParams, $window, url)
 			{
 				$scope.global.query = $routeParams.query;
 				$scope.buildUrl = url('translate');
@@ -140,11 +140,6 @@ angular.module('mt')
 							$scope.dict = [];
 						}
 					);
-
-				$scope.goTo = function (id)
-				{
-					$anchorScroll(id);
-				};
 
 				$scope.isOnScreen = function (index)
 				{

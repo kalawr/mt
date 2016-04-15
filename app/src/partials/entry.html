@@ -22,7 +22,7 @@
 
 	<nav class='navigation relative' ng-show='dict.length > 1'>
 		<ul keep-afloat>
-			<li ng-repeat='definition in dict track by $index' ng-class='{current: isOnScreen($index)}' ng-click='goTo("anchor"+ $index)' title='Jump to {{definition.variant}}'>
+			<li ng-repeat='definition in dict track by $index' ng-class='{current: isOnScreen($index)}' hash-link='anchor{{$index}}' title='Jump to {{definition.variant}}'>
 				{{definition.variant}}
 				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 				<span class='anchor'>
