@@ -8,8 +8,7 @@
 		</button><!--
 		--><input full-focus startup-focus ng-model='global.query' ng-change='autocomplete.disable(); autocomplete.fetch()' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
 	</form>
-
-	<ul class='autocomplete autocomplete--root lg' ng-show='autocomplete.list.length && global.query.length' ng-class='{inactive: !autocomplete.enabled}'>
+	<ul class='autocomplete autocomplete--root lg' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
 		<li ng-class='{active: $index === autocomplete.selection}' class='li-wrap' ng-repeat='item in autocomplete.list track by $index'>
 			<span class='contain' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</span>
 		</li>

@@ -13,7 +13,7 @@ angular.module('mt', ['ngRoute'])
 			);
 
 			$routeProvider
-				.when('/:query', {
+				.when('/entry/:query', {
 					templateUrl: '/partials/entry.html',
 					controller: 'EntryController'
 				})

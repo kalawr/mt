@@ -9,7 +9,7 @@ function convert(type)
 	};
 };
 
-module.exports.default = {
+module.exports = {
 
 	autocomplete: convert('ms'),
 	translate:    convert('m')

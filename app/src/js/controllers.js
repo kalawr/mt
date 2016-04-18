@@ -15,7 +15,7 @@ angular.module('mt')
 
 				$scope.global.submit = function (value)
 				{
-					$location.url('/'+ (value || $scope.global.query));
+					$location.url('/entry/'+ encodeURIComponent(value || $scope.global.query));
 				};
 
 				$scope.scroll = 0;
@@ -44,16 +44,7 @@ angular.module('mt')
 
 					function ()
 					{
-						var url;
-
-						if (!$scope.global.query) 
-						{
-							url = '/empty';
-						}
-						else
-						{
-							url = $scope.buildUrl($scope.global.query, $scope.global.languages);
-						}
+						var url = $scope.buildUrl($scope.global.query, $scope.global.languages);
 
 						$http.get(url)
 							.then(

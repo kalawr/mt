@@ -19,7 +19,7 @@ angular.module('mt')
 					return '/' +
 						String(type) +
 						'/' +
-						String(query) +
+						encodeURIComponent(String(query)) +
 						'/' +
 						String(languages);
 				};

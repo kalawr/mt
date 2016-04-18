@@ -2,6 +2,8 @@ app/node_modules/
 
 app/src/bower_components/
 
+app/config.js
+
 app/dist/**/!.gitkeep
 
 *.sublime-project
