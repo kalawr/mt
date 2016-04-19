@@ -13,6 +13,7 @@
 	width: 100%;
 
 	border: 0;
+	padding: 0;
 	color: inherit;
 	background-color: inherit;
 	appearance: none;
@@ -56,4 +57,5 @@
 	padding-bottom: var(--section-margin);
 	background-color: var(--emphasis-bg);
 	/* color: #3B3B3B; */
+	color: var(--color-on-bg);
 }

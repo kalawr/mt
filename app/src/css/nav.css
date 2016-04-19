@@ -12,7 +12,7 @@
 }
 
 .navigation li {
-	padding: 0.25em 0.5em;
+	padding: 0 0.5em;
 	border: 0 solid var(--stronger-emphasis-bg);
 
 	transition: all 0.3s linear;

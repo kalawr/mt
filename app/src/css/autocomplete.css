@@ -10,8 +10,6 @@ ul.autocomplete.inactive {
 
 ul.autocomplete> li {
 	display: block;
-	padding: 0.5em;
-	cursor: pointer;
 	-webkit-user-select: none;
 	user-select: none;
 }
@@ -22,10 +20,12 @@ ul.autocomplete> li:hover {
 
 ul.autocomplete> li.active {
 	background-color: var(--emphasis-bg);
+	color: var(--color-on-bg);
 }
 
 ul.autocomplete> li> span {
 	display: block;
+	cursor: pointer;
 }
 
 
