@@ -80,3 +80,8 @@ body {
 [ng-view] {
 	min-height: 100vh;
 }
+
+.no-select {
+	-webkit-user-select: none;
+	        user-select: none;
+}
