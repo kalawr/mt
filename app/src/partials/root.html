@@ -2,7 +2,7 @@
 	<div class='contain'>
 		<form class='search search--root' ng-submit='autocomplete.submit()' ng-keydown='autocomplete.interceptKeys($event)'>
 			<div class='langs' ng-controller='LanguagesController'>
-				<span class='lang'>{{global.languages[0].full}}</span> &mdash;
+				<span class='lang' ng-click='global.shiftLanguage()'>{{global.languages[0].full}}</span> &mdash;
 				<span class='lang' disabled>{{global.languages[1].full}}</span>.
 				<span class='swap' ng-click='global.swapLanguages()'>
 					<span class='ion ion-ios-loop-strong'></span>

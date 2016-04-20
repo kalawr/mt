@@ -11,16 +11,38 @@ angular.module('mt')
 			{
 				$scope.global = {};
 				$scope.global.query = '';
-				$scope.global.languages = [
+
+				$scope.global.availableLanguages = [
 					{
 						abbr: 'en',
 						full: 'English'
 					},
 					{
-						abbr: 'ru',
-						full: 'Russian'
+						abbr: 'de',
+						full: 'German'
+					},
+					{
+						abbr: 'fr',
+						full: 'French'
+					},
+					{
+						abbr: 'es',
+						full: 'Spanish'
+					},
+					{
+						abbr: 'it',
+						full: 'Italian'
 					}
 				];
+
+				$scope.global.firstLanguageIndex = 0;
+
+				$scope.global.languages = [];
+				$scope.global.languages[0] = $scope.global.availableLanguages[$scope.global.firstLanguageIndex];
+				$scope.global.languages[1] = {
+					abbr: 'ru',
+					full: 'Russian'
+				};
 
 				$scope.global.getLanguages = function ()
 				{
@@ -32,6 +54,12 @@ angular.module('mt')
 					var temp = $scope.global.languages[0];
 					$scope.global.languages[0] = $scope.global.languages[1];
 					$scope.global.languages[1] = temp;
+				};
+
+				$scope.global.shiftLanguage = function ()
+				{
+					$scope.global.firstLanguageIndex = ($scope.global.firstLanguageIndex+1) % $scope.global.availableLanguages.length;
+					$scope.global.languages[0] = $scope.global.availableLanguages[$scope.global.firstLanguageIndex];
 				};
 
 				$scope.global.submit = function (value)
