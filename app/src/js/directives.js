@@ -135,10 +135,15 @@ angular.module('mt')
 					$scope.menu = {};
 					$scope.menu.hidden = true;
 
-					$scope.toggleMenu = function ()
+					$scope.menu.toggle = function ()
 					{
 						$scope.menu.hidden = $scope.menu.hidden ? false: true; 
 					};
+
+					$scope.$on('langSwap', function ()
+					{
+						$scope.menu.hidden = true;
+					});
 				}	
 			} ;
 		}

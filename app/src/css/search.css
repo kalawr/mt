@@ -66,6 +66,10 @@
 	cursor: pointer;
 }
 
+.lang:first-child::after {
+	content: '\2014 ';
+}
+
 .lang-toggle.disabled {
 	cursor: default;
 }

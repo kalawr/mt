@@ -175,6 +175,8 @@ angular.module('mt')
 					var temp = $scope.global.languages.source;
 					$scope.global.languages.source = $scope.global.languages.destination;
 					$scope.global.languages.destination = temp;
+
+					$scope.$broadcast('langSwap');
 				};
 			}
 		]
