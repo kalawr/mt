@@ -13,6 +13,11 @@ angular.module('mt')
 				$scope.global.query = '';
 				$scope.global.languages = 'en-ru';
 
+				$scope.global.getLanguages = function ()
+				{
+					return $scope.global.languages;
+				};
+
 				$scope.global.submit = function (value)
 				{
 					$location.url('/entry/'+ encodeURIComponent(value || $scope.global.query));
@@ -44,7 +49,7 @@ angular.module('mt')
 
 					function ()
 					{
-						var url = $scope.buildUrl($scope.global.query, $scope.global.languages);
+						var url = $scope.buildUrl($scope.global.query, $scope.global.getLanguages());
 
 						$http.get(url)
 							.then(
@@ -130,7 +135,7 @@ angular.module('mt')
 				$scope.global.query = $routeParams.query;
 				$scope.buildUrl = url('translate');
 
-				$http.get($scope.buildUrl($scope.global.query, $scope.global.languages))
+				$http.get($scope.buildUrl($scope.global.query, $scope.global.getLanguages()))
 					.then(
 						function (response) 
 						{
