@@ -3,10 +3,10 @@
 		<form class='search search--root' ng-submit='autocomplete.submit()' ng-keydown='autocomplete.interceptKeys($event)'>
 			
 			<div class='langs no-select' ng-controller='LanguagesController'>
-				<span class='lang relative' ng-repeat='(key, value) in global.languages' ng-init='menu = {}; menu.languageMenuHidden = true'>
-					<span class='lang-toggle' ng-click='menu.languageMenuHidden = !value.disabled && menu.languageMenuHidden ? false : true' ng-class='{active: !menu.languageMenuHidden, disabled: value.disabled}'>{{value.full}}</span>{{ $index === 0 ? " &mdash;" : "." }}
-					<ul ng-hide='menu.languageMenuHidden' class='lang-menu'>
-						<li ng-repeat='option in availableLanguages' ng-click='chooseLanguage(key, $index); menu.languageMenuHidden = true'>{{option.full}}</li>
+				<span class='lang relative' ng-repeat='(key, value) in global.languages' menu-state>
+					<span class='lang-toggle' ng-click='!value.disabled && toggleMenu()' ng-class='{active: !menu.hidden, disabled: value.disabled}'>{{value.full}}</span>{{ $index === 0 ? " &mdash;" : "." }}
+					<ul ng-hide='menu.hidden' class='lang-menu'>
+						<li ng-repeat='option in availableLanguages' ng-click='chooseLanguage(key, $index); toggleMenu()'>{{option.full}}</li>
 					</ul>
 				</span>
 				<span class='swap' ng-click='swapLanguages()'>

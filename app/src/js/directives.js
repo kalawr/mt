@@ -125,3 +125,21 @@ angular.module('mt')
 			}
 		]
 	)
+
+	.directive('menuState', function ()
+		{
+			return {
+				scope: true, // meaning: create own scope that inherits from its enclosing scope
+				link : function ($scope, $element, $attrs)
+				{
+					$scope.menu = {};
+					$scope.menu.hidden = true;
+
+					$scope.toggleMenu = function ()
+					{
+						$scope.menu.hidden = $scope.menu.hidden ? false: true; 
+					};
+				}	
+			} ;
+		}
+	)
