@@ -3,13 +3,12 @@
 		<form class='search search--root' ng-submit='autocomplete.submit()' ng-keydown='autocomplete.interceptKeys($event)'>
 			
 			<div class='langs no-select' ng-controller='LanguagesController'>
-				<span class='lang relative' ng-class='{disabled: global.languages.source.disabled}'>
-					<span class='lang-toggle' ng-click='global.showHide()' ng-class='{active: !global.languageMenuHidden}'>{{global.languages.source.full}}</span>
-					<ul ng-hide='global.languageMenuHidden' class='lang-menu'>
-						<li ng-repeat='option in global.availableLanguages' ng-click='global.chooseLanguage("source", $index); global.showHide()'>{{option.full}}</li>
+				<span class='lang relative' ng-repeat='(key, value) in global.languages' ng-init='menu = {}; menu.languageMenuHidden = true'>
+					<span class='lang-toggle' ng-click='menu.languageMenuHidden = !value.disabled && menu.languageMenuHidden ? false : true' ng-class='{active: !menu.languageMenuHidden, disabled: value.disabled}'>{{value.full}}</span>{{ $index === 0 ? " &mdash;" : "." }}
+					<ul ng-hide='menu.languageMenuHidden' class='lang-menu'>
+						<li ng-repeat='option in global.availableLanguages' ng-click='global.chooseLanguage(key, $index); menu.languageMenuHidden = true'>{{option.full}}</li>
 					</ul>
-				</span> &mdash;
-				<span class='lang' ng-class='{disabled: global.languages.destination.disabled}'>{{global.languages.destination.full}}</span>.
+				</span>
 				<span class='swap' ng-click='global.swapLanguages()'>
 					<span class='ion ion-ios-loop-strong'></span>
 				</span>

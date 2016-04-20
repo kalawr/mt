@@ -66,11 +66,11 @@
 	cursor: pointer;
 }
 
-.lang.disabled {
+.lang-toggle.disabled {
 	cursor: default;
 }
 
-.lang:not(.disabled) .lang-toggle:hover,
+.lang-toggle:not(.disabled):hover,
 .lang-toggle.active {
 	color: #A0B7EF;
 	border-bottom: 1px dashed;
@@ -87,7 +87,13 @@
 
 .lang-menu {
 	position: absolute;
+	left: 0;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	background-color: var(--bg);
+}
+
+.lang-menu li:hover {
+	color: #A0B7EF;
 }

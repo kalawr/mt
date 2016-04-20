@@ -23,13 +23,6 @@ angular.module('mt')
 					}
 				};
 
-				$scope.global.languageMenuHidden = true;
-
-				$scope.global.showHide = function ()
-				{
-					$scope.global.languageMenuHidden = ($scope.global.languageMenuHidden ? false : true);
-				};
-
 				$scope.global.availableLanguages = [
 					{
 						abbr: 'en',
