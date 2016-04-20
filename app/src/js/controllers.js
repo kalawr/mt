@@ -11,11 +11,20 @@ angular.module('mt')
 			{
 				$scope.global = {};
 				$scope.global.query = '';
-				$scope.global.languages = 'en-ru';
+				$scope.global.languages = [
+					{
+						abbr: 'en',
+						full: 'English'
+					},
+					{
+						abbr: 'ru',
+						full: 'Russian'
+					}
+				];
 
 				$scope.global.getLanguages = function ()
 				{
-					return $scope.global.languages;
+					return $scope.global.languages.map(function (l) { return l.abbr }).join('-');
 				};
 
 				$scope.global.submit = function (value)
