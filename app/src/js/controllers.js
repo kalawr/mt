@@ -11,6 +11,24 @@ angular.module('mt')
 			{
 				$scope.global = {};
 				$scope.global.query = '';
+				$scope.global.languages = {
+					source: {
+						abbr: 'en',
+						full: 'English'
+					},
+					destination: {
+						abbr: 'ru',
+						full: 'Russian',
+						disabled: true
+					}
+				};
+
+				$scope.global.languageMenuHidden = true;
+
+				$scope.global.showHide = function ()
+				{
+					$scope.global.languageMenuHidden = ($scope.global.languageMenuHidden ? false : true);
+				};
 
 				$scope.global.availableLanguages = [
 					{
@@ -34,32 +52,24 @@ angular.module('mt')
 						full: 'Italian'
 					}
 				];
-
-				$scope.global.firstLanguageIndex = 0;
-
-				$scope.global.languages = [];
-				$scope.global.languages[0] = $scope.global.availableLanguages[$scope.global.firstLanguageIndex];
-				$scope.global.languages[1] = {
-					abbr: 'ru',
-					full: 'Russian'
-				};
-
-				$scope.global.getLanguages = function ()
+				
+				$scope.global.chooseLanguage = function (indexInCurrent, indexInAvailable)
 				{
-					return $scope.global.languages.map(function (l) { return l.abbr }).join('-');
+					$scope.global.languages[indexInCurrent] = $scope.global.availableLanguages[indexInAvailable];
+					// $scope.global.languages.source = $scope.global.availableLanguages[3] ||
+					// $scope.global.languages.destination = $scope.global.availableLanguages[1]
 				};
 
 				$scope.global.swapLanguages = function ()
 				{
-					var temp = $scope.global.languages[0];
-					$scope.global.languages[0] = $scope.global.languages[1];
-					$scope.global.languages[1] = temp;
+					var temp = $scope.global.languages.source;
+					$scope.global.languages.source = $scope.global.languages.destination;
+					$scope.global.languages.destination = temp;
 				};
 
-				$scope.global.shiftLanguage = function ()
+				$scope.global.getLanguages = function ()
 				{
-					$scope.global.firstLanguageIndex = ($scope.global.firstLanguageIndex+1) % $scope.global.availableLanguages.length;
-					$scope.global.languages[0] = $scope.global.availableLanguages[$scope.global.firstLanguageIndex];
+					return $scope.global.languages.source.abbr + '-' + $scope.global.languages.destination.abbr;
 				};
 
 				$scope.global.submit = function (value)
@@ -169,6 +179,14 @@ angular.module('mt')
 				{
 					$scope.autocomplete.enabled = false;
 				};
+			}
+		]
+	)
+
+	.controller('LanguagesController', ['$scope',
+			function ($scope)
+			{
+				
 			}
 		]
 	)

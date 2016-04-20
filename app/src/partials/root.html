@@ -1,13 +1,20 @@
 <div ng-controller='AutocompleteController'>
 	<div class='contain'>
 		<form class='search search--root' ng-submit='autocomplete.submit()' ng-keydown='autocomplete.interceptKeys($event)'>
+			
 			<div class='langs no-select' ng-controller='LanguagesController'>
-				<span class='lang' ng-click='global.shiftLanguage()'>{{global.languages[0].full}}</span> &mdash;
-				<span class='lang' disabled>{{global.languages[1].full}}</span>.
+				<span class='lang relative' ng-class='{disabled: global.languages.source.disabled}'>
+					<span class='lang-toggle' ng-click='global.showHide()' ng-class='{active: !global.languageMenuHidden}'>{{global.languages.source.full}}</span>
+					<ul ng-hide='global.languageMenuHidden' class='lang-menu'>
+						<li ng-repeat='option in global.availableLanguages' ng-click='global.chooseLanguage("source", $index); global.showHide()'>{{option.full}}</li>
+					</ul>
+				</span> &mdash;
+				<span class='lang' ng-class='{disabled: global.languages.destination.disabled}'>{{global.languages.destination.full}}</span>.
 				<span class='swap' ng-click='global.swapLanguages()'>
 					<span class='ion ion-ios-loop-strong'></span>
 				</span>
 			</div>
+			
 			<label for='query' class='no-select'>Search to Your Heart's Content</label>
 			<button type='submit' class='ok lg' title='Search'>
 				<svg>
