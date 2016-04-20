@@ -6,10 +6,10 @@
 				<span class='lang relative' ng-repeat='(key, value) in global.languages' ng-init='menu = {}; menu.languageMenuHidden = true'>
 					<span class='lang-toggle' ng-click='menu.languageMenuHidden = !value.disabled && menu.languageMenuHidden ? false : true' ng-class='{active: !menu.languageMenuHidden, disabled: value.disabled}'>{{value.full}}</span>{{ $index === 0 ? " &mdash;" : "." }}
 					<ul ng-hide='menu.languageMenuHidden' class='lang-menu'>
-						<li ng-repeat='option in global.availableLanguages' ng-click='global.chooseLanguage(key, $index); menu.languageMenuHidden = true'>{{option.full}}</li>
+						<li ng-repeat='option in availableLanguages' ng-click='chooseLanguage(key, $index); menu.languageMenuHidden = true'>{{option.full}}</li>
 					</ul>
 				</span>
-				<span class='swap' ng-click='global.swapLanguages()'>
+				<span class='swap' ng-click='swapLanguages()'>
 					<span class='ion ion-ios-loop-strong'></span>
 				</span>
 			</div>

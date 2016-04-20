@@ -23,43 +23,6 @@ angular.module('mt')
 					}
 				};
 
-				$scope.global.availableLanguages = [
-					{
-						abbr: 'en',
-						full: 'English'
-					},
-					{
-						abbr: 'de',
-						full: 'German'
-					},
-					{
-						abbr: 'fr',
-						full: 'French'
-					},
-					{
-						abbr: 'es',
-						full: 'Spanish'
-					},
-					{
-						abbr: 'it',
-						full: 'Italian'
-					}
-				];
-				
-				$scope.global.chooseLanguage = function (indexInCurrent, indexInAvailable)
-				{
-					$scope.global.languages[indexInCurrent] = $scope.global.availableLanguages[indexInAvailable];
-					// $scope.global.languages.source = $scope.global.availableLanguages[3] ||
-					// $scope.global.languages.destination = $scope.global.availableLanguages[1]
-				};
-
-				$scope.global.swapLanguages = function ()
-				{
-					var temp = $scope.global.languages.source;
-					$scope.global.languages.source = $scope.global.languages.destination;
-					$scope.global.languages.destination = temp;
-				};
-
 				$scope.global.getLanguages = function ()
 				{
 					return $scope.global.languages.source.abbr + '-' + $scope.global.languages.destination.abbr;
@@ -179,7 +142,40 @@ angular.module('mt')
 	.controller('LanguagesController', ['$scope',
 			function ($scope)
 			{
+				$scope.availableLanguages = [
+					{
+						abbr: 'en',
+						full: 'English'
+					},
+					{
+						abbr: 'de',
+						full: 'German'
+					},
+					{
+						abbr: 'fr',
+						full: 'French'
+					},
+					{
+						abbr: 'es',
+						full: 'Spanish'
+					},
+					{
+						abbr: 'it',
+						full: 'Italian'
+					}
+				];
 				
+				$scope.chooseLanguage = function (indexInCurrent, indexInAvailable)
+				{
+					$scope.global.languages[indexInCurrent] = $scope.availableLanguages[indexInAvailable];
+				};
+
+				$scope.swapLanguages = function ()
+				{
+					var temp = $scope.global.languages.source;
+					$scope.global.languages.source = $scope.global.languages.destination;
+					$scope.global.languages.destination = temp;
+				};
 			}
 		]
 	)
