@@ -64,3 +64,16 @@
 	color: var(--dim-color);
 	float: right;
 }
+
+.lang:not([disabled]) {
+	cursor: pointer;
+}
+
+.lang[disabled] {
+	cursor: default;
+}
+
+.lang:not([disabled]):hover {
+	color: #A0B7EF;
+	border-bottom: 1px dashed;
+}
