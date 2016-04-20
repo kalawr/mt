@@ -4,7 +4,7 @@
 			<div class='langs' ng-controller='LanguagesController'>
 				<span class='lang'>{{global.languages[0].full}}</span> &mdash;
 				<span class='lang' disabled>{{global.languages[1].full}}</span>.
-				<span class='swap'>
+				<span class='swap' ng-click='global.swapLanguages()'>
 					<span class='ion ion-ios-loop-strong'></span>
 				</span>
 			</div>

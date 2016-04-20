@@ -27,6 +27,13 @@ angular.module('mt')
 					return $scope.global.languages.map(function (l) { return l.abbr }).join('-');
 				};
 
+				$scope.global.swapLanguages = function ()
+				{
+					var temp = $scope.global.languages[0];
+					$scope.global.languages[0] = $scope.global.languages[1];
+					$scope.global.languages[1] = temp;
+				};
+
 				$scope.global.submit = function (value)
 				{
 					$location.url('/entry/'+ encodeURIComponent(value || $scope.global.query));
