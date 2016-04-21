@@ -6,22 +6,36 @@ var escCode  = 27;
 
 angular.module('mt')
 
-	.controller('ApplicationController', ['$scope', '$location', '$window',
-			function ($scope, $location, $window) 
+	.controller('ApplicationController', ['$scope', '$location', '$window', '$localStorage',
+			function ($scope, $location, $window, $localStorage) 
 			{
 				$scope.global = {};
+				$scope.$storage = $localStorage;
+
+				$scope.global.restoreFromStorage = function ()
+				{
+					return $scope.$storage.languages;
+				};
+
+				$scope.$storage.$default({
+
+					languages: [
+						{
+							abbr: 'en',
+							full: 'English'
+						},
+						{
+							abbr: 'ru',
+							full: 'Russian',
+							disabled: true
+						}
+					]
+				});
+
 				$scope.global.query = '';
-				$scope.global.languages = [
-					{
-						abbr: 'en',
-						full: 'English'
-					},
-					{
-						abbr: 'ru',
-						full: 'Russian',
-						disabled: true
-					}
-				];
+
+
+				$scope.global.languages = $scope.global.restoreFromStorage();
 
 				$scope.allLanguages = [
 					{
@@ -86,6 +100,11 @@ angular.module('mt')
 					},
 					50
 				);
+
+				$scope.$watchCollection('global.languages', function (value) 
+				{
+						$scope.$storage.languages = value;
+				});
 			}
 		]
 	)

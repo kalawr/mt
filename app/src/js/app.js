@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mt', ['ngRoute'])
+angular.module('mt', ['ngRoute', 'ngStorage'])
 	
 	.config(['$routeProvider', '$locationProvider',
 		function ($routeProvider, $locationProvider)
