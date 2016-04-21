@@ -11,26 +11,70 @@ angular.module('mt')
 			{
 				$scope.global = {};
 				$scope.global.query = '';
-				$scope.global.languages = {
-					source: {
+				$scope.global.languages = [
+					{
 						abbr: 'en',
 						full: 'English'
 					},
-					destination: {
+					{
 						abbr: 'ru',
 						full: 'Russian',
 						disabled: true
 					}
-				};
+				];
+
+				$scope.allLanguages = [
+					{
+						abbr: 'en',
+						full: 'English'
+					},
+					{
+						abbr: 'de',
+						full: 'German'
+					},
+					{
+						abbr: 'fr',
+						full: 'French'
+					},
+					{
+						abbr: 'es',
+						full: 'Spanish'
+					},
+					{
+						abbr: 'it',
+						full: 'Italian'
+					},
+					{
+						abbr: 'ru',
+						full: 'Russian',
+						disabled: true
+					}
+				];
+
+				$scope.selectableLanguages = $scope.allLanguages.filter(function (l)
+				{
+					return !l.disabled;
+				});
 
 				$scope.global.getLanguages = function ()
 				{
-					return $scope.global.languages.source.abbr + '-' + $scope.global.languages.destination.abbr;
+					return $scope.global.languages[0].abbr + '-' + $scope.global.languages[1].abbr;
+				};
+
+				$scope.global.mapLanguages = function (query)
+				{
+					return query.split('-').map(function (abbr)
+					{
+						return $scope.allLanguages.find(function (element) 
+						{
+							return element.abbr === abbr;
+						});
+					});
 				};
 
 				$scope.global.submit = function (value)
 				{
-					$location.url('/entry/'+ encodeURIComponent(value || $scope.global.query));
+					$location.url('/entry/'+ encodeURIComponent(value || $scope.global.query) +'/'+$scope.global.getLanguages());
 				};
 
 				$scope.scroll = 0;
@@ -142,39 +186,17 @@ angular.module('mt')
 	.controller('LanguagesController', ['$scope',
 			function ($scope)
 			{
-				$scope.availableLanguages = [
-					{
-						abbr: 'en',
-						full: 'English'
-					},
-					{
-						abbr: 'de',
-						full: 'German'
-					},
-					{
-						abbr: 'fr',
-						full: 'French'
-					},
-					{
-						abbr: 'es',
-						full: 'Spanish'
-					},
-					{
-						abbr: 'it',
-						full: 'Italian'
-					}
-				];
 				
 				$scope.chooseLanguage = function (indexInCurrent, indexInAvailable)
 				{
-					$scope.global.languages[indexInCurrent] = $scope.availableLanguages[indexInAvailable];
+					$scope.global.languages[indexInCurrent] = $scope.selectableLanguages[indexInAvailable];
 				};
 
 				$scope.swapLanguages = function ()
 				{
-					var temp = $scope.global.languages.source;
-					$scope.global.languages.source = $scope.global.languages.destination;
-					$scope.global.languages.destination = temp;
+					var temp = $scope.global.languages[0];
+					$scope.global.languages[0] = $scope.global.languages[1];
+					$scope.global.languages[1] = temp;
 
 					$scope.$broadcast('langSwap');
 				};
@@ -203,6 +225,7 @@ angular.module('mt')
 			function ($scope, $http, $routeParams, $window, url)
 			{
 				$scope.global.query = $routeParams.query;
+				$scope.global.languages = $scope.global.mapLanguages($routeParams.languages);
 				$scope.buildUrl = url('translate');
 
 				$http.get($scope.buildUrl($scope.global.query, $scope.global.getLanguages()))

@@ -13,7 +13,7 @@ angular.module('mt', ['ngRoute'])
 			);
 
 			$routeProvider
-				.when('/entry/:query', {
+				.when('/entry/:query/:languages', {
 					templateUrl: '/partials/entry.html',
 					controller: 'EntryController'
 				})
