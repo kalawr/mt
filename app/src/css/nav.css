@@ -36,7 +36,7 @@
 	fill: var(--anchor);
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1700px) {
 	.navigation {
 		display: none;
 	}
