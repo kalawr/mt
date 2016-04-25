@@ -23,8 +23,7 @@
 	<nav class='navigation relative' ng-show='dict.length > 1'>
 		<ul keep-afloat>
 			<li ng-repeat='definition in dict track by $index' ng-class='{current: isOnScreen($index)}' hash-link='anchor{{$index}}' title='Jump to {{definition.variant}}'>
-				{{definition.variant}}
-				<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+				{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 				<span class='anchor'>
 					<svg><use xlink:href='#anchor'></use></svg>
 				</span>
@@ -36,8 +35,7 @@
 		<div class='contain'>
 			<div ng-repeat='definition in dict track by $index' class='definition' mark-position ng-init='defID = $index'>
 				<dt id='{{"anchor" + $index}}' class='xl'>
-					{{definition.variant}}
-					<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+					{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
 				</dt>
 				<div ng-repeat='domain in definition.domains track by $index' class='domain' ng-init='domainID = $index'>
 					<div class='domain-name'>{{domain.domain}}</div>
