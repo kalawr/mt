@@ -1,9 +1,5 @@
 footer {
-	padding-top: var(--section-margin);
-	padding-bottom: var(--section-margin);
-
-	color: white;
-	background-color: #333;
+	color: var(--dim-color);
 }
 
 footer a,
