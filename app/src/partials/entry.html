@@ -32,8 +32,8 @@
 		</ul>
 	</nav>
 
-	<div class='contain'>
-		<dl>
+	<dl ng-show='dict.length'>
+		<div class='contain'>
 			<div ng-repeat='definition in dict track by $index' class='definition' mark-position ng-init='defID = $index'>
 				<dt id='{{"anchor" + $index}}' class='xl'>
 					{{definition.variant}}
@@ -46,6 +46,12 @@
 					</div>
 				</div>
 			</div>
-		</dl>
-	</div>	
+		</div>
+	</dl>
+
+	<div class='contain' ng-hide='dict.length'>
+		<div class='not-found lg'>
+			Not found.
+		</div>
+	</div>
 </div>
