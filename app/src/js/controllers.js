@@ -1,8 +1,9 @@
 'use strict';
 
-var upCode   = 38;
-var downCode = 40;
-var escCode  = 27;
+var upCode    = 38;
+var downCode  = 40;
+var escCode   = 27;
+var enterCode = 13;
 
 angular.module('mt')
 
@@ -109,8 +110,8 @@ angular.module('mt')
 		]
 	)
 
-	.controller('AutocompleteController', ['$scope', '$http', 'focus', 'url',
-			function ($scope, $http, focus, url)
+	.controller('AutocompleteController', ['$scope', '$http', '$window', 'focus', 'url',
+			function ($scope, $http, $window, focus, url)
 			{
 				$scope.autocomplete = {};
 				$scope.autocomplete.list = [];
@@ -145,39 +146,50 @@ angular.module('mt')
 
 				$scope.autocomplete.interceptKeys = function (event)
 				{
-					if (event.keyCode == upCode)
-					{
-						event.preventDefault();
+					$scope.$apply(
+						function ()
+						{
+							if (event.keyCode == upCode)
+							{
+								event.preventDefault();
 
-						if ($scope.autocomplete.selection >= 0)
-						{
-							$scope.autocomplete.selection = ($scope.autocomplete.list.length+$scope.autocomplete.selection-1) % $scope.autocomplete.list.length;
-						}
-						else
-						{
-							$scope.autocomplete.selection = $scope.autocomplete.list.length - 1;
-						}
-					}
-					else
-					if (event.keyCode == downCode)
-					{
-						event.preventDefault();
+								if ($scope.autocomplete.selection >= 0)
+								{
+									$scope.autocomplete.selection = ($scope.autocomplete.list.length+$scope.autocomplete.selection-1) % $scope.autocomplete.list.length;
+								}
+								else
+								{
+									$scope.autocomplete.selection = $scope.autocomplete.list.length - 1;
+								}
+							}
+							else
+							if (event.keyCode == downCode)
+							{
+								event.preventDefault();
 
-						if ($scope.autocomplete.selection >= 0)
-						{
-							$scope.autocomplete.selection = ($scope.autocomplete.selection+1) % $scope.autocomplete.list.length;
+								if ($scope.autocomplete.selection >= 0)
+								{
+									$scope.autocomplete.selection = ($scope.autocomplete.selection+1) % $scope.autocomplete.list.length;
+								}
+								else
+								{
+									$scope.autocomplete.selection = 0;
+								}
+							}
+							else
+							if (event.keyCode == escCode)
+							{
+								event.preventDefault();
+								$scope.autocomplete.reset();
+							}
+							else
+							if (event.keyCode == enterCode)
+							{
+								event.preventDefault();
+								$scope.autocomplete.submit();
+							}
 						}
-						else
-						{
-							$scope.autocomplete.selection = 0;
-						}
-					}
-					else
-					if (event.keyCode == escCode)
-					{
-						event.preventDefault();
-						$scope.autocomplete.reset();
-					}
+					);
 				};
 
 				$scope.autocomplete.submit = function ()
@@ -220,6 +232,8 @@ angular.module('mt')
 				};
 
 				$scope.autocomplete.reset();
+
+				angular.element($window).bind('keydown', $scope.autocomplete.interceptKeys)
 			}
 		]
 	)

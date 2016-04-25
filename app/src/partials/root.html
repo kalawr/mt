@@ -1,6 +1,6 @@
 <div ng-controller='AutocompleteController'>
 	<div class='contain'>
-		<form class='search search--root' ng-submit='autocomplete.submit()' ng-keydown='autocomplete.interceptKeys($event)'>
+		<form class='search search--root' ng-submit='autocomplete.submit()'>
 			
 			<div class='langs no-select' ng-controller='LanguagesController'>
 				<span class='lang relative' ng-repeat='language in global.languages track by $index' ng-controller='LanguageMenuController' ng-init='type = $index'>
