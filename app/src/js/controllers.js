@@ -114,7 +114,6 @@ angular.module('mt')
 			{
 				$scope.autocomplete = {};
 				$scope.autocomplete.list = [];
-				$scope.autocomplete.selection = 0;
 				$scope.autocomplete.enabled = false;
 
 				$scope.buildUrl = url('autocomplete');
@@ -129,12 +128,12 @@ angular.module('mt')
 								function (response) 
 								{
 									$scope.autocomplete.list = response.data;
-									$scope.autocomplete.selection = 0;
+									$scope.autocomplete.reset();
 								},
 								function (error)
 								{
 									$scope.autocomplete.list = [];
-									$scope.autocomplete.selection = 0;
+									$scope.autocomplete.reset();
 								}
 							)
 							.then($scope.autocomplete.enable)
@@ -149,25 +148,41 @@ angular.module('mt')
 					if (event.keyCode == upCode)
 					{
 						event.preventDefault();
-						$scope.autocomplete.selection = ($scope.autocomplete.list.length+$scope.autocomplete.selection-1) % $scope.autocomplete.list.length;
+
+						if ($scope.autocomplete.selection >= 0)
+						{
+							$scope.autocomplete.selection = ($scope.autocomplete.list.length+$scope.autocomplete.selection-1) % $scope.autocomplete.list.length;
+						}
+						else
+						{
+							$scope.autocomplete.selection = $scope.autocomplete.list.length - 1;
+						}
 					}
 					else
 					if (event.keyCode == downCode)
 					{
 						event.preventDefault();
-						$scope.autocomplete.selection = ($scope.autocomplete.selection+1) % $scope.autocomplete.list.length;
+
+						if ($scope.autocomplete.selection >= 0)
+						{
+							$scope.autocomplete.selection = ($scope.autocomplete.selection+1) % $scope.autocomplete.list.length;
+						}
+						else
+						{
+							$scope.autocomplete.selection = 0;
+						}
 					}
 					else
 					if (event.keyCode == escCode)
 					{
 						event.preventDefault();
-						$scope.autocomplete.list = [];
+						$scope.autocomplete.reset();
 					}
 				};
 
 				$scope.autocomplete.submit = function ()
 				{
-					if ($scope.autocomplete.enabled && $scope.autocomplete.list.length)
+					if ($scope.autocomplete.enabled && $scope.autocomplete.list.length && $scope.autocomplete.selection >= 0)
 					{
 						$scope.global.submit($scope.autocomplete.list[$scope.autocomplete.selection])
 					}
@@ -198,6 +213,13 @@ angular.module('mt')
 				{
 					$scope.autocomplete.enabled = false;
 				};
+
+				$scope.autocomplete.reset = function ()
+				{
+					$scope.autocomplete.selection = -1;
+				};
+
+				$scope.autocomplete.reset();
 			}
 		]
 	)
