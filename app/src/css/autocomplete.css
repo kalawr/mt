@@ -28,6 +28,14 @@ ul.autocomplete> li> span {
 	cursor: pointer;
 }
 
+ul.autocomplete> hr {
+	width: 25%;
+	max-width: 100px;
+	margin-bottom: var(--section-margin);
+	border: 0;
+	border-bottom: 1px solid var(--dim-color);
+}
+
 
 ul.autocomplete--entry {
 	margin-top: 1em;

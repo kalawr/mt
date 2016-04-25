@@ -27,5 +27,7 @@
 		<li ng-class='{active: $index === autocomplete.selection}' class='li-wrap' ng-repeat='item in autocomplete.list track by $index'>
 			<span class='contain' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</span>
 		</li>
+
+		<hr />
 	</ul>
 </div>
