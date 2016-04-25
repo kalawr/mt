@@ -292,6 +292,7 @@ angular.module('mt')
 						function (error)
 						{
 							$scope.dict = [];
+							$scope.responseStatus = error.status;
 						}
 					);
 
