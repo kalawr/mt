@@ -10,26 +10,28 @@ ul.autocomplete.inactive {
 
 ul.autocomplete> li {
 	display: block;
+	float: left;
+	clear: both;
+	
+	cursor: pointer;
 	-webkit-user-select: none;
-	user-select: none;
+	        user-select: none;
+
+	border-bottom: 1px solid transparent;
 }
 
 ul.autocomplete> li:hover {
 	color: var(--bright-color);
+	border-color: var(--dim-color);
 }
 
 ul.autocomplete> li.active {
-	background-color: var(--emphasis-bg);
-	color: var(--color-on-bg);
-}
-
-ul.autocomplete> li> span {
-	display: block;
-	cursor: pointer;
+	border-color: currentColor;
 }
 
 ul.autocomplete> hr {
 	width: 25%;
+	clear: both;
 	max-width: 100px;
 	margin-bottom: var(--section-margin);
 	border: 0;
