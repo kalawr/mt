@@ -1,5 +1,29 @@
 var cheerio = require('cheerio');
 
+
+var identifiesAs = {};
+
+identifiesAs.variant = function (element)
+{
+	return element.is('script + table tr > td[bgcolor="#DBDBDB"] > a[href*="m.exe"]');
+};
+
+identifiesAs.partOfSpeech = function (element)
+{
+	return element.is('script + table tr > td[bgcolor="#DBDBDB"] em');
+};
+
+identifiesAs.domainName = function (element)
+{
+	return element.is('script + table tr > td:not([bgcolor="#DBDBDB"]) > a[href*="sc="]');
+};
+
+identifiesAs.translation = function (element)
+{
+	return element.is('script + table tr > td:not([bgcolor="#DBDBDB"]) a[href*="m.exe"]:not([href*="UserName"])');
+};
+
+
 module.exports.parse = function (html)
 {
 	var $ = cheerio.load(html);
@@ -10,20 +34,17 @@ module.exports.parse = function (html)
 	{
 		var $el = $(el);
 
-		// Variant?
-		if ($el.is('script + table tr > td[bgcolor="#DBDBDB"] > a[href*="m.exe"]'))
+		if (identifiesAs.variant($el))
 		{
 			result.push({variant: $el.text()});
 		}
 		else
-		// Part of Speech?
-		if ($el.is('script + table tr > td[bgcolor="#DBDBDB"] em'))
+		if (identifiesAs.partOfSpeech($el))
 		{
 			result[result.length-1].partOfSpeech = $el.text();
 		}
 		else
-		// Domain Name?
-		if ($el.is('script + table tr > td:not([bgcolor="#DBDBDB"]) > a[href*="sc="]'))
+		if (identifiesAs.domainName($el))
 		{
 			if (!result[result.length-1].domains)
 			{
@@ -36,8 +57,7 @@ module.exports.parse = function (html)
 			}
 		}
 		else
-		// Translation?
-		if ($el.is('script + table tr > td:not([bgcolor="#DBDBDB"]) a[href*="m.exe"]:not([href*="UserName"])'))
+		if (identifiesAs.translation($el))
 		{
 			var lastResult = result[result.length-1];
 			var lastDomain = lastResult.domains[lastResult.domains.length-1];
