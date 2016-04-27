@@ -81,38 +81,6 @@ angular.module('mt')
 		}
 	)
 
-	.directive('submittable', ['$window', function ($window)
-			{
-				return {
-
-					restrict: 'AE',
-					templateUrl: '/partials/submittable.html',
-					transclude: true,
-					link: function ($scope, $element, $attrs)
-					{
-						function clickAction()
-						{
-							$scope.$apply(function ()
-								{
-									$scope.global.query = $scope.translation;
-									$scope.global.submit();
-								}
-							);
-							
-						}
-
-						$scope.prod = function ()
-						{
-							$scope.entry.clickedUpon = ($scope.entry.clickedUpon === $scope.id) ? null : $scope.id;
-						};
-
-						angular.element('button', $element).click(clickAction);
-					}
-				};
-			}
-		]
-	)
-
 	.directive('hashLink', ['$anchorScroll', function ($anchorScroll)
 			{
 				return function ($scope, $element, $attrs)

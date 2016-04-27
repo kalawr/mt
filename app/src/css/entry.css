@@ -30,39 +30,12 @@
 	color: var(--bright-color);
 }
 
-.entry dl dd > span::after {
+.entry dl dd::after {
 	content: ', ';
 }
 
-.entry dl dd:last-child > span::after {
+.entry dl dd:last-child::after {
 	content: '';
-}
-
-.entry dl dd > span.active {
-	border-bottom: 1px solid gray;
-}
-
-.entry dd button {
-	position: absolute;
-	top: calc(100% + 0.25em);
-	left: 0;
-	z-index: 1;
-
-	color: var(--bg);
-	background-color: var(--emphasis-bg);
-	padding: 0.20em 0.35em 0.05em;
-	border: 0;
-	border-radius: 0.25em;
-}
-
-.entry dd button:focus {
-	outline: 0;
-}
-
-.entry dd button svg {
-	width: 1em;
-	height: 1em;
-	fill: currentColor;
 }
 
 .not-found {

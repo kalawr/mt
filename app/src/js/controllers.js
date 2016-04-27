@@ -308,7 +308,6 @@ angular.module('mt')
 				};
 
 				$scope.entry = {};
-				$scope.entry.clickedUpon = null;
 			}
 		]
 	)
