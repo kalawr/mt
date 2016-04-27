@@ -15,7 +15,6 @@
     "angular": "^1.5.3",
     "angular-route": "^1.5.3",
     "lodash": "^4.10.0",
-    "Ionicons": "ionicons#^2.0.1",
     "ngstorage": "^0.3.10"
   }
 }
