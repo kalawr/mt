@@ -17,7 +17,7 @@ module.exports.parse = function (html)
 		}
 		else
 		// Part of Speech?
-		if ($el.is('script + table tr > td[bgcolor="#DBDBDB"] > em'))
+		if ($el.is('script + table tr > td[bgcolor="#DBDBDB"] em'))
 		{
 			result[result.length-1].partOfSpeech = $el.text();
 		}
