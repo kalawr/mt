@@ -276,25 +276,13 @@ angular.module('mt')
 		]
 	)
 
-	.controller('EntryController', ['$scope', '$http', '$routeParams', '$window', 'url',
-			function ($scope, $http, $routeParams, $window, url)
+	.controller('EntryController', ['$scope', '$routeParams', '$window', 'dict',
+			function ($scope, $routeParams, $window, dict)
 			{
 				$scope.global.query = $routeParams.query;
 				$scope.global.languages = $scope.global.mapLanguages($routeParams.languages);
-				$scope.buildUrl = url('translate');
 
-				$http.get($scope.buildUrl($scope.global.query, $scope.global.getLanguages()))
-					.then(
-						function (response) 
-						{
-							$scope.dict = response.data;
-						},
-						function (error)
-						{
-							$scope.dict = [];
-							$scope.responseStatus = error.status;
-						}
-					);
+				$scope.dict = dict;
 
 				$scope.isOnScreen = function (index)
 				{
@@ -306,8 +294,6 @@ angular.module('mt')
 					
 					return pb > $scope.scroll && pt < ($scope.scroll + $window.innerHeight);
 				};
-
-				$scope.entry = {};
 			}
 		]
 	)
