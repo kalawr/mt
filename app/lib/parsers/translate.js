@@ -23,14 +23,17 @@ module.exports.parse = function (html)
 		}
 		else
 		// Domain Name?
-		if ($el.is('script + table tr > td:not([bgcolor="#DBDBDB"]) > a[title]'))
+		if ($el.is('script + table tr > td:not([bgcolor="#DBDBDB"]) > a[href*="sc="]'))
 		{
 			if (!result[result.length-1].domains)
 			{
 				result[result.length-1].domains = [];
 			}
 
-			result[result.length-1].domains.push({ domain: $el.attr('title') });
+			if ($el.attr('title'))
+			{
+				result[result.length-1].domains.push({ domain: $el.attr('title') });
+			}
 		}
 		else
 		// Translation?
