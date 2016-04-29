@@ -21,7 +21,6 @@ ul.autocomplete> li {
 }
 
 ul.autocomplete> li:hover {
-	color: var(--bright-color);
 	border-color: var(--dim-color);
 }
 

@@ -6,12 +6,12 @@
 }
 
 .default {
-	--color: #454545;
+	--color: #525252;
 	--color-on-bg: #555;
-	--bright-color: #0C0C0C;
+	--bright-color: #1C1C1C;
 	--dim-color: #CCC;
 	--bg: #FFFFFF;
-	--emphasis-bg: #89C4F4; 
+	--emphasis-bg: #9F93E4; 
 	--stronger-emphasis-bg: #98D0F1;
 	--anchor: #8A8A8A;
 }

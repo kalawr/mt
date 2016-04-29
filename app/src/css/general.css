@@ -21,6 +21,7 @@ body {
 	margin-right: auto;
 	padding-left: 4.5rem;
 	padding-right: 4.5rem;
+	/* background-color: rgba(0,255,0,0.2); */
 }
 
 @media (max-width: 560px) {
@@ -66,7 +67,7 @@ body {
 
 ::selection {
 	background-color: var(--emphasis-bg);
-	color: inherit;
+	color: var(--color-on-bg);
 }
 
 ::-webkit-input-placeholder {
