@@ -7,8 +7,8 @@ var enterCode = 13;
 
 angular.module('mt')
 
-	.controller('ApplicationController', ['$scope', '$location', '$window', '$localStorage',
-			function ($scope, $location, $window, $localStorage) 
+	.controller('ApplicationController', ['$scope', '$location', '$window', '$localStorage', 'languageMap',
+			function ($scope, $location, $window, $localStorage, languageMap) 
 			{
 				$scope.global = {};
 				$scope.$storage = $localStorage;
@@ -19,18 +19,7 @@ angular.module('mt')
 				};
 
 				$scope.$storage.$default({
-
-					languages: [
-						{
-							abbr: 'en',
-							full: 'English'
-						},
-						{
-							abbr: 'ru',
-							full: 'Russian',
-							disabled: true
-						}
-					]
+					languages: ['en', 'ru']
 				});
 
 				$scope.global.query = '';
@@ -38,53 +27,24 @@ angular.module('mt')
 
 				$scope.global.languages = $scope.global.restoreFromStorage();
 
-				$scope.allLanguages = [
-					{
-						abbr: 'en',
-						full: 'English'
-					},
-					{
-						abbr: 'de',
-						full: 'German'
-					},
-					{
-						abbr: 'fr',
-						full: 'French'
-					},
-					{
-						abbr: 'es',
-						full: 'Spanish'
-					},
-					{
-						abbr: 'it',
-						full: 'Italian'
-					},
-					{
-						abbr: 'ru',
-						full: 'Russian',
-						disabled: true
-					}
-				];
-
-				$scope.selectableLanguages = $scope.allLanguages.filter(function (l)
+				$scope.isLocked = function (lang)
 				{
-					return !l.disabled;
+					return lang === 'ru';
+				};
+
+				$scope.selectableLanguages = Object.keys(languageMap).filter(function (l)
+				{
+					return !$scope.isLocked(l);
 				});
 
 				$scope.global.getLanguages = function ()
 				{
-					return $scope.global.languages[0].abbr + '-' + $scope.global.languages[1].abbr;
+					return $scope.global.languages.join('-');
 				};
 
 				$scope.global.mapLanguages = function (query)
 				{
-					return query.split('-').map(function (abbr)
-					{
-						return $scope.allLanguages.find(function (element) 
-						{
-							return element.abbr === abbr;
-						});
-					});
+					return query.split('-');
 				};
 
 				$scope.global.submit = function (value)
