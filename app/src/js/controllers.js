@@ -7,8 +7,9 @@ var enterCode = 13;
 
 angular.module('mt')
 
-	.controller('ApplicationController', ['$scope', '$location', '$window', '$localStorage', 'languageMap',
-			function ($scope, $location, $window, $localStorage, languageMap) 
+
+	.controller('ApplicationController', ['$scope', '$location', '$localStorage',
+			function ($scope, $location, $localStorage) 
 			{
 				$scope.global = {};
 				$scope.$storage = $localStorage;
@@ -42,25 +43,10 @@ angular.module('mt')
 					return $scope.global.languages.join('-');
 				};
 
-				$scope.global.mapLanguages = function (query)
-				{
-					return query.split('-');
-				};
-
 				$scope.global.submit = function (value)
 				{
 					$location.url('/entry/'+ encodeURIComponent(value || $scope.global.query) +'/'+$scope.global.getLanguages());
 				};
-
-				$scope.scroll = 0;
-
-				$window.onscroll = _.throttle(
-					function ()
-					{
-						$scope.$apply(function () { $scope.scroll = $window.document.body.scrollTop; })
-					},
-					50
-				);
 
 				$scope.$watchCollection('global.languages', function (value) 
 				{
@@ -236,24 +222,13 @@ angular.module('mt')
 		]
 	)
 
-	.controller('EntryController', ['$scope', '$routeParams', '$window', 'dict',
-			function ($scope, $routeParams, $window, dict)
+	.controller('EntryController', ['$scope', '$routeParams', 'dict',
+			function ($scope, $routeParams, dict)
 			{
-				$scope.global.query = $routeParams.query;
-				$scope.global.languages = $scope.global.mapLanguages($routeParams.languages);
+				$scope.global.query     = $routeParams.query;
+				$scope.global.languages = $routeParams.languages.split('-');
 
 				$scope.dict = dict;
-
-				$scope.isOnScreen = function (index)
-				{
-					var pt = $scope.dict[index].topCoordinate;
-					var pb = $scope.dict[index].bottomCoordinate;
-
-					if (!(pt && pb))
-						return false;
-					
-					return pb > $scope.scroll && pt < ($scope.scroll + $window.innerHeight);
-				};
 			}
 		]
 	)
