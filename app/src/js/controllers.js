@@ -7,36 +7,18 @@ var enterCode = 13;
 
 angular.module('mt')
 
-
 	.controller('ApplicationController', ['$scope', '$location', '$localStorage',
 			function ($scope, $location, $localStorage) 
 			{
+				$scope.$storage = $localStorage.$default(
+					{
+						languages: ['en', 'ru']
+					}
+				);
+
 				$scope.global = {};
-				$scope.$storage = $localStorage;
-
-				$scope.global.restoreFromStorage = function ()
-				{
-					return $scope.$storage.languages;
-				};
-
-				$scope.$storage.$default({
-					languages: ['en', 'ru']
-				});
-
 				$scope.global.query = '';
-
-
-				$scope.global.languages = $scope.global.restoreFromStorage();
-
-				$scope.isLocked = function (lang)
-				{
-					return lang === 'ru';
-				};
-
-				$scope.selectableLanguages = Object.keys(languageMap).filter(function (l)
-				{
-					return !$scope.isLocked(l);
-				});
+				$scope.global.languages = $scope.$storage.languages;
 
 				$scope.global.getLanguages = function ()
 				{
@@ -50,7 +32,7 @@ angular.module('mt')
 
 				$scope.$watchCollection('global.languages', function (value) 
 				{
-						$scope.$storage.languages = value;
+					$scope.$storage.languages = value;
 				});
 			}
 		]
@@ -184,9 +166,18 @@ angular.module('mt')
 		]
 	)
 
-	.controller('LanguagesController', ['$scope',
-			function ($scope)
+	.controller('LanguagesController', ['$scope', 'languageMap',
+			function ($scope, languageMap)
 			{
+				$scope.isLocked = function (lang)
+				{
+					return lang === 'ru';
+				};
+
+				$scope.selectableLanguages = Object.keys(languageMap).filter(function (l)
+				{
+					return !$scope.isLocked(l);
+				});
 				
 				$scope.chooseLanguage = function (indexInCurrent, indexInAvailable)
 				{
