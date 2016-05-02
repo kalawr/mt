@@ -1,0 +1,6 @@
+<span class='relative' ng-controller='LanguageMenuController' ng-init='type = $index'>
+	<span class='lang-toggle' ng-click='isLocked(language) || menu.toggle()' ng-class='{active: !menu.hidden, disabled: isLocked(language)}'>{{language | fullLanguage:true}}</span>
+	<ul class='lang-menu' ng-hide='menu.hidden'>
+		<li ng-repeat='option in selectableLanguages' ng-click='chooseLanguage(type, $index); menu.toggle()'>{{option | fullLanguage:true}}</li>
+	</ul>
+</span>

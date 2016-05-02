@@ -83,13 +83,29 @@ angular.module('mt')
 
 	.directive('hashLink', ['$anchorScroll', function ($anchorScroll)
 			{
-				return function ($scope, $element, $attrs)
-				{
-					$element.bind('click', function ()
-						{
-							$anchorScroll($attrs.hashLink);
-						});
+				return {
+
+					restrict: 'A',
+					link: function ($scope, $element, $attrs)
+					{
+						$element.bind('click', 
+							function ()
+							{
+								$anchorScroll($attrs.hashLink);
+							}
+						);
+					}
 				};
 			}
 		]
+	)
+
+	.directive('language', function ()
+		{
+			return {
+
+				restrict: 'E',
+				templateUrl: '/partials/language.html'
+			};
+		}
 	)
