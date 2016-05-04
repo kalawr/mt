@@ -28,7 +28,7 @@ language:first-child::after {
 }
 
 .lang-menu li:hover {
-	color: #A0B7EF;
+	color: var(--emphasis-bg);
 }
 
 .langs label {
@@ -42,6 +42,6 @@ language:first-child::after {
 .langs [type=checkbox]:checked ~ .lang-toggle,
 .langs [type=checkbox]:not([disabled]) ~ .lang-toggle:hover,
 .langs .swap:hover {
-	color: #A0B7EF;
+	color: var(--emphasis-bg);
 	border-bottom: 1px dashed;
 }
