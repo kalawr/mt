@@ -36,18 +36,3 @@ ul.autocomplete> hr {
 	border: 0;
 	border-bottom: 1px solid var(--dim-color);
 }
-
-
-ul.autocomplete--entry {
-	margin-top: 1em;
-	position: absolute;
-	width: 100%;
-	background-color: var(--bg);
-	border: 1px solid var(--border-color);
-	z-index: 1;
-}
-
-ul.autocomplete--entry> li {
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-}

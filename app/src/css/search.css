@@ -3,6 +3,7 @@
 }
 
 .search label {
+	color: var(--dim-color);
 	display: block;
 }
 
@@ -44,17 +45,3 @@
 	height: 100%;
 	fill: currentColor;
 }
-
-
-.search--root label {
-	color: var(--dim-color);
-}
-
-
-.search--entry {
-	padding-bottom: var(--section-margin);
-	background-color: var(--emphasis-bg);
-	/* color: #3B3B3B; */
-	color: var(--color-on-bg);
-}
-
