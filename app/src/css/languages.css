@@ -1,0 +1,47 @@
+.langs {
+	color: var(--dim-color);
+	float: right;
+}
+
+language:first-child::after {
+	content: '\2014 ';
+}
+
+.langs .swap {
+	cursor: pointer;
+}
+
+.langs .swap svg {
+	width: 1.3em;
+	height: 1.3em;
+	margin-bottom: -0.3em;
+	fill: currentColor;
+}
+
+.lang-menu {
+	display: none;
+	position: absolute;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	background-color: var(--bg);
+}
+
+.lang-menu li:hover {
+	color: #A0B7EF;
+}
+
+.langs label {
+	display: inline;
+}
+
+.langs [type=checkbox]:checked ~ ul {
+	display: block;
+}
+
+.langs [type=checkbox]:checked ~ .lang-toggle,
+.langs [type=checkbox]:not([disabled]) ~ .lang-toggle:hover,
+.langs .swap:hover {
+	color: #A0B7EF;
+	border-bottom: 1px dashed;
+}

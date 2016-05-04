@@ -196,23 +196,6 @@ angular.module('mt')
 		]
 	)
 
-	.controller('LanguageMenuController', ['$scope', function ($scope)
-			{
-				$scope.menu = {};
-				$scope.menu.hidden = true;
-				$scope.menu.toggle = function ()
-				{
-					$scope.menu.hidden = $scope.menu.hidden ? false: true; 
-				};
-
-				$scope.$on('langSwap', function ()
-				{
-					$scope.menu.hidden = true;
-				});
-			}
-		]
-	)
-
 	.controller('EntryController', ['$scope', '$routeParams', 'dict',
 			function ($scope, $routeParams, dict)
 			{

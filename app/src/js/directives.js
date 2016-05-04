@@ -105,7 +105,11 @@ angular.module('mt')
 			return {
 
 				restrict: 'E',
-				templateUrl: '/partials/language.html'
+				templateUrl: '/partials/language.html',
+				link: function ($scope, $element, $attrs)
+				{
+					$scope.languageIndex = $scope.$index;
+				}
 			};
 		}
 	)
