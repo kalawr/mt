@@ -12,7 +12,7 @@ angular.module('mt')
 
 	.factory('url', function ()
 		{
-			return function (type)
+			function make(type)
 			{
 				return function (query, languages)
 				{
@@ -24,6 +24,11 @@ angular.module('mt')
 						String(languages);
 				};
 			}
+
+			return {
+				autocomplete: make('autocomplete'),
+				translate: make('translate')
+			};
 		}
 	)
 

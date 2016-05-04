@@ -45,26 +45,27 @@ angular.module('mt')
 				$scope.autocomplete.list = [];
 				$scope.autocomplete.enabled = false;
 
-				$scope.buildUrl = url('autocomplete');
 				$scope.autocomplete.fetch = _.debounce(
 
 					function ()
 					{
-						var url = $scope.buildUrl($scope.global.query, $scope.global.getLanguages());
+						var URL = url.autocomplete(
+							$scope.global.query, 
+							$scope.global.getLanguages()
+						);
 
-						$http.get(url)
+						$http.get(URL)
 							.then(
 								function (response) 
 								{
 									$scope.autocomplete.list = response.data;
-									$scope.autocomplete.reset();
 								},
 								function (error)
 								{
 									$scope.autocomplete.list = [];
-									$scope.autocomplete.reset();
 								}
 							)
+							.then($scope.autocomplete.reset)
 							.then($scope.autocomplete.enable)
 							;
 					},

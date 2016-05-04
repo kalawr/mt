@@ -20,7 +20,7 @@ angular.module('mt', ['ngRoute', 'ngStorage'])
 						dict: ['$http', '$route', 'url',
 							function ($http, $route, url)
 							{
-								return $http.get(url('translate')($route.current.params.query, $route.current.params.languages))
+								return $http.get(url.translate($route.current.params.query, $route.current.params.languages))
 									.then(
 										function (response) 
 										{
