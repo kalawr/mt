@@ -13,33 +13,47 @@ angular.module('mt', ['ngRoute', 'ngStorage'])
 			);
 
 			$routeProvider
-				.when('/entry/:query/:languages', {
-					templateUrl: '/partials/entry.html',
-					controller: 'EntryController',
-					resolve: {
-						dict: ['$http', '$route', 'url',
-							function ($http, $route, url)
-							{
-								return $http.get(url.translate($route.current.params.query, $route.current.params.languages))
-									.then(
-										function (response) 
-										{
-											return response.data;
-										},
-										function (error)
-										{
-											return [];
-										}
-									);
-							}
-						]
+				.when(
+					'/entry/:query/:languages', 
+					{
+						templateUrl: '/partials/entry.html',
+						controller: 'EntryController',
+						resolve: {
+							dict: ['$http', '$route', 'url',
+								function ($http, $route, url)
+								{
+									return $http.get(url.translate($route.current.params.query, $route.current.params.languages))
+										.then(
+											function (response) 
+											{
+												return response.data;
+											},
+											function (error)
+											{
+												return [];
+											}
+										);
+								}
+							]
+						}
 					}
-				})
-				.when('/', {
-					templateUrl: '/partials/root.html'
-				})
-				.otherwise({
-					redirectTo: '/'
-				});
+				)
+				.when(
+					'/cl',
+					{
+						templateUrl: '/partials/change-language.html'
+					}
+				)
+				.when(
+					'/', 
+					{
+						templateUrl: '/partials/root.html'
+					}
+				)
+				.otherwise(
+					{
+						redirectTo: '/'
+					}
+				);
 		}
 	]);
