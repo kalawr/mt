@@ -113,3 +113,16 @@ angular.module('mt')
 			};
 		}
 	)
+
+	.directive('icon', function ()
+		{
+			return {
+
+				restrict: 'E',
+				templateUrl: '/partials/icon.html',
+				scope: {
+					id: '@ref'
+				}
+			};
+		}
+	)
