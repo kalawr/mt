@@ -163,12 +163,19 @@ angular.module('mt')
 				$scope.autocomplete.reset();
 
 				angular.element($window).bind('keydown', $scope.autocomplete.interceptKeys)
+
+				$scope.$on('languageChange', function ()
+					{
+						$scope.autocomplete.disable();
+						$scope.autocomplete.fetch();
+					}
+				);
 			}
 		]
 	)
 
-	.controller('LanguagesController', ['$scope', 'languageMap',
-			function ($scope, languageMap)
+	.controller('LanguagesController', ['$scope', 'languageMap', '$rootScope',
+			function ($scope, languageMap, $rootScope)
 			{
 				$scope.isLocked = function (lang)
 				{
@@ -183,6 +190,8 @@ angular.module('mt')
 				$scope.chooseLanguage = function (indexInCurrent, indexInAvailable)
 				{
 					$scope.global.languages[indexInCurrent] = $scope.selectableLanguages[indexInAvailable];
+					
+					$rootScope.$broadcast('languageChange');
 				};
 
 				$scope.swapLanguages = function ()
@@ -191,7 +200,7 @@ angular.module('mt')
 					$scope.global.languages[0] = $scope.global.languages[1];
 					$scope.global.languages[1] = temp;
 
-					$scope.$broadcast('langSwap');
+					$rootScope.$broadcast('languageChange');
 				};
 			}
 		]
