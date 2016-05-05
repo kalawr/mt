@@ -26,6 +26,7 @@ ul.autocomplete> li:hover {
 
 ul.autocomplete> li.active {
 	border-color: currentColor;
+	border-color: #898A94;
 }
 
 ul.autocomplete> hr {
