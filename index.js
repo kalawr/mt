@@ -12,6 +12,7 @@ var config = require('./config');
 
 app.use(express.static(config.root));
 app.use('/entry', home);
+app.use('/cl', home);
 app.use('/translate', translate);
 app.use('/autocomplete', autocomplete);
 

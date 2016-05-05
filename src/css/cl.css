@@ -1,0 +1,24 @@
+.cl {
+	text-align: center;
+}
+
+.cl ul {
+	display: inline-block;
+}
+
+.cl h1 {
+	text-align: center;
+	margin: 0;
+}
+
+.cl li {
+	text-align: left;
+}
+
+.cl a {
+	border-bottom: 1px solid transparent;
+}
+
+.cl a:hover {
+	border-color: var(--dim-color);
+}
