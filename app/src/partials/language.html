@@ -3,6 +3,7 @@
 	<span class='lang-toggle'>{{language | fullLanguage:true}}</span>
 	<ul class='lang-menu' ng-if='!isLocked(language)'>
 		<li ng-repeat='option in selectableLanguages' ng-click='chooseLanguage(languageIndex, $index)' ng-hide='option === language'>
+			<icon ref='dot' class='dot'></icon>
 			{{option | fullLanguage:true}}
 		</li>
 	</ul>

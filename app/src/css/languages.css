@@ -19,10 +19,12 @@ language:first-child::after {
 }
 
 .lang-menu {
+	list-style-type: none;
 	display: none;
 	position: absolute;
 	left: 0;
 	margin: 0;
+	margin-left: -0.75em;
 	padding: 0;
 	background-color: var(--bg);
 }
@@ -44,4 +46,16 @@ language:first-child::after {
 .langs .swap:hover {
 	color: var(--emphasis-bg);
 	border-bottom: 1px dashed;
+}
+
+.lang-menu .dot {
+	display: inline;
+	position: relative;
+	top: -0.1em;
+}
+
+.lang-menu .dot svg {
+	width: 0.5em;
+	height: 0.5em;
+	fill: currentColor;
 }
