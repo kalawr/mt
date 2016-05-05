@@ -1,12 +1,8 @@
 .navigation ul {
-	list-style-type: none;
-
 	position: absolute;
 	top: 0;
 	left: 5%;
 
-	margin: 0;
-	padding: 0;
 	padding-top: var(--section-margin);
 	max-width: 10em;
 }

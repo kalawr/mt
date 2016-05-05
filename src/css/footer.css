@@ -2,13 +2,6 @@ footer {
 	color: var(--dim-color);
 }
 
-footer a,
-footer a:link,
-footer a:visited {
-	color: inherit;
-	text-decoration: none;
-}
-
 footer a {
 	margin-right: 2em;
 }
