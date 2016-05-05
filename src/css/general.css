@@ -92,3 +92,12 @@ body {
 	float: right;
 }
 
+.globe {
+	display: inline;
+}
+
+.globe svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
