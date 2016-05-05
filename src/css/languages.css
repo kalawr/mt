@@ -15,7 +15,6 @@ language:first-child::after {
 	width: 1.3em;
 	height: 1.3em;
 	margin-bottom: -0.3em;
-	fill: currentColor;
 }
 
 .lang-menu {
@@ -24,7 +23,6 @@ language:first-child::after {
 	position: absolute;
 	left: 0;
 	margin: 0;
-	margin-left: -0.75em;
 	padding: 0;
 	background-color: var(--bg);
 }
@@ -49,13 +47,11 @@ language:first-child::after {
 }
 
 .lang-menu .dot {
-	display: inline;
-	position: relative;
-	top: -0.1em;
+	margin-left: -0.85em;
 }
 
 .lang-menu .dot svg {
 	width: 0.5em;
 	height: 0.5em;
-	fill: currentColor;
+	top: -0.1em;
 }
