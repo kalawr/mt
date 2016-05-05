@@ -1,7 +1,3 @@
-.search {
-	padding-top: var(--section-margin);
-}
-
 .search label {
 	color: var(--dim-color);
 	display: block;

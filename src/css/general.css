@@ -100,4 +100,9 @@ body {
 	width: 1em;
 	height: 1em;
 	fill: currentColor;
+	position: relative;
+}
+
+.section {
+	padding-top: var(--section-margin);
 }
