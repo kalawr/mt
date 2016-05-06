@@ -65,6 +65,14 @@ body {
 	font-size: 0.75rem;
 }
 
+.double-line {
+	--lh-multiplier: 2;
+}
+
+.triple-line {
+	--lh-multiplier: 3;
+}
+
 ::selection {
 	background-color: var(--emphasis-bg);
 	color: var(--color-on-bg);
@@ -106,3 +114,8 @@ body {
 .section {
 	padding-top: var(--section-margin);
 }
+
+.clickable {
+	cursor: pointer;
+}
+
