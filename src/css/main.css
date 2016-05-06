@@ -1,5 +1,6 @@
-@import 'reset.css';
 @import 'config.css';
+@import 'reset.css';
+@import 'grid.css';
 @import 'general.css';
 @import 'search.css';
 @import 'entry.css';
@@ -7,4 +8,4 @@
 @import 'footer.css';
 @import 'languages.css';
 @import 'cl.css';
-@import 'grid.css';
+@import 'loading.css';
