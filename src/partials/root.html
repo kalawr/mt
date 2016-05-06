@@ -10,7 +10,10 @@
 
 					<div class='langs no-select' ng-controller='LanguagesController'>
 						<language ng-repeat='language in global.languages'></language>
-						<icon class='swap' ref='refresh' ng-click='swapLanguages()'></icon>
+
+						<button class='swap' ng-click='swapLanguages()'>
+							<icon ref='refresh'></icon>
+						</button>
 					</div>
 					
 					<label for='query' class='no-select'>Search to Your Heart's Content</label>
