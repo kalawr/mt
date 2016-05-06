@@ -10,3 +10,14 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+
+button {
+	border: 0;
+	padding: 0;
+	background-color: inherit;
+	color: inherit;
+}
+
+button:focus {
+	outline: 0;
+}

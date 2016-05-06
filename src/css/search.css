@@ -22,7 +22,3 @@
 	position: relative;
 	top: 0.35em;
 }
-
-.search button.ok:focus {
-	outline: 0;
-}
