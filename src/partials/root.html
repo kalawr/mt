@@ -1,22 +1,32 @@
 <div ng-controller='AutocompleteController'>
 	<div class='contain section'>
 		<form class='search' ng-submit='autocomplete.submit()'>
-			
-			<div class='langs no-select' ng-controller='LanguagesController'>
-				<language ng-repeat='language in global.languages'></language>
-				<icon class='swap' ref='refresh' ng-click='swapLanguages()'></icon>
+			<div class='row'>
+				<div class='col col-10 offset-1'>
+					<div class='langs no-select' ng-controller='LanguagesController'>
+						<language ng-repeat='language in global.languages'></language>
+						<icon class='swap' ref='refresh' ng-click='swapLanguages()'></icon>
+					</div>
+					
+					<label for='query' class='no-select'>Search to Your Heart's Content</label>
+				</div>
 			</div>
-			
-			<label for='query' class='no-select'>Search to Your Heart's Content</label>
-			<button type='submit' class='ok lg' title='Search'>
-				<icon ref='magnifier'></icon>
-			</button><!--
-			--><input full-focus startup-focus ng-model='global.query' ng-change='autocomplete.disable(); autocomplete.fetch()' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />
-		</form>
 
-		<ul class='autocomplete lg' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
-			<li ng-repeat='item in autocomplete.list track by $index' ng-class='{active: $index === autocomplete.selection}' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</li>
-			<hr />
-		</ul>
+			<div class='row'>
+				<div class='col col-1'>
+					<button type='submit' class='ok lg triple-line pull-right' title='Search'>
+						<icon ref='magnifier'></icon>
+					</button>
+				</div>
+				<div class='col col-10'>
+					<input full-focus startup-focus ng-model='global.query' ng-change='autocomplete.disable(); autocomplete.fetch()' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />	
+
+					<ul class='autocomplete lg' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
+						<li ng-repeat='item in autocomplete.list track by $index' ng-class='{active: $index === autocomplete.selection}' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</li>
+						<hr />
+					</ul>
+				</div>
+			</div>
+		</form>	
 	</div>
 </div>

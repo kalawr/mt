@@ -19,25 +19,10 @@
 }
 
 .search button.ok {
-	display: inline-block;
-	box-sizing: content-box;
-	
-	width: 1em;
-	height: 1em;
-	margin: 0 1em 0 -2em;
-	border: 0;
-	padding: 0;
-
-	background-color: inherit;
-	color: inherit;
+	position: relative;
+	top: 0.35em;
 }
 
 .search button.ok:focus {
 	outline: 0;
-}
-
-.search button.ok svg {
-	width: 100%;
-	height: 100%;
-	fill: currentColor;
 }
