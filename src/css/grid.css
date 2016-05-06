@@ -9,7 +9,7 @@
 	clear: both;
 }
 
-.col {
+[class*="col-"] {
 	float: left;
 	padding: 0 2%;
 	min-height: 1px;

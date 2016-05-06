@@ -6,7 +6,7 @@
 
 			<div class='row'>
 
-				<div class='col col-10 offset-1'>
+				<div class='col-10 offset-1'>
 
 					<div class='langs no-select' ng-controller='LanguagesController'>
 						<language ng-repeat='language in global.languages'></language>
@@ -21,7 +21,7 @@
 
 			<div class='row'>
 
-				<div class='col col-1'>
+				<div class='col-1'>
 
 					<button type='submit' class='ok lg triple-line pull-right' title='Search'>
 						<icon ref='magnifier'></icon>
@@ -29,7 +29,7 @@
 
 				</div>
 
-				<div class='col col-10'>
+				<div class='col-10'>
 
 					<input full-focus startup-focus ng-model='global.query' ng-change='autocomplete.disable(); autocomplete.fetch()' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr' />	
 
@@ -41,7 +41,7 @@
 			
 		<div class='row'>
 
-			<div class='col col-10 offset-1'>
+			<div class='col-10 offset-1'>
 
 				<ul class='autocomplete lg' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
 					<li ng-repeat='item in autocomplete.list track by $index' ng-class='{active: $index === autocomplete.selection}' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</li>
