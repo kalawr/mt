@@ -1,5 +1,7 @@
 .cl {
 	text-align: center;
+	border-left: 1px solid var(--dim-color);
+	border-right: 1px solid var(--dim-color);
 }
 
 .cl ul {
