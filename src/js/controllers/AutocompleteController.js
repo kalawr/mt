@@ -13,6 +13,7 @@ angular.module('mt')
 				$scope.autocomplete = {};
 				$scope.autocomplete.list = [];
 				$scope.autocomplete.enabled = false;
+				$scope.loading = false;
 
 				$scope.autocomplete.fetch = _.debounce(
 
@@ -94,12 +95,14 @@ angular.module('mt')
 				{
 					if ($scope.autocomplete.enabled && $scope.autocomplete.list.length && $scope.autocomplete.selection >= 0)
 					{
-						$scope.global.submit($scope.autocomplete.list[$scope.autocomplete.selection])
+						$scope.loading = true;
+						$scope.global.submit($scope.autocomplete.list[$scope.autocomplete.selection]);
 					}
 					else
 					{
 						if ($scope.global.query) 
 						{
+							$scope.loading = true;
 							$scope.global.submit();
 						}
 						else
