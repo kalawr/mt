@@ -7,7 +7,7 @@
     "node": "4.2.4"
   },
   "scripts": {
-    "start": "node index",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cd src && bower install && lodash include=debounce,throttle -o bower_components/lodash/custom/lodash.js && cd .."
   },

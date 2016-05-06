@@ -19,9 +19,4 @@ app.use('/autocomplete', autocomplete);
 // 404
 app.use(notFound);
 
-
-
-app.listen(3000, function ()
-{
-	console.log('App listening on port 3000, serving from:', config.root);
-});
+module.exports = app;
