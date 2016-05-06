@@ -7,37 +7,6 @@ var enterCode = 13;
 
 angular.module('mt')
 
-	.controller('ApplicationController', ['$scope', '$location', '$localStorage',
-			function ($scope, $location, $localStorage) 
-			{
-				$scope.$storage = $localStorage.$default(
-					{
-						languages: ['en', 'ru']
-					}
-				);
-
-				$scope.global = {};
-				$scope.global.query = '';
-				$scope.global.languages = $scope.$storage.languages;
-
-				$scope.global.getLanguages = function ()
-				{
-					return $scope.global.languages.join('-');
-				};
-
-				$scope.global.submit = function (value)
-				{
-					$location.url('/entry/'+ encodeURIComponent(value || $scope.global.query) +'/'+$scope.global.getLanguages());
-				};
-
-				$scope.$watchCollection('global.languages', function (value) 
-				{
-					$scope.$storage.languages = value;
-				});
-			}
-		]
-	)
-
 	.controller('AutocompleteController', ['$scope', '$http', '$window', 'focus', 'url',
 			function ($scope, $http, $window, focus, url)
 			{
@@ -172,47 +141,4 @@ angular.module('mt')
 				);
 			}
 		]
-	)
-
-	.controller('LanguagesController', ['$scope', 'languageMap', '$rootScope',
-			function ($scope, languageMap, $rootScope)
-			{
-				$scope.isLocked = function (lang)
-				{
-					return lang === 'ru';
-				};
-
-				$scope.selectableLanguages = Object.keys(languageMap).filter(function (l)
-				{
-					return !$scope.isLocked(l);
-				});
-				
-				$scope.chooseLanguage = function (indexInCurrent, indexInAvailable)
-				{
-					$scope.global.languages[indexInCurrent] = $scope.selectableLanguages[indexInAvailable];
-					
-					$rootScope.$broadcast('languageChange');
-				};
-
-				$scope.swapLanguages = function ()
-				{
-					var temp = $scope.global.languages[0];
-					$scope.global.languages[0] = $scope.global.languages[1];
-					$scope.global.languages[1] = temp;
-
-					$rootScope.$broadcast('languageChange');
-				};
-			}
-		]
-	)
-
-	.controller('EntryController', ['$scope', '$routeParams', 'dict',
-			function ($scope, $routeParams, dict)
-			{
-				$scope.global.query     = $routeParams.query;
-				$scope.global.languages = $routeParams.languages.split('-');
-
-				$scope.dict = dict;
-			}
-		]
-	)
+	);
