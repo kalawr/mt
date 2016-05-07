@@ -9,7 +9,7 @@
 	border: 0;
 	padding: 0;
 	color: inherit;
-	background-color: inherit;
+	background: none;
 	appearance: none;
 	text-overflow: ellipsis;
 }
