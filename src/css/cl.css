@@ -1,7 +1,7 @@
 .cl {
 	text-align: center;
-	border-left: 1px solid var(--dim-color);
-	border-right: 1px solid var(--dim-color);
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
 }
 
 .cl ul {
@@ -22,5 +22,5 @@
 }
 
 .cl a:hover {
-	border-color: var(--dim-color);
+	border-color: #CCC;
 }

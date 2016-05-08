@@ -2,7 +2,7 @@
 
 	<div class='loading' ng-show='loading'></div>
 
-	<div class='contain section'>
+	<div class='contain section-start'>
 
 		<form class='search' ng-submit='autocomplete.submit()'>
 
@@ -28,7 +28,7 @@
 
 				<div class='col-1'>
 
-					<button type='submit' class='ok lg triple-line pull-right' title='Search'>
+					<button type='submit' class='ok lg lh3 pull-right' title='Search'>
 						<icon ref='magnifier'></icon>
 					</button>
 
@@ -48,9 +48,10 @@
 
 			<div class='col-10 offset-1'>
 
-				<ul class='autocomplete lg' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
-					<li ng-repeat='item in autocomplete.list track by $index' ng-class='{active: $index === autocomplete.selection}' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</li>
-					<hr />
+				<ul class='autocomplete' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
+					<li class='lg' ng-repeat='item in autocomplete.list track by $index' ng-class='{active: $index === autocomplete.selection}' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>{{item}}</li>
+					
+					<hr class='section-end' />
 				</ul>
 
 			</div>	

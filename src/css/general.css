@@ -1,17 +1,10 @@
 * {
 	box-sizing: border-box;
-	line-height: calc(var(--lh) * var(--lh-multiplier)) !important;
-}
-
-:root {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	font-size: 130%;
 }
 
 body {
-	color: var(--color);
-	background-color: var(--bg);
+	color: #525252;
+	background-color: #FFF;
 }
 
 .contain {
@@ -22,12 +15,6 @@ body {
 	padding-left: 1rem;
 	padding-right: 1rem;
 	/* background-color: rgba(0,255,0,0.2); */
-}
-
-@media (max-width: 560px) {
-	:root {
-		font-size: 3.70vw;
-	}
 }
 
 .spritesheet {
@@ -42,40 +29,9 @@ body {
 	position: fixed !important;
 }
 
-.mnstr {
-	font-size: 2.75rem;
-	--lh-multiplier: 3;
-}
-
-.xl {
-	font-size: 2rem;
-	--lh-multiplier: 2;
-}
-
-.lg {
-	font-size: 1.5rem;
-	--lh-multiplier: 2;
-}
-
-.md {
-	font-size: 1.00rem;
-}
-
-.sm {
-	font-size: 0.75rem;
-}
-
-.double-line {
-	--lh-multiplier: 2;
-}
-
-.triple-line {
-	--lh-multiplier: 3;
-}
-
 ::selection {
-	background-color: var(--emphasis-bg);
-	color: var(--color-on-bg);
+	background-color: #9F93E4;
+	color: #555;
 }
 
 ::-webkit-input-placeholder {

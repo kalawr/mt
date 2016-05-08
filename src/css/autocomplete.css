@@ -15,7 +15,7 @@ ul.autocomplete> li {
 }
 
 ul.autocomplete> li:hover {
-	border-color: var(--dim-color);
+	border-color: #CCC;
 }
 
 ul.autocomplete> li.active {
@@ -27,7 +27,6 @@ ul.autocomplete> hr {
 	width: 25%;
 	clear: both;
 	max-width: 100px;
-	margin-bottom: var(--section-margin);
 	border: 0;
-	border-bottom: 1px solid var(--dim-color);
+	border-bottom: 1px solid #CCC;
 }

@@ -1,5 +1,5 @@
 .langs {
-	color: var(--dim-color);
+	color: #CCC;
 	float: right;
 }
 
@@ -24,12 +24,12 @@ language:first-child::after {
 	left: 0;
 	margin: 0;
 	padding: 0;
-	background-color: var(--bg);
+	background-color: #FFF;
 	z-index: 1;
 }
 
 .lang-menu li:hover {
-	color: var(--emphasis-bg);
+	color: #9F93E4;
 }
 
 .langs label {
@@ -43,7 +43,7 @@ language:first-child::after {
 .langs [type=checkbox]:checked ~ .lang-toggle,
 .langs [type=checkbox]:not([disabled]) ~ .lang-toggle:hover,
 .langs .swap:hover {
-	color: var(--emphasis-bg);
+	color: #9F93E4;
 	border-bottom: 1px dashed;
 }
 
