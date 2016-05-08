@@ -2,23 +2,27 @@ ul.autocomplete.inactive {
 	opacity: 0.5;
 }
 
-ul.autocomplete> li {
+ul.autocomplete li {
+	display: block;
+	cursor: pointer;
+}
+
+ul.autocomplete li a {
 	display: block;
 	float: left;
 	clear: both;
 	
-	cursor: pointer;
 	-webkit-user-select: none;
 	        user-select: none;
 
 	border-bottom: 1px solid transparent;
 }
 
-ul.autocomplete> li:hover {
+ul.autocomplete li:hover a {
 	border-color: #CCC;
 }
 
-ul.autocomplete> li.active {
+ul.autocomplete li.active a {
 	border-color: currentColor;
 	border-color: #898A94;
 }
