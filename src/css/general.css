@@ -67,11 +67,16 @@ body {
 	position: relative;
 }
 
-.section {
-	padding-top: var(--section-margin);
-}
-
 .clickable {
 	cursor: pointer;
 }
 
+.cf::after,
+.cf::before {
+	content: '';
+	display: table;
+}
+
+.cf::after {
+	clear: both;
+}
