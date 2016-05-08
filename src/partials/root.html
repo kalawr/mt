@@ -52,7 +52,7 @@
 
 				<ul class='autocomplete' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
 					<li class='lg cf' ng-repeat='item in autocomplete.list track by $index' ng-class='{active: $index === autocomplete.selection}' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>
-						<a>{{item}}</a>
+						<a class='no-select'>{{item}}</a>
 					</li>
 					
 					<hr class='section-end' />

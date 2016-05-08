@@ -11,10 +11,6 @@ ul.autocomplete li a {
 	display: block;
 	float: left;
 	clear: both;
-	
-	-webkit-user-select: none;
-	        user-select: none;
-
 	border-bottom: 1px solid transparent;
 }
 
