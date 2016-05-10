@@ -2,15 +2,22 @@
 	margin: 0;
 }
 
-.entry .domain-name {
-	font-style: italic;
+.entry dt {
 	font-weight: 300;
 }
 
-.entry dl .dds {
-	padding-left: 1em;
-	margin-left: -1em;
-	border-left: 1px solid rgba(0, 0, 0, 0.2);
+.entry .domain-name {
+	text-transform: uppercase;
+	font-size: 50%;
+	letter-spacing: 0.8px;
+}
+
+.entry .domain-name::before {
+	content: '(';
+}
+
+.entry .domain-name::after {
+	content: ')';
 }
 
 .entry dl dd {

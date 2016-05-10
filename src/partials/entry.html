@@ -2,28 +2,37 @@
 
 	<div class='entry'>
 
-		<dl ng-show='dict.length'>
 
-			<div ng-repeat='definition in dict track by $index' class='definition section'>
+		<div class='row'>
 
-				<dt class='xl'>
-					{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
-				</dt>
+			<div class='col-6-md offset-3-md'>
+				
+				<dl ng-show='dict.length'>
 
-				<div ng-repeat='domain in definition.domains track by $index' class='domain'>
+					<div ng-repeat='definition in dict track by $index' class='definition section'>
 
-					<div class='domain-name mt1'>{{domain.domain}}</div>
+						<dt class='xl'>
+							{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+						</dt>
 
-					<div class='dds'>
-						<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+						<div ng-repeat='domain in definition.domains track by $index' class='domain'>
+
+							<div class='domain-name no-select mt1-md'>{{domain.domain}}</div>
+
+							<div class='dds'>
+								<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+							</div>
+
+						</div>
+
 					</div>
 
-				</div>
+				</dl>
 
 			</div>
 
-		</dl>
-
+		</div>
+		
 		<div class='section' ng-hide='dict.length'>
 
 			<div class='not-found lg'>
