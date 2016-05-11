@@ -90,3 +90,7 @@ body {
 .cf::after {
 	clear: both;
 }
+
+.dim {
+	color: #CCC;
+}
