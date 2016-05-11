@@ -12,12 +12,16 @@
 
 				<div class='col-10-sm offset-1-sm'>
 
-					<div class='langs no-select pull-right dim' ng-controller='LanguagesController'>
-						<language ng-repeat='language in global.languages'></language>
+					<div class='pull-right'>
 
-						<button class='swap' ng-click='swapLanguages()'>
-							<icon ref='refresh'></icon>
+						<button>
+							<div class='menu'>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
 						</button>
+
 					</div>
 					
 					<label for='query' class='no-select dim'>Search to Your Heart's Content</label>

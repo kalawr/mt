@@ -1,0 +1,13 @@
+.menu {
+	width:  1em;
+	height: 1em;
+	overflow: hidden;
+}
+
+.menu span {
+	float: left;
+	width: 100%;
+	height: 11%;
+	margin: 13% 0;
+	background-color: currentColor;
+}
