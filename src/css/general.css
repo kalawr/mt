@@ -29,12 +29,22 @@ body {
 	position: fixed !important;
 }
 
+::-moz-selection {
+	background-color: #9F93E4;
+	color: #555;
+}
+
 ::selection {
 	background-color: #9F93E4;
 	color: #555;
 }
 
 ::-webkit-input-placeholder {
+	color: inherit;
+	opacity: 1;
+}
+
+::-moz-placeholder {
 	color: inherit;
 	opacity: 1;
 }
