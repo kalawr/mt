@@ -126,3 +126,16 @@ angular.module('mt')
 			};
 		}
 	)
+
+	.directive('modal', function ()
+		{
+			return {
+
+				restrict: 'E',
+				link: function ($scope)
+				{
+					$scope.modalOpen = false;
+				}
+			};
+		}
+	)

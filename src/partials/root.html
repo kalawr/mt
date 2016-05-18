@@ -1,5 +1,5 @@
 <div ng-controller='AutocompleteController'>
-
+		
 	<div class='cf'>
 		<div class='loading' ng-show='loading'></div>
 	</div>
@@ -8,31 +8,47 @@
 
 		<form class='search' ng-submit='autocomplete.submit()'>
 
-			<div class='row'>
+			<div>
 
-				<div class='col-10-sm offset-1-sm'>
+				<div class='stick-out-offsetted cf'> 
 
 					<div class='pull-right'>
 
-						<button>
-							<div class='menu'>
-								<span></span>
-								<span></span>
-								<span></span>
+						<div class='menu' ng-class='{open: modalOpen}'>
+
+							<button type='button' class='menu-toggle' ng-click='modalOpen = modalOpen ? false : true'>
+
+								<icon ref='burger'></icon>
+
+							</button>
+
+							<div class='menu-content'>
+								
+								<div class='langs no-select pull-right' ng-controller='LanguagesController'>
+
+									<language ng-repeat='language in global.languages'></language>
+
+									<button class='swap' ng-click='swapLanguages()'>
+										
+										<icon ref='refresh'></icon>
+
+									</button>
+									
+								</div>
+
 							</div>
-						</button>
+
+						</div>
 
 					</div>
-					
-					<label for='query' class='no-select dim'>Search to Your Heart's Content</label>
 
 				</div>
 
 			</div>
 
-			<div class='row'>
+			<div class='cf'>
 
-				<div class='col-1-sm'>
+				<div class='stick-out'>
 
 					<button type='submit' class='ok lg lh3 pull-right' title='Search'>
 						<icon ref='magnifier'></icon>
@@ -40,9 +56,11 @@
 
 				</div>
 
-				<div class='col-10-sm'>
+				<div class='relative bar'>
 
-					<input full-focus startup-focus ng-model='global.query' ng-change='autocomplete.disable(); autocomplete.fetch()' type='text' autofocus='autofocus' autocomplete='off' placeholder='Search' id='query' class='mnstr ie-lh-shim' />	
+					<input full-focus ng-model='global.query' ng-change='autocomplete.disable(); autocomplete.fetch()' type='text' autocomplete='off' id='query' class='xl lh3 ie-lh-shim' />
+
+					<label for='query' class='no-select label'>Search</label>
 
 				</div>
 
@@ -50,17 +68,17 @@
 
 		</form>	
 			
-		<div class='row'>
+		<div>
 
-			<div class='col-10-sm offset-1-sm'>
+			<div>
 
-				<ul class='autocomplete' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
+				<ol class='autocomplete' ng-show='autocomplete.list.length' ng-class='{inactive: !autocomplete.enabled}'>
 					<li class='lg cf' ng-repeat='item in autocomplete.list track by $index' ng-class='{active: $index === autocomplete.selection}' ng-click='autocomplete.setSelection($index); autocomplete.submit()'>
 						<a class='no-select'>{{item}}</a>
 					</li>
 					
 					<hr class='section-end' />
-				</ul>
+				</ol>
 
 			</div>	
 

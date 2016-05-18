@@ -1,29 +1,45 @@
-ul.autocomplete.inactive {
+.autocomplete {
+	counter-reset: autocomplete;
+}
+
+.autocomplete.inactive {
 	opacity: 0.5;
 }
 
-ul.autocomplete li {
+.autocomplete li {
 	display: block;
 	cursor: pointer;
 }
 
-ul.autocomplete li a {
-	display: block;
+.autocomplete li::before {
+	counter-increment: autocomplete;
+	content: counter(autocomplete, decimal-leading-zero);
+
 	float: left;
-	clear: both;
+	width: 2rem;
+	margin-right: 1.5rem;
+	text-align: right;
+
+	font-size: 1rem;
+	color: #CCC;
+}
+
+.autocomplete li a {
+	display: block;
+	overflow: hidden;
 	border-bottom: 1px solid transparent;
 }
 
-ul.autocomplete li:hover a {
+.autocomplete li:hover a {
 	border-color: #CCC;
 }
 
-ul.autocomplete li.active a {
+.autocomplete li.active a {
 	border-color: currentColor;
 	border-color: #898A94;
 }
 
-ul.autocomplete> hr {
+.autocomplete hr {
 	width: 25%;
 	clear: both;
 	max-width: 100px;

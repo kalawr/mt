@@ -22,12 +22,13 @@ body {
 }
 
 .xl {
-	font-size: 2rem;
+	font-size: 2.3rem;
 	line-height: 3rem;
 }
 
+
 .lg {
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	line-height: 3rem;
 }
 
@@ -47,6 +48,10 @@ body {
 	line-height: 4.5rem !important;
 }
 
+.lh3.ie-lh-shim {
+	height: 4.5rem;
+}
+
 .mt1 {
 	margin-top: 1.5rem;
 }
@@ -58,16 +63,16 @@ body {
 }
 
 .section {
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+	margin-top: 4.5rem;
+	margin-bottom: 4.5rem;
 }
 
 .section-start {
-	margin-top: 3rem;
+	margin-top: 4.5rem;
 }
 
 .section-end {
-	margin-bottom: 3rem;
+	margin-bottom: 4.5rem;
 }
 
 
