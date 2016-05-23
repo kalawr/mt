@@ -24,13 +24,11 @@
 	color: #CCC;
 }
 
-.autocomplete li a {
-	display: block;
-	overflow: hidden;
+.autocomplete span {
 	border-bottom: 1px solid transparent;
 }
 
-.autocomplete li:hover a {
+.autocomplete li:hover span {
 	border-color: #CCC;
 }
 

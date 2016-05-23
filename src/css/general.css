@@ -94,3 +94,8 @@ body {
 .dim {
 	color: #CCC;
 }
+
+.oh {
+	display: block;
+	overflow: hidden;
+}
