@@ -1,46 +1,29 @@
-<div class='contain'>
+<dl ng-show='dict.length'>
 
-	<div class='entry'>
+	<div ng-repeat='definition in dict track by $index' class='definition section'>
+			
+		<dt class='xl mb1'>
+			{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
+		</dt>
+		
+		<div ng-repeat='domain in definition.domains track by $index' class='domain mt1'>
 
+			<div class='domain-name no-select'>
 
-		<div class='row'>
-
-			<div class='col-6-md offset-3-md'>
-				
-				<dl ng-show='dict.length'>
-
-					<div ng-repeat='definition in dict track by $index' class='definition section'>
-
-						<dt class='xl'>
-							{{definition.variant}}<span ng-show='definition.partOfSpeech' class='part-of-speech'>, {{definition.partOfSpeech}}</span>
-						</dt>
-
-						<div ng-repeat='domain in definition.domains track by $index' class='domain'>
-
-							<div class='domain-name no-select mt1-md'>{{domain.domain}}</div>
-
-							<div class='dds'>
-								<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
-							</div>
-
-						</div>
-
-					</div>
-
-				</dl>
-
+				<span>{{domain.domain}}</span>
+			
 			</div>
 
-		</div>
-		
-		<div class='section' ng-hide='dict.length'>
-
-			<div class='not-found lg'>
-				Not found.
+			<div class='dds'>
+				<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
 			</div>
 
 		</div>
 
 	</div>
 
+</dl>
+
+<div ng-show='error' class='error'>
+	{{error.status}} {{error.statusText}}
 </div>

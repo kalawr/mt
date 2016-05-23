@@ -1,0 +1,36 @@
+.logo {
+	float: left;
+	margin-right: 2em;
+}
+
+.logo-image {
+	width: 10rem;
+	height: 6.77rem;
+}
+
+.logo-image> svg {
+	width: 100%;
+	height: 100%;
+
+}
+
+.logo-text {
+	font-family: 'Roboto Slab';
+	font-weight: 300;
+	font-size: 130%;
+	line-height: 1;
+	position: relative;
+	left: 50px;
+	top:-4px;
+	color: #7D7D7D;
+}
+
+.motto {
+	line-height: 176px;
+	color: #CCC;
+	white-space: nowrap;
+}
+
+.motto a:hover {
+	border-bottom: 1px dotted;
+}

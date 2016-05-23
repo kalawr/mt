@@ -1,0 +1,39 @@
+.loading {
+	float: right;
+	height: 2px;
+	animation-name: shrink;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-duration: 4s;
+}
+
+.loading::after {
+	content: '';
+	display: block;
+	height: 100%;
+	animation-name: expand;
+	animation-timing-function: cubic-bezier(0.18, 0.74, 0.2, 1);
+	animation-iteration-count: inherit;
+	animation-duration: inherit;
+	background-color: #9F93E4;
+}
+
+@keyframes expand {
+	0% {
+		width: 0%;
+	}
+
+	75% {
+		width: 100%;
+	}
+}
+
+@keyframes shrink {
+	0% {
+		width: 100%;
+	}
+
+	75% {
+		width: 0%;
+	}
+}

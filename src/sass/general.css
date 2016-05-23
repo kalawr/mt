@@ -3,13 +3,13 @@
 }
 
 body {
-	color: #454545;
+	color: #525252;
 	background-color: #FFF;
 }
 
 .contain {
 	width: 100%;
-	max-width: 70rem;
+	max-width: 60rem;
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 1rem;
@@ -30,27 +30,31 @@ body {
 }
 
 ::-moz-selection {
-	background-color: #D3F3F1;
+	background-color: #9F93E4;
 	color: #555;
 }
 
 ::selection {
-	background-color: #D3F3F1;
+	background-color: #9F93E4;
 	color: #555;
 }
 
 ::-webkit-input-placeholder {
-	color: #CCC;
+	color: inherit;
 	opacity: 1;
 }
 
 ::-moz-placeholder {
-	color: #CCC;
+	color: inherit;
 	opacity: 1;
 }
 
 ::placeholder {
-	color: #CCC;
+	color: inherit;
+}
+
+[ng-view] {
+	min-height: 100vh;
 }
 
 .no-select {
@@ -89,47 +93,4 @@ body {
 
 .dim {
 	color: #CCC;
-}
-
-.oh {
-	display: block;
-	overflow: hidden;
-}
-
-.sidebar {
-	position: relative;
-}
-
-
-
-.fixed-container {
-	transform: translateZ(0);
-}
-
-.sidebar-fixed {
-	position: fixed;
-	width: 640px;
-}
-
-
-
-.external {
-	font-size: 70%;
-	position: relative;
-	top: -0.35em;
-}
-
-.logo .dot {
-	font-size: 20%;
-	position: relative;
-	top: -0.5em;
-	margin: 0 0.5em;
-}
-
-.trans {
-	transition: all 1s ease-in-out;
-}
-
-.no-width {
-	width: 0;
 }

@@ -3,21 +3,21 @@
 }
 
 .entry dt {
-	font-weight: 100;
-	font-family: Roboto;
-}
-
-.entry .part-of-speech {
-	font-weight: 100;
-	font-family: Roboto;
-	font-size: 70%;
+	font-weight: 300;
 }
 
 .entry .domain-name {
 	text-transform: uppercase;
-	font-size: 69%;
+	font-size: 50%;
 	letter-spacing: 0.8px;
-	position: relative;
+}
+
+.entry .domain-name::before {
+	content: '(';
+}
+
+.entry .domain-name::after {
+	content: ')';
 }
 
 .entry dl dd {
@@ -38,10 +38,6 @@
 	content: '';
 }
 
-.error {
+.not-found {
 	text-align: center;
-}
-
-.entry .dds {
-	text-align: justify;
 }

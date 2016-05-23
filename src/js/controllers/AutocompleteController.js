@@ -105,10 +105,10 @@ angular.module('mt')
 							$scope.loading = true;
 							$scope.global.submit();
 						}
-						else
-						{
-							focus('#query');
-						}
+						// else
+						// {
+						// 	focus('#query');
+						// }
 					}
 				};
 
@@ -132,6 +132,11 @@ angular.module('mt')
 					$scope.autocomplete.selection = -1;
 				};
 
+				$scope.autocomplete.empty = function ()
+				{
+					$scope.autocomplete.list = [];
+				};
+
 				$scope.autocomplete.reset();
 
 				angular.element($window).bind('keydown', $scope.autocomplete.interceptKeys)
@@ -142,6 +147,11 @@ angular.module('mt')
 						$scope.autocomplete.fetch();
 					}
 				);
+
+				$scope.$on('$viewContentLoaded', function ()
+				{
+					$scope.autocomplete.empty();
+				});
 			}
 		]
 	);

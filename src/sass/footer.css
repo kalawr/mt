@@ -1,0 +1,11 @@
+footer {
+	color: #CCC;
+}
+
+footer a {
+	margin-right: 2em;
+}
+
+footer .pull-right a {
+	margin-right: 0;
+}

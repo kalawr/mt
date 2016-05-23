@@ -29,6 +29,20 @@ angular.module('mt')
 				{
 					$scope.$storage.languages = value;
 				});
+
+				$scope.$on('view', function (event, view)
+				{
+					if (view === 'entry')
+					{
+						$scope.root = false;
+					}
+					else
+					if (view === 'empty')
+					{
+						$scope.root = true;
+						$scope.global.query = '';
+					}
+				});
 			}
 		]
 	);

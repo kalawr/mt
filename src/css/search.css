@@ -1,40 +1,28 @@
-.search input {
+.bar {
+	position: relative;
+	z-index: 2;
+	box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.bar input {
 	width: 100%;
 
 	border: 0;
-	padding: 0;
-	color: inherit;
-	background: none;
-	appearance: none;
-	text-overflow: ellipsis;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0 1em;
+	line-height: 3.6rem;
+	height: 3.6rem;
+	
+	background-color: white;
 }
 
-.search input:focus {
-	outline: 0;
-}
-
-/* shrunk */
-.search .label {
-	display: block;
+.bar-buttons {
 	position: absolute;
-	top: 0;
-	transform-origin: left;
-	transform: translateZ(0) translateY(-3rem) scale(0.54);
-	transition: all 0.3s cubic-bezier(0, 0, 0, 1.5);
-	opacity: 0.35;
+	top: 0.15em; right: 0;
 }
 
-/* expanded */
-.search input.ng-empty:not(:focus) + .label {
-	transform: translateZ(0);
-	opacity: 1;
-} 
-
-.search button.ok {
-	position: relative;
-	top: 0.35em;
+.bar-button {
+	line-height: 3.6rem;
+	margin-right: 1em;
 }
 
-.bar {
-	width: calc(100% - 3.5rem);
-}

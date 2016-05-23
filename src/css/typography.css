@@ -1,11 +1,12 @@
 html {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	font-size: 120%;
+	font-size: 110%;
 }
 
 body {
-	line-height: 1.5rem;
+	font-family: 'Roboto', sans-serif;
+	font-size: inherit;
+	font-weight: 300;
+	line-height: 1.8rem;
 }
 
 * {
@@ -14,21 +15,21 @@ body {
 
 .mnstr {
 	font-size: 2.75rem;
-	line-height: 4.5rem;
+	line-height: 5.4rem;
 }
 
 .mnstr.ie-lh-shim {
-	height: 4.5rem;
+	height: 5.4rem;
 }
 
 .xl {
 	font-size: 2.3rem;
-	line-height: 3rem;
+	line-height: 3.6rem;
 }
 
 .lg {
 	font-size: 1.25rem;
-	line-height: 3rem;
+	line-height: 3.6rem;
 }
 
 .md {
@@ -40,38 +41,36 @@ body {
 }
 
 .lh2 {
-	line-height: 3.0rem !important;
+	line-height: 3.6rem !important;
 }
 
 .lh3 {
-	line-height: 4.5rem !important;
+	line-height: 5.4rem !important;
 }
 
 .lh3.ie-lh-shim {
-	height: 4.5rem;
+	height: 5.4rem;
 }
 
 .mt1 {
-	margin-top: 1.5rem;
+	margin-top: 1.8rem;
 }
 
-@media (min-width: 600px) {
-	.mt1-md {
-		margin-top: 1.5rem;
-	}
+.mb1 {
+	margin-bottom: 1.8rem;
 }
 
 .section {
-	margin-top: 4.5rem;
-	margin-bottom: 4.5rem;
+	margin-top: 5.4rem;
+	margin-bottom: 5.4rem;
 }
 
 .section-start {
-	margin-top: 4.5rem;
+	margin-top: 5.4rem;
 }
 
 .section-end {
-	margin-bottom: 4.5rem;
+	margin-bottom: 5.4rem;
 }
 
 
@@ -79,4 +78,9 @@ body {
 	html {
 		font-size: 3.70vw;
 	}
+}
+
+[class*="col"] {
+	padding-right: 30px !important;
+	padding-left: 30px !important;
 }

@@ -1,0 +1,48 @@
+.autocomplete {
+	counter-reset: autocomplete;
+}
+
+.autocomplete.inactive {
+	opacity: 0.5;
+}
+
+.autocomplete li {
+	display: block;
+	cursor: pointer;
+}
+
+.autocomplete li::before {
+	counter-increment: autocomplete;
+	content: counter(autocomplete, decimal-leading-zero);
+
+	float: left;
+	width: 2rem;
+	margin-right: 1.5rem;
+	text-align: right;
+
+	font-size: 1rem;
+	color: #CCC;
+}
+
+.autocomplete li a {
+	display: block;
+	overflow: hidden;
+	border-bottom: 1px solid transparent;
+}
+
+.autocomplete li:hover a {
+	border-color: #CCC;
+}
+
+.autocomplete li.active a {
+	border-color: currentColor;
+	border-color: #898A94;
+}
+
+.autocomplete hr {
+	width: 25%;
+	clear: both;
+	max-width: 100px;
+	border: 0;
+	border-bottom: 1px solid #CCC;
+}

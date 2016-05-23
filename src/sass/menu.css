@@ -1,7 +1,6 @@
 .menu {
 	position: relative;
 	margin-bottom: -1.5rem;
-	margin-right: -1.5rem;
 	display: inline-block;
 }
 
@@ -24,7 +23,6 @@
 	top: 100%;
 	right: 0;
 	z-index: 3;
-	box-shadow: -2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .menu.open .menu-content {

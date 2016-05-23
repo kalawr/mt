@@ -30,7 +30,8 @@ angular.module('mt', ['ngRoute', 'ngStorage'])
 											},
 											function (error)
 											{
-												return [];
+												console.log(error)
+												return error;
 											}
 										);
 								}
@@ -47,7 +48,8 @@ angular.module('mt', ['ngRoute', 'ngStorage'])
 				.when(
 					'/', 
 					{
-						templateUrl: '/partials/root.html'
+						template: ' ',
+						controller: 'EmptyController'
 					}
 				)
 				.otherwise(
