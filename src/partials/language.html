@@ -1,10 +1,10 @@
 <label class='lang relative'>
 	<input type='checkbox' hidden ng-disabled='isLocked(language)' />
-	<span class='lang-toggle'>{{language | fullLanguage:true}}</span>
+	<span class='lang-toggle'>{{language | fullLanguage:false}}</span>
 	<ul class='lang-menu' ng-if='!isLocked(language)'>
 		<li ng-repeat='option in selectableLanguages' ng-click='chooseLanguage(languageIndex, $index)' ng-hide='option === language'>
 			<icon ref='dot' class='dot'></icon>
-			{{option | fullLanguage:true}}
+			{{option | fullLanguage:false}}
 		</li>
 	</ul>
 </label>

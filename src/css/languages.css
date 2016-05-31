@@ -4,6 +4,7 @@ language:first-child::after {
 
 .langs {
 	white-space: nowrap;
+	color: #CCC;
 }
 
 .langs .swap {
@@ -24,12 +25,9 @@ language:first-child::after {
 	z-index: 2;
 }
 
-.lang-menu li:hover {
-	color: #1C1C1C;
-}
-
 .langs label {
 	display: inline;
+	font-weight: inherit;
 }
 
 .langs [type=checkbox]:checked ~ ul {
@@ -37,13 +35,15 @@ language:first-child::after {
 }
 
 .lang-toggle,
-.langs .swap {
+.langs .swap,
+.lang-menu li {
 	border-bottom: 1px dashed transparent;
 }
 
 .langs [type=checkbox]:checked ~ .lang-toggle,
 .langs [type=checkbox]:not([disabled]) ~ .lang-toggle:hover,
-.langs .swap:hover {
+.langs .swap:hover,
+.lang-menu li:hover {
 	color: #1C1C1C;
 	border-color: currentColor;
 }
