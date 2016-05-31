@@ -1,0 +1,32 @@
+.autocomplete
+	width: 100%
+	
+	+shadow
+	background-color: white
+	color: lighten($base, 5%)
+
+	li
+		padding: 0 1em
+		line-height: 3.6rem
+		border-top: 1px solid transparent
+		border-bottom: 1px solid transparent
+		margin-top: -1px
+		margin-bottom: -1px
+		cursor: pointer
+
+	li:hover
+		color: darken($base, 5%)
+		border-top-color: rgba(0, 0, 0, 0.1)
+		border-bottom-color: rgba(0, 0, 0, 0.1)
+
+	li.active
+		background-color: $theme
+
+	.close-autocomplete
+		padding: 0 1em
+		line-height: 3.6rem
+		float: right
+		cursor: pointer
+
+	.close-autocomplete svg 
+		top: 0.25em
