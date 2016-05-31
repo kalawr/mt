@@ -56,7 +56,8 @@
 					<div class='languages'>en &mdash; ru</div>
 
 					<div class='motto'>
-						A little care on top of <a href='http://www.multitran.ru/' target='_blank'>Multitran <icon class='external' ref='external'></icon></a>.
+						<!-- A little care on top of <a href='http://www.multitran.ru/' target='_blank'>Multitran <icon class='external' ref='external'></icon></a>. -->
+						<a href='http://www.multitran.ru/' target='_blank'><icon class='external' ref='external'></icon> Multitran</a> и немного внимания.
 					</div>
 
 				</div>
@@ -71,7 +72,7 @@
 								
 								<input
 									type='text'
-									placeholder='Search'
+									placeholder='Поиск'
 									ng-model='global.query'
 									ng-change='autocomplete.disable(); autocomplete.fetch()'
 									autocomplete='off'
@@ -79,11 +80,11 @@
 
 								<div class='bar-buttons'>
 
-									<button class='bar-button' title='Erase' ng-click='global.query = ""; autocomplete.empty()'>
+									<button class='bar-button' title='Очистить' ng-click='global.query = ""; autocomplete.empty()'>
 										<icon ref='back'></icon>
 									</button>
 
-									<button class='bar-button' title='Search'>
+									<button class='bar-button' title='Поиск'>
 										<icon ref='magnifier'></icon>
 									</button>
 									

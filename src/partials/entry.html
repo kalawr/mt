@@ -23,5 +23,22 @@
 </dl>
 
 <div ng-show='error' class='error'>
-	{{error.status}} {{error.statusText}}
+
+	<div ng-switch='error.status'>
+		
+		<div ng-switch-when='404'>
+
+			<span class='error-code-tag'>404</span>
+			<span class='error-text'>Ну извините.</span>
+
+		</div>
+
+		<div ng-switch-default>
+			
+			{{error.status}} {{error.statusText}}
+
+		</div>
+
+	</div>
+
 </div>
