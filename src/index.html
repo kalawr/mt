@@ -127,8 +127,7 @@
 										ng-repeat='item in autocomplete.list track by $index' 
 										ng-class='{active: $index === autocomplete.selection}' 
 										ng-click='autocomplete.setSelection($index); autocomplete.submit()'
-										>
-										{{item}}
+										ng-bind='item'>
 									</li>
 
 								</ol>
