@@ -1,4 +1,38 @@
+.info
+	color: #5D9BCB
+	border: 1px solid #9FC4E0
+	border-bottom-width: 2px
+	border-radius: 0.3em
+
 .languages
+	position: relative
 	float: right
 	white-space: nowrap
 	+dim
+
+	.change-unavailable
+		position: absolute
+		right: 0
+		min-width: 18rem
+		white-space: normal
+		padding: 0.9rem 1em
+		opacity: 0
+		+sm
+		+line(0.5)
+		@extend .info
+		background-color: white
+
+		&:target
+			opacity: 1
+
+		.close
+			float: right
+			position: relative
+			top: 0.3em
+
+		.badge
+			float: left
+			padding-right: 1em
+
+		.content
+			overflow: hidden
