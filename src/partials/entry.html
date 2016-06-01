@@ -12,7 +12,7 @@
 
 			<div class='definitions'>
 
-				<dd ng-repeat='translation in domain.translations track by $index'>{{translation}}</dd>
+				<dd ng-repeat='translation in domain.translations track by $index'><a ng-href='/entry/{{translation}}/{{global.getLanguages()}}'>{{translation}}</a></dd>
 
 			</div>
 
