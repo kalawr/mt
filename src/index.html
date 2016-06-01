@@ -10,8 +10,8 @@
 		<link href='https://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic,latin-ext,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oranienbaum&subset=latin,cyrillic,latin-ext,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
-		<!-- <link rel='stylesheet' type='text/css' href='/bower_components/normalize-css/normalize.css'> -->
-		<link rel='stylesheet' type='text/css' href='/bower_components/bootstrap/dist/css/bootstrap.min.css'>
+		<link rel='stylesheet' type='text/css' href='/bower_components/normalize-css/normalize.css'>
+		<!-- <link rel='stylesheet' type='text/css' href='/bower_components/bootstrap/dist/css/bootstrap.min.css'> -->
 		<link rel='stylesheet' type='text/css' href='/css/bundle.css'>
 
 		<title>Work in Progress</title>
@@ -38,83 +38,86 @@
 			<!-- <div class='cf'>
 				<div class='loading' ng-show='loading'></div>
 			</div> -->
+			<div class='hard-margin'>
 
-			<div class='contain'>
+				<div class='contain'>
 
-				<div class='identity'>
+					<div class='identity'>
 
-					<a href='/' class='logo'>
+						<a href='/' class='logo'>
 
-						<div class='logo-image'></div>
+							<div class='logo-image'></div>
 
-						<div class='logo-text' title='On Top Of Multitran'>
-							<icon class='dot' ref='dot'></icon>otmt<icon class='dot' ref='dot'></icon>
-						</div>
-					
-					</a>
-
-					<div class='languages'>en &mdash; ru</div>
-
-					<div class='motto'>
-						<!-- A little care on top of <a href='http://www.multitran.ru/' target='_blank'>Multitran <icon class='external' ref='external'></icon></a>. -->
-						<a href='http://www.multitran.ru/' target='_blank'><icon class='external' ref='external'></icon> Multitran</a> и немного внимания.
-					</div>
-
-				</div>
-					
-				<div class='row relative'>
-					
-					<div ng-class='{"col-md-12": root, "col-md-8": !root}'>
-						
-						<form class='search section' ng-submit='autocomplete.submit()'>
-							
-							<div class='bar'>
-								
-								<input
-									type='text'
-									placeholder='Поиск'
-									ng-model='global.query'
-									ng-change='autocomplete.disable(); autocomplete.fetch()'
-									autocomplete='off'
-									/>
-
-								<div class='bar-buttons'>
-
-									<button class='bar-button' title='Очистить' ng-click='global.query = ""; autocomplete.empty()'>
-										<icon ref='back'></icon>
-									</button>
-
-									<button class='bar-button' title='Поиск'>
-										<icon ref='magnifier'></icon>
-									</button>
-									
-								</div>
-
+							<div class='logo-text' title='On Top Of Multitran'>
+								<icon class='dot' ref='dot'></icon>otmt<icon class='dot' ref='dot'></icon>
 							</div>
+						
+						</a>
 
-							<ol class='autocomplete' ng-show='autocomplete.list.length'>
+						<div class='languages'>en &mdash; ru</div>
 
-								<div class='close-autocomplete' ng-click='autocomplete.empty()'>
-									<icon ref='x'></icon>
-								</div>
-
-								<li
-									ng-repeat='item in autocomplete.list track by $index' 
-									ng-class='{active: $index === autocomplete.selection}' 
-									ng-click='autocomplete.setSelection($index); autocomplete.submit()'
-									>
-									{{item}}
-								</li>
-
-							</ol>
-
-						</form>
+						<div class='motto'>
+							<!-- A little care on top of <a href='http://www.multitran.ru/' target='_blank'>Multitran <icon class='external' ref='external'></icon></a>. -->
+							<a href='http://www.multitran.ru/' target='_blank'><icon class='external' ref='external'></icon> Multitran</a> и немного внимания.
+						</div>
 
 					</div>
 
-					<div ng-class='{"no-width": root, "col-md-4": !root}'>
+					<div class='row'>
+						
+						<div ng-class='{"col-search-full": root, "col-search-short": !root}'>
+							
+							<form class='search' ng-submit='autocomplete.submit()'>
+								
+								<div class='bar'>
+									
+									<input
+										type='text'
+										placeholder='Поиск'
+										ng-model='global.query'
+										ng-change='autocomplete.disable(); autocomplete.fetch()'
+										autocomplete='off'
+										/>
 
-						<div ng-view autoscroll class='entry'></div>
+									<div class='bar-buttons'>
+
+										<button class='bar-button' title='Очистить' ng-click='global.query = ""; autocomplete.empty()'>
+											<icon ref='back'></icon>
+										</button>
+
+										<button class='bar-button' title='Поиск'>
+											<icon ref='magnifier'></icon>
+										</button>
+										
+									</div>
+
+								</div>
+
+								<ol class='autocomplete' ng-show='autocomplete.list.length'>
+
+									<div class='close-autocomplete' ng-click='autocomplete.empty()'>
+										<icon ref='x'></icon>
+									</div>
+
+									<li
+										ng-repeat='item in autocomplete.list track by $index' 
+										ng-class='{active: $index === autocomplete.selection}' 
+										ng-click='autocomplete.setSelection($index); autocomplete.submit()'
+										>
+										{{item}}
+									</li>
+
+								</ol>
+
+							</form>
+
+						</div>
+
+						<div ng-class='{"col-entry-collapsed": root, "col-entry": !root}'>
+
+							<div ng-view autoscroll class='entry'></div>
+
+						</div>
 
 					</div>
 

@@ -1,0 +1,71 @@
+.hard-margin
+	padding-right: $gutter
+	padding-left: $gutter
+
+.contain
+	margin-left: auto
+	margin-right: auto
+
+.row
+	+cf
+	+section-start
+
+.col-search-full,
+.col-search-short,
+.col-entry
+	width: 100%
+	float: left
+
+.col-search-full,
+.col-search-short
+	+section-end
+
+.col-entry-collapsed
+	width: 0
+
+
+@media (min-width: 600px + $gutter * 2)
+	.contain
+		width: 600px
+
+
+@media (min-width: 800px + $gutter * 2)
+	.contain
+		width: 800px
+
+	.col-entry
+		float: right
+		width: 350px
+		padding-left: $gutter * 2
+
+	.col-search-short
+		position: fixed
+		width: 450px
+
+		.autocomplete
+			overflow-y: scroll
+			+height(10)
+
+
+@media (min-width: 1000px + $gutter * 2)
+	.contain
+		width: 1000px
+
+	.col-search-short
+		width: 650px
+
+
+@media (min-width: 1200px + $gutter * 2)
+	.contain
+		width: 1200px
+
+	.col-search-short
+		width: 850px
+
+
+@media (min-width: 1400px + $gutter * 2)
+	.contain
+		width: 1400px
+
+	.col-search-short
+		width: 1050px
