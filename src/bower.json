@@ -6,7 +6,10 @@
     "Illia Kalaur <kallaur125@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/kalawr/mt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kalawr/mt.git"
+  },
   "moduleType": [],
   "private": true,
   "dependencies": {
