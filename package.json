@@ -12,8 +12,11 @@
     "postinstall": "node-sass ./src/sass -o ./src/css && cd src && bower install && lodash include=debounce,throttle -o bower_components/lodash/custom/lodash.js && cd ..",
     "watch": "node-sass -w src/sass -o src/css"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Illia Kalaur",
+    "email": "kallaur125@gmail.com"
+  },
+  "license": "MIT",
   "dependencies": {
     "bower": "^1.7.9",
     "cheerio": "^0.20.0",
