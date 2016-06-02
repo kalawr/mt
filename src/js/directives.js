@@ -139,3 +139,27 @@ angular.module('mt')
 			};
 		}
 	)
+
+	.directive('scrollIntoView', function ()
+		{
+			return {
+
+				restrict: 'A',
+				scope: {
+					"scrollIntoViewIf": "=",
+					"scrollIntoViewEquals": "="
+				},
+				link: function ($scope, $element, $attributes)
+				{
+					$scope.$watch('scrollIntoViewIf', function (value)
+					{
+						if (value === $scope.scrollIntoViewEquals)
+						{
+							// console.log($element[0])
+							$element[0].scrollIntoView(false);
+						}
+					})
+				}
+			}
+		}
+	)
