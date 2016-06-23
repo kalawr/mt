@@ -7,26 +7,25 @@ var enterCode = 13;
 
 angular.module('mt')
 
-	.controller('AutocompleteController', ['$scope', '$http', '$window', 'focus', 'url',
-			function ($scope, $http, $window, focus, url)
+	.controller('AutocompleteController', ['$scope', '$window', '$location', 'Autocomplete',
+			function ($scope, $window, $location, Autocomplete)
 			{
 				$scope.autocomplete = {};
 				$scope.autocomplete.list = [];
 				$scope.autocomplete.enabled = false;
-				$scope.loading = false;
-
+				$scope.autocomplete.selection = -1;
+				
 				$scope.autocomplete.fetch = _.debounce(
 
 					function ()
 					{
-						var URL = url.autocomplete(
-							$scope.global.query, 
-							$scope.global.getLanguages()
-						);
-
-						$http.get(URL)
+						return Autocomplete
+							.fetch(
+								$scope.master.query, 
+								$scope.master.persistence.languages
+							)
 							.then(
-								function (response) 
+								function (response)
 								{
 									$scope.autocomplete.list = response.data;
 								},
@@ -41,7 +40,6 @@ angular.module('mt')
 					},
 					350
 				);
-
 
 				$scope.autocomplete.interceptKeys = function (event)
 				{
@@ -79,7 +77,7 @@ angular.module('mt')
 							if (event.keyCode == escCode)
 							{
 								event.preventDefault();
-								$scope.autocomplete.reset();
+								$scope.autocomplete.selection = -1;
 							}
 							else
 							if (event.keyCode == enterCode)
@@ -96,19 +94,15 @@ angular.module('mt')
 					if ($scope.autocomplete.enabled && $scope.autocomplete.list.length && $scope.autocomplete.selection >= 0)
 					{
 						$scope.loading = true;
-						$scope.global.submit($scope.autocomplete.list[$scope.autocomplete.selection]);
+						$location.url('/entry/'+ encodeURIComponent($scope.autocomplete.list[$scope.autocomplete.selection]) +'/'+$scope.master.persistence.languages);
 					}
 					else
 					{
-						if ($scope.global.query) 
+						if ($scope.master.query) 
 						{
 							$scope.loading = true;
-							$scope.global.submit();
+							$location.url('/entry/'+ encodeURIComponent($scope.master.query) +'/'+$scope.master.persistence.languages);
 						}
-						// else
-						// {
-						// 	focus('#query');
-						// }
 					}
 				};
 
@@ -137,21 +131,12 @@ angular.module('mt')
 					$scope.autocomplete.list = [];
 				};
 
-				$scope.autocomplete.reset();
-
 				angular.element($window).bind('keydown', $scope.autocomplete.interceptKeys)
 
-				$scope.$on('languageChange', function ()
-					{
-						$scope.autocomplete.disable();
-						$scope.autocomplete.fetch();
-					}
+				$scope.$on(
+					'viewChange', 
+					$scope.autocomplete.empty
 				);
-
-				$scope.$on('$viewContentLoaded', function ()
-				{
-					$scope.autocomplete.empty();
-				});
 			}
 		]
 	);

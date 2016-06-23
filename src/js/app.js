@@ -5,38 +5,34 @@ angular.module('mt', ['ngRoute', 'ngStorage'])
 	.config(['$routeProvider', '$locationProvider',
 		function ($routeProvider, $locationProvider)
 		{
-			$locationProvider.html5Mode(
+			var resolve = {
+				dict: ['Dictionary', '$route',
+					function (Dictionary, $route)
+					{
+						return Dictionary.fetch(
+							$route.current.params.query,
+							$route.current.params.languages
+						);
+					}
+				]
+			};
+
+			var resolveEmpty = {
+				dict: function ()
 				{
-					enabled: true,
-					requireBase: false
+					return Promise.resolve([]);
 				}
-			);
+			};
+
+			$locationProvider.html5Mode(true);
 
 			$routeProvider
 				.when(
 					'/entry/:query/:languages', 
 					{
 						templateUrl: '/partials/entry.html',
-						controller: 'EntryController',
-						resolve: {
-							dict: ['$http', '$route', 'url',
-								function ($http, $route, url)
-								{
-									return $http.get(url.translate($route.current.params.query, $route.current.params.languages))
-										.then(
-											function (response) 
-											{
-												return response.data;
-											},
-											function (error)
-											{
-												console.log(error)
-												return error;
-											}
-										);
-								}
-							]
-						}
+						controller: 'SubController',
+						resolve: resolve
 					}
 				)
 				.when(
@@ -49,7 +45,8 @@ angular.module('mt', ['ngRoute', 'ngStorage'])
 					'/', 
 					{
 						template: ' ',
-						controller: 'EmptyController'
+						controller: 'SubController',
+						resolve: resolveEmpty
 					}
 				)
 				.otherwise(

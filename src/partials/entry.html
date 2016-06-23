@@ -1,6 +1,6 @@
-<dl ng-show='dict.length'>
+<dl ng-show='master.dict.length'>
 
-	<div class='definition' ng-repeat='definition in dict track by $index'>
+	<div class='definition' ng-repeat='definition in master.dict track by $index'>
 			
 		<dt>
 			{{definition.variant}}<small ng-show='definition.partOfSpeech'>, {{definition.partOfSpeech}}</small>
@@ -22,9 +22,9 @@
 
 </dl>
 
-<div ng-show='error' class='error'>
+<div ng-show='master.httpError' class='error'>
 
-	<div ng-switch='error.status'>
+	<div ng-switch='master.httpError.status'>
 		
 		<div ng-switch-when='404'>
 
