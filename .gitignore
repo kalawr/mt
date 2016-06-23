@@ -1,7 +1,7 @@
 node_modules/
 
 src/bower_components/
-src/css/bundle.css
+src/css/
 
 dist/**/!.gitkeep
 
